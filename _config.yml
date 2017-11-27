@@ -76,5 +76,7 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy: 
-  type:
+deploy:
+  type: git
+  repository: https://github.com/wavejoker/wavejoker.github.io.git
+  branch: master
