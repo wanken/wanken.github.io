@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Waver的个人博客
 subtitle:
-description:
-author: John Doe
-language:
+description: Waver的博客 Java Spring
+author: Waver
+language: 
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: https://wavejoker.github.io
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
