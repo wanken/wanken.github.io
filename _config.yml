@@ -7,12 +7,12 @@ title: Waver的个人博客
 subtitle:
 description: Waver的博客 Java Spring
 author: Waver
-language: 
+language:
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://wavejoker.github.io
+url: http://wavejoker.github.io/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -76,7 +76,7 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: git
-  repository: https://github.com/wavejoker/wavejoker.github.io.git
-  branch: master
+deploy: https://github.com/wavejoker/wavejoker.github.io.git
+type: git
+repository: https://github.com/wavejoker/wavejoker.github.io.git
+branch: master
