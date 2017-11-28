@@ -121,7 +121,7 @@ scheme: Pisces
 social:
   GitHub: https://github.com/wavejoker || github
   E-Mail: mailto:jokerwaver@gmail.com || envelope
-  Google: https://plus.google.com/jokerwaver || google
+  Google: https://plus.google.com/105010541415941865996 || google
   Twitter: https://twitter.com/waverjoker || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
@@ -399,7 +399,7 @@ gitment:
   lazy: false # Comments lazy loading with a button
   cleanly: false # Hide 'Powered by ...' on footer, and more
   language: # Force language, or auto switch by theme
-  github_user: # MUST HAVE, Your Github ID
+  github_user: Joker # MUST HAVE, Your Github ID
   github_repo: # MUST HAVE, The repo you use to store Gitment comments
   client_id: # MUST HAVE, Github client id for the Gitment
   client_secret: # EITHER this or proxy_gateway, Github access secret token for the Gitment
