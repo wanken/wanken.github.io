@@ -122,7 +122,7 @@ social:
   GitHub: https://github.com/wavejoker || github
   E-Mail: mailto:jokerwaver@gmail.com || envelope
   Google: https://plus.google.com/jokerwaver || google
-  Twitter: https://twitter.com/creeper || twitter
+  Twitter: https://twitter.com/waverjoker || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
   #VK Group: https://vk.com/yourname || vk
   #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
@@ -132,7 +132,7 @@ social:
 
 social_icons:
   enable: true
-  icons_only: false
+  icons_only: true
   transition: false
 
 # Blog rolls
