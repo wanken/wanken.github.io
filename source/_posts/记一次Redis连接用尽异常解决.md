@@ -20,7 +20,7 @@ Caused by: java.util.NoSuchElementException: Timeout waiting for idle object
     ... 2 more
 ```
 
-1. 增加 Jedis 的活动连接数:
+### 增加 Jedis 的活动连接数:
 
 ```
 <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
@@ -46,7 +46,7 @@ Caused by: java.util.NoSuchElementException: Timeout waiting for idle object
 		<property name="blockWhenExhausted" value="false" />
 	</bean>
 ```
-将最大连接数增加到 300, 但是错误仍然出现, 检查代码发现, 连接用完后并没有释放.
+### 将最大连接数增加到 300, 但是错误仍然出现, 检查代码发现, 连接用完后并没有释放.
 
 - 使用 **jedis.close();** 释放资源后问题解决, 修改前的代码:
 ```
