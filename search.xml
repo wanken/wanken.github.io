@@ -4,6 +4,9 @@
     <title><![CDATA[FTP storFile返回false 解决方法]]></title>
     <url>%2F2017%2F12%2F04%2FFTPClient.storFile%E8%BF%94%E5%9B%9Efalse-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95%2F</url>
     <content type="text"><![CDATA[本文参考地址 错误描述 自己搭建的FTP服务器总是在执行FTPClient.storFile(); 方法时返回 false 解决方法 添加以下代码即可 1ftpClient.setControlEncoding(&quot;UTF-8&quot;);]]></content>
+      <categories>
+        <category>Exception</category>
+      </categories>
       <tags>
         <tag>Java</tag>
         <tag>FTP</tag>
@@ -13,6 +16,9 @@
     <title><![CDATA[记一次Redis连接用尽异常解决]]></title>
     <url>%2F2017%2F12%2F01%2F%E8%AE%B0%E4%B8%80%E6%AC%A1Redis%E8%BF%9E%E6%8E%A5%E7%94%A8%E5%B0%BD%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%2F</url>
     <content type="text"><![CDATA[不知怎么突然jedis出现 “Could not get a resource from the pool” 错误,错误原因是连接池中的链接用尽 解决方法:12345678redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool at redis.clients.util.Pool.getResource(Pool.java:22) at com.derbysoft.jredis.longkeytest.BorrowObject.run(BorrowObject.java:22) at java.lang.Thread.run(Thread.java:662) Caused by: java.util.NoSuchElementException: Timeout waiting for idle object at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1134) at redis.clients.util.Pool.getResource(Pool.java:20) ... 2 more 增加 Jedis 的活动连接数:12345678910111213141516171819202122&lt;bean id=&quot;jedisPoolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt; &lt;!-- 最大连接数 --&gt; &lt;property name=&quot;maxTotal&quot; value=&quot;300&quot; /&gt; &lt;!-- 最大空闲连接数 --&gt; &lt;property name=&quot;maxIdle&quot; value=&quot;50&quot; /&gt; &lt;!-- 每次释放连接的最大数目 --&gt; &lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;1024&quot; /&gt; &lt;!-- 释放连接的扫描间隔（毫秒） --&gt; &lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;30000&quot; /&gt; &lt;!-- 连接最小空闲时间 --&gt; &lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;1800000&quot; /&gt; &lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt; &lt;property name=&quot;softMinEvictableIdleTimeMillis&quot; value=&quot;10000&quot; /&gt; &lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt; &lt;property name=&quot;maxWaitMillis&quot; value=&quot;1500&quot; /&gt; &lt;!-- 在获取连接的时候检查有效性, 默认false --&gt; &lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot; /&gt; &lt;!-- 在空闲时检查有效性, 默认false --&gt; &lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt; &lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&gt; &lt;property name=&quot;blockWhenExhausted&quot; value=&quot;false&quot; /&gt; &lt;/bean&gt; 将最大连接数增加到 300, 但是错误仍然出现, 检查代码发现, 连接用完后并没有释放. 使用 jedis.close(); 释放资源后问题解决, 修改前的代码:12345public String get(String key) &#123; Jedis jedis = jedisPool.getResource(); String get = jedis.get(key); return get; &#125; 修改后的代码:123456public String get(String key) &#123; Jedis jedis = jedisPool.getResource(); String get = jedis.get(key); jedis.close(); return get; &#125;]]></content>
+      <categories>
+        <category>Exception</category>
+      </categories>
       <tags>
         <tag>Java</tag>
         <tag>Redis</tag>
@@ -23,6 +29,9 @@
     <title><![CDATA[Javareview-day05]]></title>
     <url>%2F2017%2F11%2F29%2FJavareview-day05%2F</url>
     <content type="text"><![CDATA[Java第五天封装 私有只是封装的一种表现形式 构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象已建立就运行, 给对象初始化; 而一般方法是对象调用才运行,是给对象添加对象具备的功能;]]></content>
+      <categories>
+        <category>JavaReview</category>
+      </categories>
       <tags>
         <tag>Java</tag>
       </tags>
@@ -31,13 +40,22 @@
     <title><![CDATA[JavaReview-day06]]></title>
     <url>%2F2017%2F11%2F28%2FJavaReview-day06%2F</url>
     <content type="text"></content>
+      <categories>
+        <category>JavaReview</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[JavaReview-day04]]></title>
     <url>%2F2017%2F11%2F28%2FJavaReview-day04%2F</url>
     <content type="text"><![CDATA[数组 1. 数据类型分类: 基本数据类型, 引用数据类型 2. Java 程序在运行时,需要在内存中分配空间, 为了提高运算效率, 又对空间进行了不同区域的划分 因为每一片区域都有特定的处理数据的方式和内存管理方式 共分为五个区域: 栈内存, 堆内存, 方法区, 本地方法区, 寄存器 - 栈内存:用于存储局部变量, 当数据使用完, 所占空间会自动释放; - 堆内存: 1. 数组和对象,通过 new 建立的实例都存放在堆内存中; 2. 每一个实体都有内存地址值; 3. 实体中的变量都有默认的初始化值 4. 实体不再被使用时, 会在不确定的时间内被垃圾回收器回收 数组的定义方式1. int[] arr = new int[5]; (推荐写法) 2. int arr[] = new int[5]; (与第一种意义相同) 3. int[] arr = new int[]{1, 2, 3, 4, 5}; (静态初始化方式) 4. int[] arr = {1, 2, 3, 4, 5} (第三种的简化格式) 数组排序选择排序1234567891011public void selectSort(int[] arr)&#123; for(int x = 0; x &lt; arr.length-1; x++)&#123; for(int y = x + 1; y &lt; arr.length; y++)&#123; if(arr[x] &gt; arr[y])&#123; int temp = arr[x]; arr[x] = arr[y]; arr[y] = temp; &#125; &#125; &#125;&#125; 说明: 选择排序是用当前元素与其他所有元素比较, 如果符合条件,就交换位置 冒泡排序123456789101112public void bubbleSort(int[] arr)&#123; for(int x = 0; x &lt; arr.length; x ++)&#123; for(int y = 0; y &lt; arr.length - x - 1; y ++)&#123; if(arr[y] &gt; arr[y + 1])&#123; int temp = arr[y]; arr[y] = arr[y + 1]; arr[y + 1] = temp; &#125; &#125; &#125;&#125; 说明: 冒泡排序是用相邻的元素进行比较, 如果符合条件,就交换位置使用 java.util包中的 Array.sort(arr); 可以进行排序数组 将数组交换的方法进行封装12345public void swap(int[] arr, int a, int b)&#123; int temp = arr[a]; arr[b] = arr[a]; arr[b] = temp;&#125; 使用异或方式实现12345public void swap1(int arr, int a, int b)&#123; arr[b] = arr[b] ^ arr[a]; arr[a] = arr[b] ^ arr[a]; arr[b] = arr[b] ^ arr[a];&#125; 折半查找第一种方式 1234567891011121314public int halfSearch (int[] arr, int key)&#123; int min = 0; int max = arr.length - 1; int mid = (min + max)/2; while(arr[mid] != key)&#123; if(key &lt; arr[mid])&#123; max = mid - 1; &#125;else if(key &gt; arr[mid])&#123; min = mid + 1; &#125; mid = (min + max)/2; &#125; return mid;&#125; 第二种方式 1234567891011121314151617public int halfSearch2(int arr[], int key)&#123; int min = 0; int max = arr.length; while(min &lt;= max)&#123; mid = (min + max) &gt;&gt; 1; if(key &gt; arr[mid])&#123; min = mid + 1; &#125;else if(key &lt; arr[mid])&#123; max = mid -1; &#125;else&#123; return mid; &#125; return -1; &#125;&#125; 面试题:将一个数字插入一个有序数组, 插入后,保证数组有序; 思路: 通过折半查找, 找到所插入数组的下标, 如果数组中存在与插入值相同的值,则在该元素之前插入 十进制转二进制 123456789public void decimalToBinary() &#123; int num = 8; StringBuffer sb = new StringBuffer(); while (num &gt; 0) &#123; sb.append(num % 2); num = num / 2; &#125; System.out.println(sb.reverse()); &#125; 十进制转十六进制 第一种方式 1234567891011121314public void decimalToHexadecimal() &#123; int num = 60; StringBuffer stringBuffer = new StringBuffer(); for (int x = 0; x &lt; 8; x++) &#123; int temp = num &amp; 15; if (temp &gt; 9) &#123; stringBuffer.append((char) (temp - 10 + &apos;A&apos;)); &#125; else &#123; stringBuffer.append(temp); &#125; num = num &gt;&gt;&gt; 4; &#125; System.out.println(stringBuffer.reverse()); &#125; 二维数组的定义方法1int[][]]]></content>
+      <categories>
+        <category>JavaReview</category>
+      </categories>
       <tags>
-        <tag>-Java</tag>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -45,11 +63,10 @@
     <url>%2F2017%2F11%2F28%2FJavaReview-day03%2F</url>
     <content type="text"><![CDATA[Java 运算符位运算符:1.”&lt;&lt;”: 左位移 2.”&gt;&gt;”: 右位移: 左右为数值的二进制进行左右移动, 其结果等于原值 或 / 2的所以为数的次幂 即 3 &lt;&lt; 3 = 3_ 2的三次幂 = 3 * 8 = 24; 3.”&lt;&lt;&lt;”:无符号左移 4.”&gt;&gt;&gt;”:无符号右移 异或(^)可以用于加密 ‘&amp;’, ‘|’, ‘^’的运算 使两个变量互换值 m = 3; n = 8; n = n ^ m; m = n ^ m; n = n ^ m;即可完成值互换而不引用第三方变量完成两个变量的值互换 三元运算符 三元运算符会改变所运算元素的数据类型 语句if…else: 三元运算符 对比 if…else 的优缺点 缺点: 三元运算符必须有结果 优点: 三元运算符比 if…else 简单, 可以简化 if…else 二. switch 语句: 1) switch可以中可以接收 byte, short, int char 类型的数据; 2) jdk1.5 加入对枚举类型的支持, jdk1.7 加入了对 String类型的支持; 3) switch 的各个 case 之间和 default 没有顺序,先执行第一个 case, 没有匹配的 case 执行default; 结束 switch 语句的两种情况: (1).遇到 break; (2). 执行到 switch 语句结束;如果匹配的 case 没有对应的 break, 那么程序会继续向下执行, 运行可以执行的语句, 直到遇到 break 或程序结束; 4) if … else 和 switch 语句的对比: switch 性能比 if…else 更高(if … else 只能顺序执行)对区间判断可以或对结果为 boolean 类型的判断使用 if, if 的使用范围更广while 语句do..while 和 while 的区别do…while 先执行循环体, 再判断条件(循环体至少执行一次);while 先判断再执行for语句格式: for(初始化表达式; 循环条件表达式; 循环后表达式){ 执行语句; } for 循环中的表达式只要为合法的表达式即可运行(循环表达式要有真或假的计算结果); for 循环中的变量初始化语句只执行一次for 循环中的语句不只是一句,多条语句可用 “,” 隔开,如下:123for(int x = 0, y = 0, z = 0; x &lt; 4; x ++, y ++,z ++)&#123; System.out.println(x+y+z);&#125; for 和 while 的无限循环的表达形式1234for: for(;;)&#123; System.out.println(&quot;for无限循环&quot;); &#125; 如果 for 循环的条件不声明, 默认为 true;while123while(true)&#123; System.out.println(&quot; while 无限循环&quot;);&#125; break 和 continue 1) break 可以跳出指定循环, 只需要将循环命名即可,具体实现如下12345678910111213public void testBreak() &#123; w: for (int x = 1; x &lt; 4; x++) &#123; System.out.println(&quot;out\t&quot;); q: for (int m = 0; m &lt; 3; m++)&#123; if (m == 2)&#123; break w; &#125; System.out.print(&quot;in\t&quot;); &#125; &#125; &#125; 输出结果为: out in in 若将 break 后的 w 删掉,结果为: out in in out in in out in in 2). continue 作用:结束本次循环,继续下一次循环 # 如下代码可以打印 0~10 以内的 2 的倍数: 12345678public void testContinue()&#123; for (int i = 0; i &lt; 11; i ++)&#123; if (i%2 == 1)&#123; continue; &#125; System.out.println(i); &#125;&#125; 1) continue可以继续指定循环, 只需要将循环命名即可,具体实现如下12345678910public void testContinue() &#123; w: for (int i = 0; i &lt; 3; i++) &#123; q: for (int k = 0; k &lt; 4; k++) &#123; System.out.println(&quot;i = &quot; + i); continue w; &#125; &#125;&#125; 输出结果为: 123i = 0i = 1i = 2 break 和 continue语句单独存在时, 下面不可以有任何语句, 因为执行不到(编译报错);break 必须在 switch 或 loop(循环)语句内, continue必须在 loop 语句内输出等腰三角形123456789101112public void testTriangle() &#123;for (int x = 1; x &lt;= 5; x++) &#123; for (int y = x; y &lt; 5; y++) &#123; System.out.print(&quot; &quot;); &#125; for (int z = 0; z &lt; x; z ++ )&#123; System.out.print(&quot;* &quot;); &#125; System.out.println(); &#125;&#125; 结果如下: 12345 * * * * * * * * * ** * * * * 重载 方法名一致, 但参数列表不同的函数为重载; 名称相同, 参数列表相同, 但返回值类型不同的两个函数不是重载函数, 不能同时存在于一个类中;]]></content>
       <categories>
-        <category>Java</category>
+        <category>JavaReview</category>
       </categories>
       <tags>
         <tag>Java</tag>
-        <tag>Knowledge</tag>
       </tags>
   </entry>
   <entry>

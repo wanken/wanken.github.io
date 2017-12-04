@@ -4,6 +4,8 @@ date: 2017-12-04T19:59:29.000Z
 tags:
   - Java
   - FTP
+categories:
+  - Exception
 type:
   - Java
   - FTP

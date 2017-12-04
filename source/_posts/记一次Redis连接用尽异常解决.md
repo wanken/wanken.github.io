@@ -1,8 +1,16 @@
 ---
 title: 记一次Redis连接用尽异常解决
 date: 2017-12-01 11:04:30
-tags: [Redis, Java, Jedis]
-type: [Redis, Jedis]
+tags:
+  - Redis
+  - Java
+  - Jedis
+categories:
+  - Exception
+
+type:
+  - Redis
+  - Jedis
 ---
 
 > 不知怎么突然jedis出现 "Could not get a resource from the pool" 错误,错误原因是连接池中的链接用尽

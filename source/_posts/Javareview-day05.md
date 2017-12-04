@@ -1,8 +1,12 @@
 ---
 title: Javareview-day05
 date: 2017-11-29 18:55:32
-tags: [Java]
-type: [Java, Review]
+tags:
+  - Java
+categories:
+  - JavaReview
+type:
+  - JavaReview
 ---
 # Java第五天
 ## 封装

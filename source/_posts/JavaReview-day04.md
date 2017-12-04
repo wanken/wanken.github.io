@@ -1,8 +1,12 @@
 ---
 title: JavaReview-day04
 date: 2017-11-28 16:14:34
-tags: -Java
-type: [Java, Review]
+tags:
+  - Java
+categories:
+  - JavaReview
+type:
+  - JavaReview
 
 ---
 
