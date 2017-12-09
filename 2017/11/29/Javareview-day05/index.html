@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Waver" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Waver's Blog" type="application/atom+xml" />
 
 
 
@@ -86,13 +86,13 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javareview-day05">
 <meta property="og:url" content="http://wavejoker.github.io/2017/11/29/Javareview-day05/index.html">
-<meta property="og:site_name" content="Waver">
-<meta property="og:description" content="Java第五天封装 私有只是封装的一种表现形式  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象已建立就运行, 给对象初始化; 而一般方法是对象调用才运行,是给对象添加对象具备的功能;">
+<meta property="og:site_name" content="Waver&#39;s Blog">
+<meta property="og:description" content="Java第五天封装 私有只是封装的一种表现形式  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象已建立就运行, 给对象初始化; 而一般方法是对象调用才运行,是给对象添加对象具备的功能;  成员变量和局部变量作用范围 成">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-04T12:29:42.654Z">
+<meta property="og:updated_time" content="2017-12-09T12:26:32.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javareview-day05">
-<meta name="twitter:description" content="Java第五天封装 私有只是封装的一种表现形式  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象已建立就运行, 给对象初始化; 而一般方法是对象调用才运行,是给对象添加对象具备的功能;">
+<meta name="twitter:description" content="Java第五天封装 私有只是封装的一种表现形式  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象已建立就运行, 给对象初始化; 而一般方法是对象调用才运行,是给对象添加对象具备的功能;  成员变量和局部变量作用范围 成">
 
 
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>Javareview-day05 | Waver</title>
+  <title>Javareview-day05 | Waver's Blog</title>
   
 
 
@@ -158,7 +158,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Waver</span>
+        <span class="site-title">Waver's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -302,13 +302,13 @@
     <link itemprop="mainEntityOfPage" href="http://wavejoker.github.io/2017/11/29/Javareview-day05/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="waver">
+      <meta itemprop="name" content="Waver">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/head.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Waver">
+      <meta itemprop="name" content="Waver's Blog">
     </span>
 
     
@@ -397,6 +397,14 @@
 <li>当在类中定义了构造函数后,默认的构造函数就会消失;</li>
 <li>构造函数和在对象已建立就运行, 给对象初始化; 而一般方法是对象调用才运行,<br>是给对象添加对象具备的功能;</li>
 </ol>
+<h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><ol>
+<li>成员变量作用于整个类中, 局部变量作用于函数中或者语句中;</li>
+<li>在内存中的位置:<ul>
+<li>成员变量: 在堆内存中, 因为对象的存在, 才在内存中存在;</li>
+<li>局部变量: 存在栈内存中</li>
+</ul>
+</li>
+</ol>
 
       
     </div>
@@ -427,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/JavaReview-day06/" rel="next" title="JavaReview-day06">
-                <i class="fa fa-chevron-left"></i> JavaReview-day06
+              <a href="/2017/11/28/JavaReview-day04/" rel="next" title="JavaReview-day04">
+                <i class="fa fa-chevron-left"></i> JavaReview-day04
               </a>
             
           </div>
@@ -437,8 +445,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/01/记一次Redis连接用尽异常解决/" rel="prev" title="记一次Redis连接用尽异常解决">
-                记一次Redis连接用尽异常解决 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/11/30/JavaReview-day06/" rel="prev" title="JavaReview-day06">
+                JavaReview-day06 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -507,9 +515,9 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/head.jpg"
-                alt="waver" />
+                alt="Waver" />
             
-              <p class="site-author-name" itemprop="name">waver</p>
+              <p class="site-author-name" itemprop="name">Waver</p>
               <p class="site-description motion-element" itemprop="description">唯代码与音乐不可辜负</p>
           </div>
 
@@ -531,7 +539,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -542,7 +550,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -610,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java第五天"><span class="nav-number">1.</span> <span class="nav-text">Java第五天</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">1.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java第五天"><span class="nav-number">1.</span> <span class="nav-text">Java第五天</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">1.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量和局部变量"><span class="nav-number">1.3.</span> <span class="nav-text">成员变量和局部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.3.1.</span> <span class="nav-text">作用范围</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -634,7 +642,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">waver</span>
+  <span class="author" itemprop="copyrightHolder">Waver</span>
 
   
 </div>
