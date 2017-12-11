@@ -221,36 +221,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-schedule">
-          <a href="/schedule/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
-            
-            日程表
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
-            站点地图
-          </a>
-        </li>
-      
 
       
         <li class="menu-item menu-item-search">
@@ -877,7 +847,18 @@
 <li>如果对一个对象进行多个成员调用, 必须给这个对象起个名字</li>
 <li>匿名对象可以作为实际参数进行传递</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*test*  ff</span><br></pre></td></tr></table></figure>
+<h3 id="构造代码块"><a href="#构造代码块" class="headerlink" title="构造代码块"></a>构造代码块</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h4><ul>
+<li>给对象进行初始化</li>
+</ul>
+<h4 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h4><ul>
+<li>对象一建立就运行, 而且优先于构造函数执行;</li>
+</ul>
+<h4 id="和构造函数的区别"><a href="#和构造函数的区别" class="headerlink" title="和构造函数的区别:"></a>和构造函数的区别:</h4><ul>
+<li>构造代码块是给所有对象进行统一初始化</li>
+<li>构造函数是给对应的对象进行初始化</li>
+<li>构造代码块中定义的事不同对象共性的初始化内容</li>
+</ul>
+<h4 id="构造代码块示例"><a href="#构造代码块示例" class="headerlink" title="构造代码块示例:"></a>构造代码块示例:</h4>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="comment">//以下'&#123;&#125;'和其中的内容为构造代码块</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="this-和-super-关键字"><a href="#this-和-super-关键字" class="headerlink" title="this 和 super 关键字:"></a>this 和 super 关键字:</h3><ol>
 <li><p>this 和 super 关键字不能再 static 类型的方法或 static 的代码块中</p>
 <ul>
