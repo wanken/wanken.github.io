@@ -88,7 +88,7 @@ menu:
   categories: /categories/ || th
   archives: /archives/ || archive
   tags: /tags/ || tags
-  about: /about/ || user
+  #about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
@@ -684,7 +684,7 @@ pace: false
 #pace-theme-minimal
 # For example
 # pace_theme: pace-theme-center-simple
-pace_theme: pace-theme-minimal
+pace_theme: pace-theme-corner-indicator
 
 # Canvas-nest
 canvas_nest: false
