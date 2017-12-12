@@ -8,3 +8,7 @@ categories:
 type:
   - JavaReview
 ---
+
+#Java复习第6天
+
+## static 关键字

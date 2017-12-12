@@ -9,7 +9,7 @@ type:
   - JavaReview
 ---
 
-# Java第五天
+# Java 复习第五天
 
 ## 封装
 
@@ -69,7 +69,34 @@ type:
 
   ```
 
-### this 和 super 关键字:
+### this 关键字:
+  1. this 代表的是本类对象, 即 this 所在函数所属对象的引用
+  2. this语句:
+    ```java
+    this(xxx);
+    ```
+    作用: this()用于构造函数之间的调用
+    特性: this() 必须在第一行，以保证在执行任何动作前，对象已经完成了初始化。
+  3. **注意: 以下代码会进入死循环状态, 构造函数之间不可以循环调用**
+
+  ```java
+    class Persion{
+      int age;
+      String name;
+      Persion(){
+        this(name);
+      }
+      Persion(String name){
+        this();
+      }
+    }
+    class test{
+      Persion p = new Persion();
+    }
+
+  ```
+
+### this 和 super 关键字的特点:
 
 1. this 和 super 关键字不能再 static 类型的方法或 static 的代码块中
 
