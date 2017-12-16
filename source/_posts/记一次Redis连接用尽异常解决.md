@@ -27,8 +27,9 @@ Caused by: java.util.NoSuchElementException: Timeout waiting for idle object
     at redis.clients.util.Pool.getResource(Pool.java:20)  
     ... 2 more
 ```
-
+<!--more-->
 ### 增加 Jedis 的活动连接数:
+
 
 ```
 <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
