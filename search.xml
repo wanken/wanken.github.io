@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[GitHub Pages绑定域名]]></title>
     <url>%2F2017%2F12%2F17%2FGitHub%20Pages%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D%2F</url>
-    <content type="text"><![CDATA[本文主要讲述博客选购和绑定域名, 博客搭建部分不再赘述 购买域名如果嫌麻烦可以在Godaddy 购买也可以在国内阿里云或腾讯云等购买, 本文主要介绍在 Godaddy 购买并绑定教程 选购域名 可以在此页面搜索你喜欢的域名是否被占用, 如果未被占用, 至于域名后缀选择, 可参考知乎答案 推荐使用.me 域名解析更换域名服务器 Godaddy 的默认 DNS 解析在国内不是很稳定, 推荐使用DNSPot解析域名, 在 DNSPot 注册账户后绑定在Godaddy注册的域名, 然后将图1中的红色区域设置到Godaddy 的域名服务器注意: 在GoDaddy中配置的为”f1g1ns1.dnspod.net”, 为没有”f1g1ns1.dnspod.net.”要去掉最后的 . GitHub中的域名支持 GitHub的服务器域名是个固定IP。所以，当我们需要将申请的域名给予一个自己的github.io的地址的时候，我们可以在DNS服务器的配置中添加一条A记录，指向github的服务器地址。如图2第一条记录所示 现在github的服务器地址为： 192.30.252.153 192.30.252.154 添加CNAME文件在你的博客仓库中下的 /source 目录中添加名为 CNAME的文件, 在文件中写入你在GoDaddy注册的域名, 至此, 所有 GitHub Pages 的域名的工作就完成了, Enjoy you blog!]]></content>
+    <content type="text"><![CDATA[本文主要讲述博客选购和绑定域名, 博客搭建部分不再赘述 购买域名如果嫌麻烦可以在Godaddy 购买也可以在国内阿里云或腾讯云等购买, 本文主要介绍在 Godaddy 购买并绑定教程 选购域名 可以在此页面搜索你喜欢的域名是否被占用, 如果未被占用, 即可购买, 至于域名后缀选择, 可参考知乎答案 推荐使用.me 域名解析更换域名服务器 Godaddy 的默认 DNS 解析在国内不是很稳定, 推荐使用DNSPot解析域名, 在 DNSPot 注册账户后绑定在Godaddy注册的域名, 然后将图1中的红色区域设置到Godaddy 的域名服务器注意: 在GoDaddy中配置的为”f1g1ns1.dnspod.net”, 为没有”f1g1ns1.dnspod.net.”要去掉最后的 . GitHub中的域名支持 GitHub的服务器域名是个固定IP。所以，当我们需要将申请的域名给予一个自己的github.io的地址的时候，我们可以在DNS服务器的配置中添加一条A记录，指向github的服务器地址。如图2第一条记录所示 现在github的服务器地址为： 192.30.252.153 192.30.252.154 添加CNAME文件在你的博客仓库中下的 /source 目录中添加名为 CNAME的文件, 在文件中写入你在GoDaddy注册的域名, 至此, 所有 GitHub Pages 的域名的工作就完成了, Enjoy you blog!]]></content>
       <categories>
         <category>Blog</category>
       </categories>

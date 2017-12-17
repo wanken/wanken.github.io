@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wavejoker.github.io/"/>
-  <updated>2017-12-17T07:40:39.148Z</updated>
+  <updated>2017-12-17T11:55:29.617Z</updated>
   <id>http://wavejoker.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://wavejoker.github.io/2017/12/17/GitHub%20Pages%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/"/>
     <id>http://wavejoker.github.io/2017/12/17/GitHub Pages绑定域名/</id>
     <published>2017-12-17T05:11:03.000Z</published>
-    <updated>2017-12-17T07:40:39.148Z</updated>
+    <updated>2017-12-17T11:55:29.617Z</updated>
     
-    <content type="html"><![CDATA[<p>本文主要讲述博客选购和绑定域名, 博客搭建部分不再赘述</p><h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>如果嫌麻烦可以在<a href="https://www.godaddy.com/" target="_blank" rel="noopener">Godaddy</a> 购买<br>也可以在国内阿里云或腾讯云等购买, 本文主要介绍在 Godaddy 购买并绑定教程</p><h3 id="选购域名"><a href="#选购域名" class="headerlink" title="选购域名"></a>选购域名</h3><p>  可以在<a href="https://sg.godaddy.com/zh/domains/domain-name-search" target="_blank" rel="noopener">此页面</a>搜索你喜欢的<br>域名是否被占用, 如果未被占用, 至于域名后缀选择, 可参考<a href="https://www.zhihu.com/question/19610337" target="_blank" rel="noopener">知乎答案</a> 推荐使用<code>.me</code></p><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><h4 id="更换域名服务器"><a href="#更换域名服务器" class="headerlink" title="更换域名服务器"></a>更换域名服务器</h4><p>  Godaddy 的默认 DNS 解析在国内不是很稳定, 推荐使用<a href="https://www.dnspod.cn/" target="_blank" rel="noopener">DNSPot</a><br>解析域名, 在 DNSPot 注册账户后绑定在Godaddy注册的域名, 然后将图1中的红色区域设置到<br>Godaddy 的域名服务器<br><img src="/images/post_images/20171217_DNSPot.jpg" alt="图1"><br><img src="/images/post_images/20171217_GoDaddy_DNS.jpg" alt="图2"><br>注意: 在GoDaddy中配置的为”f1g1ns1.dnspod.net”, 为没有”f1g1ns1.dnspod.net.”要去掉最<br>后的 <code>.</code></p><h4 id="GitHub中的域名支持"><a href="#GitHub中的域名支持" class="headerlink" title="GitHub中的域名支持"></a>GitHub中的域名支持</h4><p>  GitHub的服务器域名是个固定IP。所以，当我们需要将申请的域名给予一个自己的github.io的地<br>址的时候，我们可以在DNS服务器的配置中添加一条A记录，指向github的服务器地址。如图2第一条记录所示</p><p>现在github的服务器地址为：</p><ul><li>192.30.252.153</li><li>192.30.252.154</li></ul><h2 id="添加CNAME文件"><a href="#添加CNAME文件" class="headerlink" title="添加CNAME文件"></a>添加CNAME文件</h2><p>在你的博客仓库中下的 <code>/source</code> 目录中添加名为 <code>CNAME</code>的文件, 在文件中写入你在GoDaddy<br>注册的域名, 至此, 所有 GitHub Pages 的域名的工作就完成了, Enjoy you blog!</p>]]></content>
+    <content type="html"><![CDATA[<p>本文主要讲述博客选购和绑定域名, 博客搭建部分不再赘述</p><h2 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h2><p>如果嫌麻烦可以在<a href="https://www.godaddy.com/" target="_blank" rel="noopener">Godaddy</a> 购买<br>也可以在国内阿里云或腾讯云等购买, 本文主要介绍在 Godaddy 购买并绑定教程</p><h3 id="选购域名"><a href="#选购域名" class="headerlink" title="选购域名"></a>选购域名</h3><p>  可以在<a href="https://sg.godaddy.com/zh/domains/domain-name-search" target="_blank" rel="noopener">此页面</a>搜索你喜欢的<br>域名是否被占用, 如果未被占用, 即可购买, 至于域名后缀选择, 可参考<a href="https://www.zhihu.com/question/19610337" target="_blank" rel="noopener">知乎答案</a> 推荐使用<code>.me</code></p><h3 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h3><h4 id="更换域名服务器"><a href="#更换域名服务器" class="headerlink" title="更换域名服务器"></a>更换域名服务器</h4><p>  Godaddy 的默认 DNS 解析在国内不是很稳定, 推荐使用<a href="https://www.dnspod.cn/" target="_blank" rel="noopener">DNSPot</a><br>解析域名, 在 DNSPot 注册账户后绑定在Godaddy注册的域名, 然后将图1中的红色区域设置到<br>Godaddy 的域名服务器<br><img src="/images/post_images/20171217_DNSPot.jpg" alt="图1"><br><img src="/images/post_images/20171217_GoDaddy_DNS.jpg" alt="图2"><br>注意: 在GoDaddy中配置的为”f1g1ns1.dnspod.net”, 为没有”f1g1ns1.dnspod.net.”要去掉最<br>后的 <code>.</code></p><h4 id="GitHub中的域名支持"><a href="#GitHub中的域名支持" class="headerlink" title="GitHub中的域名支持"></a>GitHub中的域名支持</h4><p>  GitHub的服务器域名是个固定IP。所以，当我们需要将申请的域名给予一个自己的github.io的地<br>址的时候，我们可以在DNS服务器的配置中添加一条A记录，指向github的服务器地址。如图2第一条记录所示</p><p>现在github的服务器地址为：</p><ul><li>192.30.252.153</li><li>192.30.252.154</li></ul><h2 id="添加CNAME文件"><a href="#添加CNAME文件" class="headerlink" title="添加CNAME文件"></a>添加CNAME文件</h2><p>在你的博客仓库中下的 <code>/source</code> 目录中添加名为 <code>CNAME</code>的文件, 在文件中写入你在GoDaddy<br>注册的域名, 至此, 所有 GitHub Pages 的域名的工作就完成了, Enjoy you blog!</p>]]></content>
     
     <summary type="html">
     

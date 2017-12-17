@@ -17,7 +17,7 @@ type:
 
 ### 选购域名
   可以在[此页面](https://sg.godaddy.com/zh/domains/domain-name-search)搜索你喜欢的
-域名是否被占用, 如果未被占用, 至于域名后缀选择, 可参考[知乎答案](https://www.zhihu.com/question/19610337) 推荐使用`.me`
+域名是否被占用, 如果未被占用, 即可购买, 至于域名后缀选择, 可参考[知乎答案](https://www.zhihu.com/question/19610337) 推荐使用`.me`
 
 ### 域名解析
 #### 更换域名服务器
