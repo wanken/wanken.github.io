@@ -20,6 +20,6 @@
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
     "lunar-calendar": "^0.1.4",
-    "uglify-js": "^3.2.0"
+    "uglify-js": "^3.2.2"
   }
 }
