@@ -45,6 +45,32 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -283,6 +309,134 @@
   
   
 
+  <article class="post post-type-Blog" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wavejoker.github.io/2017/12/17/GitHub Pages绑定域名/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Waver">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/17/GitHub Pages绑定域名/" itemprop="url">GitHub Pages绑定域名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-17T13:11:03+08:00">
+                2017-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          本文主要讲述博客选购和绑定域名, 博客搭建部分不再赘述
+购买域名:如果嫌麻烦可以在Godaddy 购买也可以在国内阿里云或腾讯云等购买, 本文主要介绍在 Godaddy 购买并绑定教程
+选购域名  可以在此页面搜索你喜欢的域名是否被占用, 如果未被占用, 至于域名后缀选择, 可参考知乎答案 推荐使用
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/17/GitHub Pages绑定域名/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
   <article class="post post-type-Java,FTP" itemscope itemtype="http://schema.org/Article">
   
   
@@ -381,17 +535,24 @@
       
         
           
-            <p><a href="https://www.cnblogs.com/xiangpiaopiao2011/archive/2012/02/28/2371679.html#undefined" target="_blank" rel="noopener">本文参考地址</a></p>
-<h2 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h2><ul>
-<li>自己搭建的FTP服务器总是在执行FTPClient.storFile(); 方法时返回 false</li>
-</ul>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
-<li><p>添加以下代码即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ftpClient.setControlEncoding(&quot;UTF-8&quot;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+          本文参考地址
+错误描述
+自己搭建的FTP服务器总是在执行FTPClient.storFile(); 方法时返回 false
+
+解决方法
+添加以下代码即可
+1ftpClient.setControlEncoding(&quot;UTF-8&quot;);
+
+
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/04/FTPClient.storFile返回false-解决方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -530,19 +691,17 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>不知怎么突然jedis出现 “Could not get a resource from the pool” 错误,错误原因是连接池中的链接用尽</p>
 </blockquote>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool  </span><br><span class="line">    at redis.clients.util.Pool.getResource(Pool.java:22)  </span><br><span class="line">    at com.derbysoft.jredis.longkeytest.BorrowObject.run(BorrowObject.java:22)  </span><br><span class="line">    at java.lang.Thread.run(Thread.java:662)  </span><br><span class="line">Caused by: java.util.NoSuchElementException: Timeout waiting for idle object  </span><br><span class="line">    at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1134)  </span><br><span class="line">    at redis.clients.util.Pool.getResource(Pool.java:20)  </span><br><span class="line">    ... 2 more</span><br></pre></td></tr></table></figure>
-<h3 id="增加-Jedis-的活动连接数"><a href="#增加-Jedis-的活动连接数" class="headerlink" title="增加 Jedis 的活动连接数:"></a>增加 Jedis 的活动连接数:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;jedisPoolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;</span><br><span class="line">		&lt;!-- 最大连接数 --&gt;</span><br><span class="line">		&lt;property name=&quot;maxTotal&quot; value=&quot;300&quot; /&gt;</span><br><span class="line">		&lt;!-- 最大空闲连接数 --&gt;</span><br><span class="line">		&lt;property name=&quot;maxIdle&quot; value=&quot;50&quot; /&gt;</span><br><span class="line">		&lt;!-- 每次释放连接的最大数目 --&gt;</span><br><span class="line">		&lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;1024&quot; /&gt;</span><br><span class="line">		&lt;!-- 释放连接的扫描间隔（毫秒） --&gt;</span><br><span class="line">		&lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;30000&quot; /&gt;</span><br><span class="line">		&lt;!-- 连接最小空闲时间 --&gt;</span><br><span class="line">		&lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;1800000&quot; /&gt;</span><br><span class="line">		&lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt;</span><br><span class="line">		&lt;property name=&quot;softMinEvictableIdleTimeMillis&quot; value=&quot;10000&quot; /&gt;</span><br><span class="line">		&lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt;</span><br><span class="line">		&lt;property name=&quot;maxWaitMillis&quot; value=&quot;1500&quot; /&gt;</span><br><span class="line">		&lt;!-- 在获取连接的时候检查有效性, 默认false --&gt;</span><br><span class="line">		&lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">		&lt;!-- 在空闲时检查有效性, 默认false --&gt;</span><br><span class="line">		&lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">		&lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&gt;</span><br><span class="line">		&lt;property name=&quot;blockWhenExhausted&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="将最大连接数增加到-300-但是错误仍然出现-检查代码发现-连接用完后并没有释放"><a href="#将最大连接数增加到-300-但是错误仍然出现-检查代码发现-连接用完后并没有释放" class="headerlink" title="将最大连接数增加到 300, 但是错误仍然出现, 检查代码发现, 连接用完后并没有释放."></a>将最大连接数增加到 300, 但是错误仍然出现, 检查代码发现, 连接用完后并没有释放.</h3><ul>
-<li>使用 <strong>jedis.close();</strong> 释放资源后问题解决, 修改前的代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public String get(String key) &#123;</span><br><span class="line">     Jedis jedis = jedisPool.getResource();</span><br><span class="line">     String get = jedis.get(key);</span><br><span class="line">     return get;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>修改后的代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public String get(String key) &#123;</span><br><span class="line">     Jedis jedis = jedisPool.getResource();</span><br><span class="line">     String get = jedis.get(key);</span><br><span class="line">     jedis.close();</span><br><span class="line">     return get;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/记一次Redis连接用尽异常解决/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -682,8 +841,22 @@
       
         
           
-            
-          
+          Java复习第6天static 关键字static 的特点:
+内存特点
+
+存储位置: data segment(数据区 [也叫 共享区/方法区]);
+可以通过 “类名.静态成员” 的方式调用;
+随着类的加载而加载, 随着类的消失而消失(说明它的生命周期最长);
+优先于对象存在(加载);
+被所有对象所
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/30/JavaReview-day06/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -823,52 +996,23 @@
       
         
           
-            <h1 id="Java第五天"><a href="#Java第五天" class="headerlink" title="Java第五天"></a>Java第五天</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ul>
-<li>私有只是封装的一种表现形式</li>
-<li>封装可以增加代码的健壮性</li>
-</ul>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><ol>
-<li>对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作);</li>
-<li>当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法;</li>
-<li>当在类中定义了构造函数后,默认的构造函数就会消失;</li>
-<li>构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;</li>
-</ol>
-<h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><ol>
-<li>成员变量作用于整个类中, 局部变量作用于函数中或者语句中;</li>
-<li><p>在内存中的位置:</p>
-<ul>
-<li>成员变量: 在堆内存中, 因为对象的存在, 才在内存中存在;</li>
-<li>局部变量: 存在栈内存中<h4 id="其他区别"><a href="#其他区别" class="headerlink" title="其他区别"></a>其他区别</h4>成员变量都有默认值, 在不赋值的情况下也可以参与运算.</li>
-</ul>
-</li>
-</ol>
-<h3 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h3><ul>
-<li>匿名对象使用方式之一: 当对对象的方法只调用一次时, 可以用匿名对象来完成, 这样写比较优化</li>
-<li>如果对一个对象进行多个成员调用, 必须给这个对象起个名字</li>
-<li>匿名对象可以作为实际参数进行传递</li>
-</ul>
-<h3 id="构造代码块"><a href="#构造代码块" class="headerlink" title="构造代码块"></a>构造代码块</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h4><ul>
-<li>给对象进行初始化</li>
-</ul>
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h4><ul>
-<li>对象一建立就运行, 而且优先于构造函数执行;</li>
-</ul>
-<h4 id="和构造函数的区别"><a href="#和构造函数的区别" class="headerlink" title="和构造函数的区别:"></a>和构造函数的区别:</h4><ul>
-<li>构造代码块是给所有对象进行统一初始化</li>
-<li>构造函数是给对应的对象进行初始化</li>
-<li>构造代码块中定义的事不同对象共性的初始化内容</li>
-</ul>
-<h4 id="构造代码块示例"><a href="#构造代码块示例" class="headerlink" title="构造代码块示例:"></a>构造代码块示例:</h4>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="comment">//以下'&#123;&#125;'和其中的内容为构造代码块</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="this-和-super-关键字"><a href="#this-和-super-关键字" class="headerlink" title="this 和 super 关键字:"></a>this 和 super 关键字:</h3><ol>
-<li><p>this 和 super 关键字不能再 static 类型的方法或 static 的代码块中</p>
-<ul>
-<li>原因1: 加载顺序: static 类型的方法/代码块/方法会先于类加载, 所以当前时间点类对象并未初始化完成,所以无法调用</li>
-<li>原因2: 无法再静态代码中加载非静态的关键字</li>
-</ul>
-</li>
-</ol>
+          Java 复习第五天封装
+私有只是封装的一种表现形式
+封装可以增加代码的健壮性
 
-          
+构造函数
+对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作);
+当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法;
+当在类中定义了构造函数后,默认的构造函数就会消失;
+构造函
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/29/Javareview-day05/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1008,46 +1152,18 @@
       
         
           
-            <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><pre><code>  1. 数据类型分类: 基本数据类型, 引用数据类型
+          数组  1. 数据类型分类: 基本数据类型, 引用数据类型
   2. Java 程序在运行时,需要在内存中分配空间, 为了提高运算效率, 又对空间进行了不同区域的划分 因为每一片区域都有特定的处理数据的方式和内存管理方式 共分为五个区域: 栈内存, 堆内存, 方法区, 本地方法区, 寄存器
 
-- 栈内存:用于存储局部变量, 当数据使用完, 所占空间会自动释放;
-- 堆内存:
-  1. 数组和对象,通过 new 建立的实例都存放在堆内存中;
-  2. 每一个实体都有内存地址值;
-  3. 实体中的变量都有默认的初始化值
-  4. 实体不再被使用时, 会在不确定的时间内被垃圾回收器回收
-</code></pre><h3 id="数组的定义方式"><a href="#数组的定义方式" class="headerlink" title="数组的定义方式"></a>数组的定义方式</h3><pre><code>1. int[] arr = new int[5]; (推荐写法)
-2. int arr[] = new int[5]; (与第一种意义相同)
-3. int[] arr = new int[]{1, 2, 3, 4, 5}; (静态初始化方式)
-4. int[] arr = {1, 2, 3, 4, 5} (第三种的简化格式)
-</code></pre><h4 id="数组排序"><a href="#数组排序" class="headerlink" title="数组排序"></a>数组排序</h4><h5 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; arr.length-<span class="number">1</span>; x++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> y = x + <span class="number">1</span>; y &lt; arr.length; y++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[x] &gt; arr[y])&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = arr[x];</span><br><span class="line">                arr[x] = arr[y];</span><br><span class="line">                arr[y] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>说明: 选择排序是用当前元素与其他所有元素比较, 如果符合条件,就交换位置</p>
-</blockquote>
-<h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; arr.length; x ++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> y = <span class="number">0</span>; y &lt; arr.length - x - <span class="number">1</span>; y ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[y] &gt; arr[y + <span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">int</span> temp = arr[y];</span><br><span class="line">                arr[y] = arr[y + <span class="number">1</span>];</span><br><span class="line">                arr[y + <span class="number">1</span>] = temp;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="说明-冒泡排序是用相邻的元素进行比较-如果符合条件-就交换位置"><a href="#说明-冒泡排序是用相邻的元素进行比较-如果符合条件-就交换位置" class="headerlink" title="说明: 冒泡排序是用相邻的元素进行比较, 如果符合条件,就交换位置"></a>说明: 冒泡排序是用相邻的元素进行比较, 如果符合条件,就交换位置</h5><h5 id="使用-java-util包中的-Array-sort-arr-可以进行排序数组"><a href="#使用-java-util包中的-Array-sort-arr-可以进行排序数组" class="headerlink" title="使用 java.util包中的 Array.sort(arr); 可以进行排序数组"></a>使用 java.util包中的 Array.sort(arr); 可以进行排序数组</h5><ul>
-<li>将数组交换的方法进行封装<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = arr[a];</span><br><span class="line">    arr[b] = arr[a];</span><br><span class="line">    arr[b] = temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="使用异或方式实现"><a href="#使用异或方式实现" class="headerlink" title="使用异或方式实现"></a>使用异或方式实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">swap1</span><span class="params">(<span class="keyword">int</span> arr, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    arr[b] = arr[b] ^ arr[a];</span><br><span class="line">    arr[a] = arr[b] ^ arr[a];</span><br><span class="line">    arr[b] = arr[b] ^ arr[a];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="折半查找"><a href="#折半查找" class="headerlink" title="折半查找"></a>折半查找</h4><h5 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">halfSearch</span> <span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> min = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> max = arr.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> mid = (min + max)/<span class="number">2</span>;</span><br><span class="line">  <span class="keyword">while</span>(arr[mid] != key)&#123;</span><br><span class="line">    <span class="keyword">if</span>(key &lt; arr[mid])&#123;</span><br><span class="line">      max = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(key &gt; arr[mid])&#123;</span><br><span class="line">      min = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    mid = (min + max)/<span class="number">2</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> mid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a>第二种方式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">halfSearch2</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> key)</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> min = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> max = arr.length;</span><br><span class="line">  <span class="keyword">while</span>(min &lt;= max)&#123;</span><br><span class="line">     mid = (min + max) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">if</span>(key &gt; arr[mid])&#123;</span><br><span class="line">       min = mid + <span class="number">1</span>;</span><br><span class="line">     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(key &lt; arr[mid])&#123;</span><br><span class="line">       max = mid -<span class="number">1</span>;</span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> mid;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>面试题:将一个数字插入一个有序数组, 插入后,保证数组有序;</p>
-</blockquote>
-<ul>
-<li>思路: 通过折半查找, 找到所插入数组的下标, 如果数组中存在与插入值相同的值,则在该元素之前插入</li>
-</ul>
-<h5 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h5>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">decimalToBinary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">8</span>;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">while</span> (num &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            sb.append(num % <span class="number">2</span>);</span><br><span class="line">            num = num / <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sb.reverse());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="十进制转十六进制"><a href="#十进制转十六进制" class="headerlink" title="十进制转十六进制"></a>十进制转十六进制</h5><ul>
-<li>第一种方式</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">decimalToHexadecimal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> num = <span class="number">60</span>;</span><br><span class="line">      StringBuffer stringBuffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">8</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">int</span> temp = num &amp; <span class="number">15</span>;</span><br><span class="line">          <span class="keyword">if</span> (temp &gt; <span class="number">9</span>) &#123;</span><br><span class="line">              stringBuffer.append((<span class="keyword">char</span>) (temp - <span class="number">10</span> + <span class="string">'A'</span>));</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              stringBuffer.append(temp);</span><br><span class="line">          &#125;</span><br><span class="line">          num = num &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(stringBuffer.reverse());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>二维数组的定义方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] array = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">34</span>,<span class="number">5</span>,<span class="number">7</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">int</span>[][] array1 = <span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;&#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;,&#123;<span class="number">40</span>,<span class="number">50</span>&#125;,&#123;<span class="number">60</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">short</span>[][] array3 = <span class="keyword">new</span> <span class="keyword">short</span>[<span class="number">5</span>][<span class="number">8</span>];</span><br><span class="line"><span class="keyword">float</span>[][] array4;</span><br><span class="line">array4 = <span class="keyword">new</span> <span class="keyword">float</span>[<span class="number">5</span>][<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
-
-          
+- 栈
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/28/JavaReview-day04/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1187,39 +1303,18 @@
       
         
           
-            <blockquote>
-<p>Java</p>
-</blockquote>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符:"></a>位运算符:</h3><p>1.”&lt;&lt;”: 左位移 2.”&gt;&gt;”: 右位移: 左右为数值的二进制进行左右移动, 其结果等于原值 或 / 2的所以为数的次幂 即 3 &lt;&lt; 3 = 3_ 2的三次幂 = 3 * 8 = 24; 3.”&lt;&lt;&lt;”:无符号左移 4.”&gt;&gt;&gt;”:无符号右移</p>
-<p>异或(^)可以用于加密 ‘&amp;’, ‘|’, ‘^’的运算</p>
-<p>使两个变量互换值 m = 3; n = 8; n = n ^ m; m = n ^ m; n = n ^ m;即可完成值互换而不引用第三方变量完成两个变量的值互换</p>
-<p>三元运算符 三元运算符会改变所运算元素的数据类型</p>
-<h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><p>if…else:</p>
-<p>三元运算符 对比 if…else 的优缺点 缺点: 三元运算符必须有结果 优点: 三元运算符比 if…else 简单, 可以简化 if…else</p>
-<p>二. switch 语句:</p>
-<p>1) switch可以中可以接收 byte, short, int char 类型的数据;</p>
-<p>2) jdk1.5 加入对枚举类型的支持, jdk1.7 加入了对 String类型的支持;</p>
-<p>3) switch 的各个 case 之间和 default 没有顺序,先执行第一个 case, 没有匹配的 case 执行default;</p>
-<h4 id="结束-switch-语句的两种情况-1-遇到-break-2-执行到-switch-语句结束"><a href="#结束-switch-语句的两种情况-1-遇到-break-2-执行到-switch-语句结束" class="headerlink" title="结束 switch 语句的两种情况: (1).遇到 break; (2). 执行到 switch 语句结束;"></a>结束 switch 语句的两种情况: (1).遇到 break; (2). 执行到 switch 语句结束;</h4><h4 id="如果匹配的-case-没有对应的-break-那么程序会继续向下执行-运行可以执行的语句"><a href="#如果匹配的-case-没有对应的-break-那么程序会继续向下执行-运行可以执行的语句" class="headerlink" title="如果匹配的 case  没有对应的 break, 那么程序会继续向下执行, 运行可以执行的语句,"></a>如果匹配的 case  没有对应的 break, 那么程序会继续向下执行, 运行可以执行的语句,</h4><p>  直到遇到 break 或程序结束;</p>
-<p>4) if … else 和 switch 语句的对比:</p>
-<h4 id="switch-性能比-if…else-更高-if-…-else-只能顺序执行"><a href="#switch-性能比-if…else-更高-if-…-else-只能顺序执行" class="headerlink" title="switch 性能比 if…else 更高(if … else 只能顺序执行)"></a>switch 性能比 if…else 更高(if … else 只能顺序执行)</h4><h4 id="对区间判断可以或对结果为-boolean-类型的判断使用-if-if-的使用范围更广"><a href="#对区间判断可以或对结果为-boolean-类型的判断使用-if-if-的使用范围更广" class="headerlink" title="对区间判断可以或对结果为 boolean 类型的判断使用 if, if 的使用范围更广"></a>对区间判断可以或对结果为 boolean 类型的判断使用 if, if 的使用范围更广</h4><h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><h3 id="do-while-和-while-的区别"><a href="#do-while-和-while-的区别" class="headerlink" title="do..while 和 while 的区别"></a>do..while 和 while 的区别</h3><h4 id="do…while-先执行循环体-再判断条件-循环体至少执行一次"><a href="#do…while-先执行循环体-再判断条件-循环体至少执行一次" class="headerlink" title="do…while 先执行循环体, 再判断条件(循环体至少执行一次);"></a>do…while 先执行循环体, 再判断条件(循环体至少执行一次);</h4><h4 id="while-先判断再执行"><a href="#while-先判断再执行" class="headerlink" title="while 先判断再执行"></a>while 先判断再执行</h4><h2 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h2><p>格式: for(初始化表达式; 循环条件表达式; 循环后表达式){ 执行语句; }</p>
-<p>for 循环中的表达式只要为合法的表达式即可运行(循环表达式要有真或假的计算结果);</p>
-<h3 id="for-循环中的变量初始化语句只执行一次"><a href="#for-循环中的变量初始化语句只执行一次" class="headerlink" title="for 循环中的变量初始化语句只执行一次"></a>for 循环中的变量初始化语句只执行一次</h3><h3 id="for-循环中的语句不只是一句-多条语句可用-“-”-隔开-如下"><a href="#for-循环中的语句不只是一句-多条语句可用-“-”-隔开-如下" class="headerlink" title="for 循环中的语句不只是一句,多条语句可用 “,” 隔开,如下:"></a>for 循环中的语句不只是一句,多条语句可用 “,” 隔开,如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(int x = 0, y = 0, z = 0; x &lt; 4; x ++, y ++,z ++)&#123;</span><br><span class="line">  System.out.println(x+y+z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="for-和-while-的无限循环的表达形式"><a href="#for-和-while-的无限循环的表达形式" class="headerlink" title="for 和 while 的无限循环的表达形式"></a>for 和 while 的无限循环的表达形式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for:</span><br><span class="line"> for(;;)&#123;</span><br><span class="line">   System.out.println(&quot;for无限循环&quot;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="如果-for-循环的条件不声明-默认为-true"><a href="#如果-for-循环的条件不声明-默认为-true" class="headerlink" title="如果 for 循环的条件不声明, 默认为 true;"></a>如果 for 循环的条件不声明, 默认为 true;</h3><h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(true)&#123;</span><br><span class="line">  System.out.println(&quot; while 无限循环&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="break-和-continue-1-break-可以跳出指定循环-只需要将循环命名即可-具体实现如下"><a href="#break-和-continue-1-break-可以跳出指定循环-只需要将循环命名即可-具体实现如下" class="headerlink" title="break 和 continue 1) break 可以跳出指定循环, 只需要将循环命名即可,具体实现如下"></a>break 和 continue 1) break 可以跳出指定循环, 只需要将循环命名即可,具体实现如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void testBreak() &#123;</span><br><span class="line">  w:</span><br><span class="line">  for (int x = 1; x &lt; 4; x++) &#123;</span><br><span class="line">      System.out.println(&quot;out\t&quot;);</span><br><span class="line">      q:</span><br><span class="line">      for (int m = 0; m &lt; 3; m++)&#123;</span><br><span class="line">          if (m == 2)&#123;</span><br><span class="line">              break w;</span><br><span class="line">          &#125;</span><br><span class="line">          System.out.print(&quot;in\t&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>  输出结果为: out    in    in</p>
-<p>  若将 break 后的 w 删掉,结果为: out    in    in    out    in    in    out    in    in</p>
-<p>  2). continue<br>    作用:结束本次循环,继续下一次循环</p>
-<pre><code># 如下代码可以打印 0~10 以内的 2 的倍数:
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void testContinue()&#123;</span><br><span class="line">    for (int i = 0; i &lt; 11; i ++)&#123;</span><br><span class="line">        if (i%2 == 1)&#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-continue可以继续指定循环-只需要将循环命名即可-具体实现如下"><a href="#1-continue可以继续指定循环-只需要将循环命名即可-具体实现如下" class="headerlink" title="1)  continue可以继续指定循环, 只需要将循环命名即可,具体实现如下"></a>1)  continue可以继续指定循环, 只需要将循环命名即可,具体实现如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void testContinue() &#123;</span><br><span class="line">  w:</span><br><span class="line">  for (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">    q:</span><br><span class="line">    for (int k = 0; k &lt; 4; k++) &#123;</span><br><span class="line">      System.out.println(&quot;i = &quot; + i);</span><br><span class="line">      continue w;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果为:<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i = 0</span><br><span class="line">i = 1</span><br><span class="line">i = 2</span><br></pre></td></tr></table></figure></p>
-<h3 id="break-和-continue语句单独存在时-下面不可以有任何语句-因为执行不到-编译报错"><a href="#break-和-continue语句单独存在时-下面不可以有任何语句-因为执行不到-编译报错" class="headerlink" title="break 和 continue语句单独存在时, 下面不可以有任何语句, 因为执行不到(编译报错);"></a>break 和 continue语句单独存在时, 下面不可以有任何语句, 因为执行不到(编译报错);</h3><h3 id="break-必须在-switch-或-loop-循环-语句内-continue必须在-loop-语句内"><a href="#break-必须在-switch-或-loop-循环-语句内-continue必须在-loop-语句内" class="headerlink" title="break 必须在 switch 或 loop(循环)语句内, continue必须在 loop 语句内"></a>break 必须在 switch 或 loop(循环)语句内, continue必须在 loop 语句内</h3><h3 id="输出等腰三角形"><a href="#输出等腰三角形" class="headerlink" title="输出等腰三角形"></a>输出等腰三角形</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void testTriangle() &#123;</span><br><span class="line">for (int x = 1; x &lt;= 5; x++) &#123;</span><br><span class="line">    for (int y = x; y &lt; 5; y++) &#123;</span><br><span class="line">      System.out.print(&quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int z = 0; z &lt; x; z ++ )&#123;</span><br><span class="line">      System.out.print(&quot;* &quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  结果如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    *</span><br><span class="line">   * *</span><br><span class="line">  * * *</span><br><span class="line"> * * * *</span><br><span class="line">* * * * *</span><br></pre></td></tr></table></figure>
-<h2 id="重载-方法名一致-但参数列表不同的函数为重载-名称相同-参数列表相同-但返回值类型不同的两个函数不是重载函数-不能同时存在于一个类中"><a href="#重载-方法名一致-但参数列表不同的函数为重载-名称相同-参数列表相同-但返回值类型不同的两个函数不是重载函数-不能同时存在于一个类中" class="headerlink" title="重载 方法名一致, 但参数列表不同的函数为重载; 名称相同, 参数列表相同, 但返回值类型不同的两个函数不是重载函数, 不能同时存在于一个类中;"></a>重载 方法名一致, 但参数列表不同的函数为重载; 名称相同, 参数列表相同, 但返回值类型不同的两个函数不是重载函数, 不能同时存在于一个类中;</h2>
           
+Java
+
+运算符位运算符:1.”&lt;&lt;”: 左位移 2.”&gt;&gt;”: 右位移: 左右为数值的二进制进行左右移动, 其结果等于原值 或 / 2的所以为数的次幂 即 3 &lt;&lt; 3 = 3_ 2的三次幂 = 3 * 8 = 24; 3.”&lt;&lt;&lt;”:无符
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/28/JavaReview-day03/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1337,17 +1432,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/28/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1431,7 +1524,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1453,7 +1546,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

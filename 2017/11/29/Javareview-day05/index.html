@@ -45,6 +45,32 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -81,18 +107,18 @@
 
 
 
-<meta name="description" content="Java第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, ">
+<meta name="description" content="Java 复习第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javareview-day05">
 <meta property="og:url" content="http://wavejoker.github.io/2017/11/29/Javareview-day05/index.html">
 <meta property="og:site_name" content="Waver&#39;s Blog">
-<meta property="og:description" content="Java第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;  成">
+<meta property="og:description" content="Java 复习第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-11T13:56:37.495Z">
+<meta property="og:updated_time" content="2017-12-12T08:59:02.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javareview-day05">
-<meta name="twitter:description" content="Java第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;  成">
+<meta name="twitter:description" content="Java 复习第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;">
 
 
 
@@ -378,7 +404,7 @@
       
 
       
-        <h1 id="Java第五天"><a href="#Java第五天" class="headerlink" title="Java第五天"></a>Java第五天</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ul>
+        <h1 id="Java-复习第五天"><a href="#Java-复习第五天" class="headerlink" title="Java 复习第五天"></a>Java 复习第五天</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ul>
 <li>私有只是封装的一种表现形式</li>
 <li>封装可以增加代码的健壮性</li>
 </ul>
@@ -414,7 +440,17 @@
 <li>构造代码块中定义的事不同对象共性的初始化内容</li>
 </ul>
 <h4 id="构造代码块示例"><a href="#构造代码块示例" class="headerlink" title="构造代码块示例:"></a>构造代码块示例:</h4>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="comment">//以下'&#123;&#125;'和其中的内容为构造代码块</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="this-和-super-关键字"><a href="#this-和-super-关键字" class="headerlink" title="this 和 super 关键字:"></a>this 和 super 关键字:</h3><ol>
+<h3 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字:"></a>this 关键字:</h3><ol>
+<li>this 代表的是本类对象, 即 this 所在函数所属对象的引用</li>
+<li><p>this语句:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>(xxx);</span><br></pre></td></tr></table></figure>
+<p>作用: this()用于构造函数之间的调用<br>特性: this() 必须在第一行，以保证在执行任何动作前，对象已经完成了初始化。</p>
+</li>
+<li><p><strong>注意: 以下代码会进入死循环状态, 构造函数之间不可以循环调用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Persion</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  Persion()&#123;</span><br><span class="line">    <span class="keyword">this</span>(name);</span><br><span class="line">  &#125;</span><br><span class="line">  Persion(String name)&#123;</span><br><span class="line">    <span class="keyword">this</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">  Persion p = <span class="keyword">new</span> Persion();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="this-和-super-关键字的特点"><a href="#this-和-super-关键字的特点" class="headerlink" title="this 和 super 关键字的特点:"></a>this 和 super 关键字的特点:</h3><ol>
 <li><p>this 和 super 关键字不能再 static 类型的方法或 static 的代码块中</p>
 <ul>
 <li>原因1: 加载顺序: static 类型的方法/代码块/方法会先于类加载, 所以当前时间点类对象并未初始化完成,所以无法调用</li>
@@ -545,7 +581,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -567,7 +603,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -635,7 +671,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java第五天"><span class="nav-number">1.</span> <span class="nav-text">Java第五天</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">1.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量和局部变量"><span class="nav-number">1.3.</span> <span class="nav-text">成员变量和局部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.3.1.</span> <span class="nav-text">作用范围</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他区别"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">其他区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名对象"><span class="nav-number">1.3.2.</span> <span class="nav-text">匿名对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造代码块"><span class="nav-number">1.3.3.</span> <span class="nav-text">构造代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">作用:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">特点:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和构造函数的区别"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">和构造函数的区别:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造代码块示例"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">构造代码块示例:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-和-super-关键字"><span class="nav-number">1.3.4.</span> <span class="nav-text">this 和 super 关键字:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-复习第五天"><span class="nav-number">1.</span> <span class="nav-text">Java 复习第五天</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">1.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量和局部变量"><span class="nav-number">1.3.</span> <span class="nav-text">成员变量和局部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.3.1.</span> <span class="nav-text">作用范围</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他区别"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">其他区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名对象"><span class="nav-number">1.3.2.</span> <span class="nav-text">匿名对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造代码块"><span class="nav-number">1.3.3.</span> <span class="nav-text">构造代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">作用:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">特点:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和构造函数的区别"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">和构造函数的区别:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造代码块示例"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">构造代码块示例:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-关键字"><span class="nav-number">1.3.4.</span> <span class="nav-text">this 关键字:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-和-super-关键字的特点"><span class="nav-number">1.3.5.</span> <span class="nav-text">this 和 super 关键字的特点:</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
