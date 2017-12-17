@@ -1,8 +1,12 @@
 ---
 title: GitHub Pages绑定域名
 date: 2017-12-17 13:11:03
-tags: Blog
-type: Blog
+categories:
+  - Blog
+tags:
+  - Blog
+type:
+  - Blog
 ---
 
 本文主要讲述博客选购和绑定域名, 博客搭建部分不再赘述
