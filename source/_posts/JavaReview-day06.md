@@ -85,7 +85,7 @@ type:
 5. 可以在通过命令行运行时使用以下方式向 main 函数中传入参数:
 
   ```bash
-   $java MainDemo hehe enen oo
+  $java MainDemo hehe enen oo
   ```
 
   PS: 向 main 函数中传入 "hehe" "enen" "oo" 三个参数
@@ -139,6 +139,7 @@ class TestDemo{
 
 }
 ```
+
 以上代码执行后没有运行结果, 因为 `TestDemo` 中并没有实际用到 `Demo` 中的内容
 
 ## Java 帮助文档
@@ -186,8 +187,8 @@ class TestDemo{
   ```
 
 - 特点: 随着类的加载而执行, **且只执行一次**;
-- 作用: 用于给类初始化
 
+- 作用: 用于给类初始化
 
 ### 应用: 类中各个代码块之间的执行顺序
 
@@ -217,18 +218,166 @@ class StaticCodeDemo{
   }
 }
 ```
-- 以上代码的输出结果是: `a c d `
-#### 原因:
-  - 静态代码块的作用是给<font color='red'>**类**</font>初始化的, 随着类的加载而执行, **且只执行一次**;
-  - 构造代码块的作用是给<font color='red'>**对象(所有对象)**</font>初始化的,对象一建立就运行, 而且优先于构造函数执行;
-  - 构造函数的作用是给<font color='red'>**对应对象**</font>初始化
 
+- 以上代码的输出结果是: `a c d`
+
+  #### 原因:
+
+  - 静态代码块的作用是给
+
+    <font color="red">
+      <strong>类</strong>
+    </font>
+
+    初始化的, 随着类的加载而执行, **且只执行一次**;
+  - 构造代码块的作用是给
+
+    <font color="red">
+      <strong>对象(所有对象)</strong>
+    </font>
+
+    初始化的,对象一建立就运行, 而且优先于构造函数执行;
+  - 构造函数的作用是给
+
+    <font color="red">
+      <strong>对应对象</strong>
+    </font>
+
+    初始化
 
 参考链接: [Java中普通代码块，构造代码块，静态代码块区别及代码示例](https://www.cnblogs.com/sophine/p/3531282.html)
 
 ### 总结
 
- 1. 虚拟机在首次加载Java类时，会对静态初始化块、静态成员变量、静态方法进行一次初始化
- 2. 只有在调用new方法时才会创建类的实例
- 3. 类实例创建过程：按照父子继承关系进行初始化，首先执行父类的初始化块部分，然后是父类的构造方法；再执行本类继承的子类的初始化块，最后是子类的构造方法
- 4. 类实例销毁时候，首先销毁子类部分，再销毁父类部分
+1. 虚拟机在首次加载Java类时，会对静态初始化块、静态成员变量、静态方法进行一次初始化
+2. 只有在调用new方法时才会创建类的实例
+3. 类实例创建过程：按照父子继承关系进行初始化，首先执行父类的初始化块部分，然后是父类的构造方法；再执行本类继承的子类的初始化块，最后是子类的构造方法
+4. 类实例销毁时候，首先销毁子类部分，再销毁父类部分
+
+## 对象的初始化过程
+
+```java
+class class Person
+{
+    private int age;
+    private String name = "Jack";
+    private static String country = "CN";
+
+    Person(String name, int age){
+      this.name = name;
+      this.age = age;
+    }
+
+    public void speak()
+    {
+        System.out.println("name=" + this.name + ", age="+age);
+    }
+}
+
+class  PersonDemo
+{
+    public static void main(String[] args)
+    {
+        Person p = new Person("Tom", 20);
+    }
+
+}
+```
+以上代码中 `Person p = new Person("Tom", 20)`执行时 Java 所完成的工作:
+1. 在栈内存中创建变量 'p';
+2. 因为 "new" 用到了 <font color="red">"**Person.class**"</font>, 所以先找到<font color="red">"**Person.class**"</font>文件并加载到
+   内存中
+3. 执行该类中的 <font color="red">**static 代码块**</font>, 给 <font color="red">"**Person 类**"</font>进行初始化
+4. 在堆内存中开辟空间, 并分配内存地址
+5. 在内存中建立对象的特有属性, 并进行默认初始化
+6. 对属性进行显示初始化
+7. 对对象进行构造代码块初始化
+8. 对对象进行对应的构造函数初始化
+9. 将内存地址赋给栈内存中的 'p' 变量
+
+### 对象调用成员过程
+
+
+
+### 单例设计模式
+
+#### 例子
+
+下面是一个简单的单例设计模式的例子
+```java
+
+  class Single{
+
+    private Single(){}
+    private static Single s = new Single();
+    private static Single getInstance(){
+      return s;
+    }
+  }
+
+  class SingleDemo{
+    public static void main(String[] args) {
+      Single s = Single.getInstance();
+    }
+  }
+```
+#### 饿汉式
+
+```java
+
+  class Single{
+    private Single(){}
+    private static Single single = new Single();
+    public static Single getInstance(){
+      return single;
+    }
+  }
+
+```
+
+### 懒汉式
+
+```java
+
+  class Single{
+    private Single(){}
+    private static Single single = null;
+    public static Single getInstance(){
+      if (single == null) {
+        //如果在此卡住, 则会出现多个对象
+        single = new Single();
+      }
+      return single;
+    }
+
+  }
+
+```
+
+##### 懒汉式和饿汉式的区别
+
+- 饿汉式不管调不调用, 都会先加载对象, 而懒汉式则会在需要时才会进行加载对象
+
+##### 懒汉式最终解决方案
+```java
+  class Single{
+    private Single(){}
+    private static Single single = null;
+    public static Single getInstance(){
+      if (single == null) {
+        synchronized(Single.class){
+          if (single == null) {
+            single = new Single();
+          }
+        }
+
+      }
+      return single;
+    }
+
+  }
+```
+
+##### 注意!
+- 懒汉式加载会有安全性问题: 如果同时被多个对象同时调用, 则会出现多个对象
+- 开发用饿汉式
