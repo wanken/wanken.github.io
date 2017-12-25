@@ -12,7 +12,7 @@ type:
   - 设计模式
 ---
 
->本文转载自:[http://blog.csdn.net/zhangerqing](http://blog.csdn.net/zhangerqing)
+> 本文转自:[http://blog.csdn.net/zhangerqing](http://blog.csdn.net/zhangerqing)
 
 # 设计模式（Design Patterns）
 
