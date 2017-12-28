@@ -2,37 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%89/</loc>
+    <loc>http://wavejoker.github.io/2017/12/28/maven%E7%AE%A1%E7%90%86SSM%E6%97%B6xml%E5%92%8Cproperties%E6%96%87%E4%BB%B6%E4%B8%A2%E5%A4%B1%E5%BC%82%E5%B8%B8/</loc>
     
-    <lastmod>2017-12-25T11:55:38.267Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wavejoker.github.io/2017/12/23/Java%E4%B8%AD%E7%9A%8423%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80/</loc>
-    
-    <lastmod>2017-12-25T11:55:16.457Z</lastmod>
+    <lastmod>2017-12-28T11:02:04.126Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%9B%9B/</loc>
+    <loc>http://wavejoker.github.io/2017/12/26/JavaReview-day08/</loc>
     
-    <lastmod>2017-12-25T11:55:09.576Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%8C/</loc>
-    
-    <lastmod>2017-12-25T11:54:50.577Z</lastmod>
+    <lastmod>2017-12-27T12:05:23.290Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://wavejoker.github.io/2017/12/18/JavaReview-day07/</loc>
     
-    <lastmod>2017-12-25T11:50:22.366Z</lastmod>
+    <lastmod>2017-12-26T05:31:07.518Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%8C/</loc>
+    
+    <lastmod>2017-12-26T03:49:28.298Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wavejoker.github.io/2017/12/23/Java%E4%B8%AD%E7%9A%8423%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80/</loc>
+    
+    <lastmod>2017-12-25T12:09:49.386Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%9B%9B/</loc>
+    
+    <lastmod>2017-12-25T12:03:00.080Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%89/</loc>
+    
+    <lastmod>2017-12-25T11:55:38.267Z</lastmod>
     
   </url>
   
