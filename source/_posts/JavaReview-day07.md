@@ -109,9 +109,9 @@ type:
 1. 可以修饰类, 函数, 变量;
 2. 被 `final` 修饰的类不可以被继承; 为了避免被继承, 被子类复写功能;
 3. 被 `final` 修饰的方法不可以被复写;
-4. 被 `final` 修饰的变量是一个常量且只能赋值一次; `final` 既可以修饰成员变量, 又可以修饰
-局部变量, 当在描述事物时, 一些数据的值是固定的, 那么这时为了增强阅读性, 都给这些值起个
-名字, 方便与阅读;
+4. 被 `final` 修饰的变量是一个常量且只能赋值一次; `final` 既可以修饰成员变量, 又可以
+修饰局部变量, 当在描述事物时, 一些数据的值是固定的, 那么这时为了增强阅读性, 都给这些值
+起个名字, 方便与阅读;
 5. 内部类定义在类中的局部位置上时, 只能访问局部被 `final` 修饰的局部变量;
 
 
@@ -131,5 +131,59 @@ type:
 - 特殊: 抽象类中可以不定义抽象方法, 可以使该类不创建对象;
 - `abstract` 只可以修饰类和方法, 不能修饰变量;
 
+### 接口
 
-### 模板方法设计模式
+ **接口定义时的格式特点**:
+- 接口转中常见定义: 常量, 抽象方法;
+- 接口中的成员变量都有固定修饰符:
+	1. 常量:`public static final`
+	2. 方法:`public abstract`  
+- 接口是不可以创建对象的, 因为接口中有抽象方法
+- 接口需要被子类实现子类对接口的抽象方法全部覆盖后, 子类才可以实例化
+- 接口可以被类多实现, 也是对不支持多继承的转换形式, Java支持多实现;
+
+**接口与接口之间可以实现多继承**
+```java
+interface A{
+	void showA();
+}
+interface B extends A {
+	void showB();
+}
+
+interface C extends B {
+	void showC();
+}
+
+class D implements C {
+	public void showA(){};
+	public void showB(){};
+	public void showC(){};
+
+}
+```
+
+<font color='red'>**注意**:</font>
+接口与接口之间的继承中, 被继承的接口中不能含有名字相同, 返回值不同的方法;
+```java
+```java
+interface A{
+	void showA();
+	int test();
+}
+interface B {
+	void showB();
+	//void test();//错误的写法
+}
+
+interface C extends A, B {
+	void showC();
+}
+
+class D implements C {
+	public void showA(){};
+	public void showB(){};
+	public void showC(){};
+
+}
+```
