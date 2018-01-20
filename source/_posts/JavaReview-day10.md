@@ -13,6 +13,9 @@ type:
 ## 异常的格式
 
 1. 第一种:
+
+经典格式
+
 ```java
 try{
 
@@ -23,14 +26,21 @@ try{
 ```
 
 2. 第二种:
+
+带有 finally的格式
 ```java
 try{
 
 }catch(Exception e){
 
+}finally{
+
 }
 ```
 3. 第三种:
+
+特殊格式
+
 ```java
 try{
 

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wavejoker.github.io/2018/01/17/JavaReview-day10/</loc>
+    
+    <lastmod>2018-01-20T05:48:18.201Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://wavejoker.github.io/2018/01/19/JavaReview-day11/</loc>
     
     <lastmod>2018-01-20T05:39:22.323Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://wavejoker.github.io/2018/01/08/JavaReview-day09/</loc>
     
     <lastmod>2018-01-20T05:38:38.355Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://wavejoker.github.io/2018/01/17/JavaReview-day10/</loc>
-    
-    <lastmod>2018-01-17T11:11:33.892Z</lastmod>
     
   </url>
   
