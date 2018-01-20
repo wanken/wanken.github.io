@@ -13,7 +13,7 @@ type:
 ---
 
 突然项目启动时报出以下错误:
-百度上的所有答案没能解决, 最终索性重新把mapper文件重新生成了一遍, 结果令人感到意外, 竟然不报错了
+百度上的所有答案没能解决, 最终索性重新把mapper文件重新生成了一遍, 结果令人感到意外, 竟然不报错了, 至于原因好像是运行过一个mybatis-gen
 ```exception
 Exception sending context initialized event to listener instance of class org.springframework.web.context.ContextLoaderListener
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private com.bobo.mapper.UserMapper com.bobo.service.impl.UserServiceImpl.userMapper; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [com.bobo.mapper.UserMapper] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
