@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[JavaReview-day14-集合框架01]]></title>
-    <url>%2F2018%2F01%2F22%2FJavaReview-day14-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B601%2F</url>
-    <content type="text"></content>
+    <title><![CDATA[JavaReview-day14-集合框架[1]]]></title>
+    <url>%2F2018%2F01%2F22%2FJavaReview-day14-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%5B1%5D%2F</url>
+    <content type="text"><![CDATA[集合框架集合框架图]]></content>
+      <categories>
+        <category>JavaReview</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[JavaReview-day13-String]]></title>
