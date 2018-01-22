@@ -1,5 +1,5 @@
 ---
-title: JavaReview-day06
+title: JavaReview-day06-静态
 date: 2017-11-30T19:49:08.000Z
 tags:
   - Java

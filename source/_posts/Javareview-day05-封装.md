@@ -1,5 +1,5 @@
 ---
-title: Javareview-day05
+title: Javareview-day05-封装
 date: 2017-11-29T18:55:32.000Z
 tags:
   - Java

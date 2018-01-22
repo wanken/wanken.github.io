@@ -1,5 +1,5 @@
 ---
-title: JavaReview-day09
+title: JavaReview-day09-内部类
 date: 2018-01-08T21:43:07.000Z
 tags:
   - Java

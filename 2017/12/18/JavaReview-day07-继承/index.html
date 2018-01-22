@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="Java  运算符位运算符:1.”&amp;lt;&amp;lt;”: 左位移 2.”&amp;gt;&amp;gt;”: 右位移: 左右为数值的二进制进行左右移动, 其结果等于原值 或 / 2的所以为数的次幂 即 3 &amp;lt;&amp;lt; 3 = 3_ 2的三次幂 = 3 * 8 = 24; 3.”&am">
+<meta name="description" content="继承特点:  提高了代码的复用性; 让类与类之间产生了关系. 有了这个关系, 才有了多态的特性; Java中只支持单继承, 不支持多继承, 因为继承容易带来安全隐患  重写(覆盖) 当子类中出现和父类一模一样的函数时, 当子类对象调用该函数, 会运行子类函数的内容, 如同父类的函数被覆盖一样. 当子类继承父类, 沿袭了">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaReview-day03">
-<meta property="og:url" content="http://wavejoker.github.io/2017/11/28/JavaReview-day03/index.html">
+<meta property="og:title" content="JavaReview-day07-继承">
+<meta property="og:url" content="http://wavejoker.github.io/2017/12/18/JavaReview-day07-继承/index.html">
 <meta property="og:site_name" content="Waver&#39;s Blog">
-<meta property="og:description" content="Java  运算符位运算符:1.”&amp;lt;&amp;lt;”: 左位移 2.”&amp;gt;&amp;gt;”: 右位移: 左右为数值的二进制进行左右移动, 其结果等于原值 或 / 2的所以为数的次幂 即 3 &amp;lt;&amp;lt; 3 = 3_ 2的三次幂 = 3 * 8 = 24; 3.”&amp;lt;&amp;lt;&amp;lt;”:无符号左移 4.”&amp;gt;&amp;gt;&amp;gt;”:无符号右移 异或(^)可以用于加密 ‘&amp;amp;’, ‘|">
+<meta property="og:description" content="继承特点:  提高了代码的复用性; 让类与类之间产生了关系. 有了这个关系, 才有了多态的特性; Java中只支持单继承, 不支持多继承, 因为继承容易带来安全隐患  重写(覆盖) 当子类中出现和父类一模一样的函数时, 当子类对象调用该函数, 会运行子类函数的内容, 如同父类的函数被覆盖一样. 当子类继承父类, 沿袭了父类的功能, 到子类中, 但是子类具备该功能, 但是功能的内容却和父类不一致,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-09T12:24:53.358Z">
+<meta property="og:updated_time" content="2018-01-22T11:35:25.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaReview-day03">
-<meta name="twitter:description" content="Java  运算符位运算符:1.”&amp;lt;&amp;lt;”: 左位移 2.”&amp;gt;&amp;gt;”: 右位移: 左右为数值的二进制进行左右移动, 其结果等于原值 或 / 2的所以为数的次幂 即 3 &amp;lt;&amp;lt; 3 = 3_ 2的三次幂 = 3 * 8 = 24; 3.”&amp;lt;&amp;lt;&amp;lt;”:无符号左移 4.”&amp;gt;&amp;gt;&amp;gt;”:无符号右移 异或(^)可以用于加密 ‘&amp;amp;’, ‘|">
+<meta name="twitter:title" content="JavaReview-day07-继承">
+<meta name="twitter:description" content="继承特点:  提高了代码的复用性; 让类与类之间产生了关系. 有了这个关系, 才有了多态的特性; Java中只支持单继承, 不支持多继承, 因为继承容易带来安全隐患  重写(覆盖) 当子类中出现和父类一模一样的函数时, 当子类对象调用该函数, 会运行子类函数的内容, 如同父类的函数被覆盖一样. 当子类继承父类, 沿袭了父类的功能, 到子类中, 但是子类具备该功能, 但是功能的内容却和父类不一致,">
 
 
 
@@ -148,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://wavejoker.github.io/2017/11/28/JavaReview-day03/"/>
+  <link rel="canonical" href="http://wavejoker.github.io/2017/12/18/JavaReview-day07-继承/"/>
 
 
 
 
 
-  <title>JavaReview-day03 | Waver's Blog</title>
+  <title>JavaReview-day07-继承 | Waver's Blog</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wavejoker.github.io/2017/11/28/JavaReview-day03/">
+    <link itemprop="mainEntityOfPage" href="http://wavejoker.github.io/2017/12/18/JavaReview-day07-继承/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Waver">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaReview-day03</h1>
+          <h1 class="post-title" itemprop="name headline">JavaReview-day07-继承</h1>
         
 
         <div class="post-meta">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-28T15:04:34+08:00">
-                2017-11-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T19:14:57+08:00">
+                2017-12-18
               </time>
             
 
@@ -404,38 +404,82 @@
       
 
       
-        <blockquote>
-<p>Java</p>
-</blockquote>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符:"></a>位运算符:</h3><p>1.”&lt;&lt;”: 左位移 2.”&gt;&gt;”: 右位移: 左右为数值的二进制进行左右移动, 其结果等于原值 或 / 2的所以为数的次幂 即 3 &lt;&lt; 3 = 3_ 2的三次幂 = 3 * 8 = 24; 3.”&lt;&lt;&lt;”:无符号左移 4.”&gt;&gt;&gt;”:无符号右移</p>
-<p>异或(^)可以用于加密 ‘&amp;’, ‘|’, ‘^’的运算</p>
-<p>使两个变量互换值 m = 3; n = 8; n = n ^ m; m = n ^ m; n = n ^ m;即可完成值互换而不引用第三方变量完成两个变量的值互换</p>
-<p>三元运算符 三元运算符会改变所运算元素的数据类型</p>
-<h3 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h3><p>if…else:</p>
-<p>三元运算符 对比 if…else 的优缺点 缺点: 三元运算符必须有结果 优点: 三元运算符比 if…else 简单, 可以简化 if…else</p>
-<p>二. switch 语句:</p>
-<p>1) switch可以中可以接收 byte, short, int char 类型的数据;</p>
-<p>2) jdk1.5 加入对枚举类型的支持, jdk1.7 加入了对 String类型的支持;</p>
-<p>3) switch 的各个 case 之间和 default 没有顺序,先执行第一个 case, 没有匹配的 case 执行default;</p>
-<h4 id="结束-switch-语句的两种情况-1-遇到-break-2-执行到-switch-语句结束"><a href="#结束-switch-语句的两种情况-1-遇到-break-2-执行到-switch-语句结束" class="headerlink" title="结束 switch 语句的两种情况: (1).遇到 break; (2). 执行到 switch 语句结束;"></a>结束 switch 语句的两种情况: (1).遇到 break; (2). 执行到 switch 语句结束;</h4><h4 id="如果匹配的-case-没有对应的-break-那么程序会继续向下执行-运行可以执行的语句"><a href="#如果匹配的-case-没有对应的-break-那么程序会继续向下执行-运行可以执行的语句" class="headerlink" title="如果匹配的 case  没有对应的 break, 那么程序会继续向下执行, 运行可以执行的语句,"></a>如果匹配的 case  没有对应的 break, 那么程序会继续向下执行, 运行可以执行的语句,</h4><p>  直到遇到 break 或程序结束;</p>
-<p>4) if … else 和 switch 语句的对比:</p>
-<h4 id="switch-性能比-if…else-更高-if-…-else-只能顺序执行"><a href="#switch-性能比-if…else-更高-if-…-else-只能顺序执行" class="headerlink" title="switch 性能比 if…else 更高(if … else 只能顺序执行)"></a>switch 性能比 if…else 更高(if … else 只能顺序执行)</h4><h4 id="对区间判断可以或对结果为-boolean-类型的判断使用-if-if-的使用范围更广"><a href="#对区间判断可以或对结果为-boolean-类型的判断使用-if-if-的使用范围更广" class="headerlink" title="对区间判断可以或对结果为 boolean 类型的判断使用 if, if 的使用范围更广"></a>对区间判断可以或对结果为 boolean 类型的判断使用 if, if 的使用范围更广</h4><h2 id="while-语句"><a href="#while-语句" class="headerlink" title="while 语句"></a>while 语句</h2><h3 id="do-while-和-while-的区别"><a href="#do-while-和-while-的区别" class="headerlink" title="do..while 和 while 的区别"></a>do..while 和 while 的区别</h3><h4 id="do…while-先执行循环体-再判断条件-循环体至少执行一次"><a href="#do…while-先执行循环体-再判断条件-循环体至少执行一次" class="headerlink" title="do…while 先执行循环体, 再判断条件(循环体至少执行一次);"></a>do…while 先执行循环体, 再判断条件(循环体至少执行一次);</h4><h4 id="while-先判断再执行"><a href="#while-先判断再执行" class="headerlink" title="while 先判断再执行"></a>while 先判断再执行</h4><h2 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h2><p>格式: for(初始化表达式; 循环条件表达式; 循环后表达式){ 执行语句; }</p>
-<p>for 循环中的表达式只要为合法的表达式即可运行(循环表达式要有真或假的计算结果);</p>
-<h3 id="for-循环中的变量初始化语句只执行一次"><a href="#for-循环中的变量初始化语句只执行一次" class="headerlink" title="for 循环中的变量初始化语句只执行一次"></a>for 循环中的变量初始化语句只执行一次</h3><h3 id="for-循环中的语句不只是一句-多条语句可用-“-”-隔开-如下"><a href="#for-循环中的语句不只是一句-多条语句可用-“-”-隔开-如下" class="headerlink" title="for 循环中的语句不只是一句,多条语句可用 “,” 隔开,如下:"></a>for 循环中的语句不只是一句,多条语句可用 “,” 隔开,如下:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(int x = 0, y = 0, z = 0; x &lt; 4; x ++, y ++,z ++)&#123;</span><br><span class="line">  System.out.println(x+y+z);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="for-和-while-的无限循环的表达形式"><a href="#for-和-while-的无限循环的表达形式" class="headerlink" title="for 和 while 的无限循环的表达形式"></a>for 和 while 的无限循环的表达形式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for:</span><br><span class="line"> for(;;)&#123;</span><br><span class="line">   System.out.println(&quot;for无限循环&quot;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="如果-for-循环的条件不声明-默认为-true"><a href="#如果-for-循环的条件不声明-默认为-true" class="headerlink" title="如果 for 循环的条件不声明, 默认为 true;"></a>如果 for 循环的条件不声明, 默认为 true;</h3><h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(true)&#123;</span><br><span class="line">  System.out.println(&quot; while 无限循环&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="break-和-continue-1-break-可以跳出指定循环-只需要将循环命名即可-具体实现如下"><a href="#break-和-continue-1-break-可以跳出指定循环-只需要将循环命名即可-具体实现如下" class="headerlink" title="break 和 continue 1) break 可以跳出指定循环, 只需要将循环命名即可,具体实现如下"></a>break 和 continue 1) break 可以跳出指定循环, 只需要将循环命名即可,具体实现如下</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void testBreak() &#123;</span><br><span class="line">  w:</span><br><span class="line">  for (int x = 1; x &lt; 4; x++) &#123;</span><br><span class="line">      System.out.println(&quot;out\t&quot;);</span><br><span class="line">      q:</span><br><span class="line">      for (int m = 0; m &lt; 3; m++)&#123;</span><br><span class="line">          if (m == 2)&#123;</span><br><span class="line">              break w;</span><br><span class="line">          &#125;</span><br><span class="line">          System.out.print(&quot;in\t&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>  输出结果为: out    in    in</p>
-<p>  若将 break 后的 w 删掉,结果为: out    in    in    out    in    in    out    in    in</p>
-<p>  2). continue<br>    作用:结束本次循环,继续下一次循环</p>
-<pre><code># 如下代码可以打印 0~10 以内的 2 的倍数:
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void testContinue()&#123;</span><br><span class="line">    for (int i = 0; i &lt; 11; i ++)&#123;</span><br><span class="line">        if (i%2 == 1)&#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="1-continue可以继续指定循环-只需要将循环命名即可-具体实现如下"><a href="#1-continue可以继续指定循环-只需要将循环命名即可-具体实现如下" class="headerlink" title="1)  continue可以继续指定循环, 只需要将循环命名即可,具体实现如下"></a>1)  continue可以继续指定循环, 只需要将循环命名即可,具体实现如下</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public void testContinue() &#123;</span><br><span class="line">  w:</span><br><span class="line">  for (int i = 0; i &lt; 3; i++) &#123;</span><br><span class="line">    q:</span><br><span class="line">    for (int k = 0; k &lt; 4; k++) &#123;</span><br><span class="line">      System.out.println(&quot;i = &quot; + i);</span><br><span class="line">      continue w;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果为:<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">i = 0</span><br><span class="line">i = 1</span><br><span class="line">i = 2</span><br></pre></td></tr></table></figure></p>
-<h3 id="break-和-continue语句单独存在时-下面不可以有任何语句-因为执行不到-编译报错"><a href="#break-和-continue语句单独存在时-下面不可以有任何语句-因为执行不到-编译报错" class="headerlink" title="break 和 continue语句单独存在时, 下面不可以有任何语句, 因为执行不到(编译报错);"></a>break 和 continue语句单独存在时, 下面不可以有任何语句, 因为执行不到(编译报错);</h3><h3 id="break-必须在-switch-或-loop-循环-语句内-continue必须在-loop-语句内"><a href="#break-必须在-switch-或-loop-循环-语句内-continue必须在-loop-语句内" class="headerlink" title="break 必须在 switch 或 loop(循环)语句内, continue必须在 loop 语句内"></a>break 必须在 switch 或 loop(循环)语句内, continue必须在 loop 语句内</h3><h3 id="输出等腰三角形"><a href="#输出等腰三角形" class="headerlink" title="输出等腰三角形"></a>输出等腰三角形</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void testTriangle() &#123;</span><br><span class="line">for (int x = 1; x &lt;= 5; x++) &#123;</span><br><span class="line">    for (int y = x; y &lt; 5; y++) &#123;</span><br><span class="line">      System.out.print(&quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    for (int z = 0; z &lt; x; z ++ )&#123;</span><br><span class="line">      System.out.print(&quot;* &quot;);</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  结果如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    *</span><br><span class="line">   * *</span><br><span class="line">  * * *</span><br><span class="line"> * * * *</span><br><span class="line">* * * * *</span><br></pre></td></tr></table></figure>
-<h2 id="重载-方法名一致-但参数列表不同的函数为重载-名称相同-参数列表相同-但返回值类型不同的两个函数不是重载函数-不能同时存在于一个类中"><a href="#重载-方法名一致-但参数列表不同的函数为重载-名称相同-参数列表相同-但返回值类型不同的两个函数不是重载函数-不能同时存在于一个类中" class="headerlink" title="重载 方法名一致, 但参数列表不同的函数为重载; 名称相同, 参数列表相同, 但返回值类型不同的两个函数不是重载函数, 不能同时存在于一个类中;"></a>重载 方法名一致, 但参数列表不同的函数为重载; 名称相同, 参数列表相同, 但返回值类型不同的两个函数不是重载函数, 不能同时存在于一个类中;</h2>
+        <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>特点:</p>
+<ul>
+<li>提高了代码的复用性;</li>
+<li>让类与类之间产生了关系. 有了这个关系, 才有了多态的特性;</li>
+<li>Java中只支持单继承, 不支持多继承, 因为继承容易带来安全隐患</li>
+</ul>
+<h3 id="重写-覆盖"><a href="#重写-覆盖" class="headerlink" title="重写(覆盖)"></a>重写(覆盖)</h3><ul>
+<li>当子类中出现和父类一模一样的函数时, 当子类对象调用该函数, 会运行子类函数的内容, 如同父<br>类的函数被覆盖一样.</li>
+<li>当子类继承父类, 沿袭了父类的功能, 到子类中, 但是子类具备该功能, 但是功能的内容却和父类<br>不一致, 这时没有必要定义新功能, 而是使用覆盖, 只保留父类的功能定义, 并重写功能内容.</li>
+</ul>
+<ol>
+<li>子类覆盖父类, 必须保证子类权限大于等于父类权限, 才可以覆盖, 否则编译失败.</li>
+<li>静态只能覆盖静态</li>
+<li>如果父类中的方法权限为<code>private</code>, 则子类无法重写该方法.</li>
+</ol>
+<h3 id="重写和重载的区别"><a href="#重写和重载的区别" class="headerlink" title="重写和重载的区别"></a>重写和重载的区别</h3><ul>
+<li>重载: 只看同名函数的参数列表</li>
+<li>重写: 子父类方法要一模一样</li>
+</ul>
+<h3 id="子父类中构造函数的特点"><a href="#子父类中构造函数的特点" class="headerlink" title="子父类中构造函数的特点"></a>子父类中构造函数的特点</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">  Father()&#123;</span><br><span class="line">    System.out.println(<span class="string">"Father run |"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Parent</span> </span>&#123;</span><br><span class="line">  Sun()&#123;</span><br><span class="line">    <span class="comment">// super();</span></span><br><span class="line">    System.out.println(<span class="string">"Son run |"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Son s = <span class="keyword">new</span> Son();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上程序的运行结果为 <code>Father run | Son run |</code> ;</p>
+<ul>
+<li>子类中的构造函数第一行会隐式的存在一句 <code>super()</code> 默认调用父类中默认的构造方法;</li>
+<li>如果父类中没有默认的构造方法, 可以在子类构造方法中的第一行通过 <code>super(xxx)</code><br>手动的来指定父类中特定的构造函数;</li>
+</ul>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
+<li><code>super()</code> 语句一定是在子类构造函数的第一行</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestExtend</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Son s = <span class="keyword">new</span> Son(<span class="number">4</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> m;</span><br><span class="line">    Father()&#123;</span><br><span class="line">        m = <span class="number">2</span>;</span><br><span class="line">        System.out.println(<span class="string">"Father Run"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Father(<span class="keyword">int</span> x)&#123;</span><br><span class="line">        m = <span class="number">6</span>;</span><br><span class="line">        System.out.println(<span class="string">"TTTT"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">    Son()&#123;</span><br><span class="line">      <span class="keyword">this</span>(<span class="number">4</span>);</span><br><span class="line">      System.out.println(<span class="keyword">this</span>.m);</span><br><span class="line">      System.out.println(<span class="string">"Son run"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Son(<span class="keyword">int</span> x)&#123;</span><br><span class="line">      <span class="keyword">this</span>();</span><br><span class="line">      System.out.println(<span class="string">"MMMM"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>以上代码会出现编译错误, 错误原因为 <code>recursive constructor invocation</code>意思为<br>‘<font color="red">构造器中出现了递归调用, 这是不被允许的</font>‘;</li>
+</ul>
+<h3 id="final-关键字"><a href="#final-关键字" class="headerlink" title="final 关键字"></a>final 关键字</h3><ul>
+<li>final: 最终. 作为一个修饰符;</li>
+</ul>
+<h4 id="作用及特点"><a href="#作用及特点" class="headerlink" title="作用及特点"></a>作用及特点</h4><ol>
+<li>可以修饰类, 函数, 变量;</li>
+<li>被 <code>final</code> 修饰的类不可以被继承; 为了避免被继承, 被子类复写功能;</li>
+<li>被 <code>final</code> 修饰的方法不可以被复写;</li>
+<li>被 <code>final</code> 修饰的变量是一个常量且只能赋值一次; <code>final</code> 既可以修饰成员变量, 又可以<br>修饰局部变量, 当在描述事物时, 一些数据的值是固定的, 那么这时为了增强阅读性, 都给这些值<br>起个名字, 方便与阅读;</li>
+<li>内部类定义在类中的局部位置上时, 只能访问局部被 <code>final</code> 修饰的局部变量;</li>
+</ol>
+<h3 id="抽象类-abstract"><a href="#抽象类-abstract" class="headerlink" title="抽象类(abstract)"></a>抽象类(abstract)</h3><ul>
+<li><p>特点:</p>
+<ol>
+<li>抽象方法一定定义在抽象类中;</li>
+<li>抽象方法和抽象类都必须被 <code>abstract</code> 关键字修饰;</li>
+<li>抽象类不可以用 <code>new</code> 创建对象, 因为调用抽象方法没有意义;</li>
+<li>抽象类中的方法要被使用, 必须由子类复写其所有的抽象方法后, 建立子类对象调用, <strong>如<br>果子类只覆盖了部分抽象方法, 那么该子类还是一个抽象类</strong></li>
+</ol>
+</li>
+<li><p>抽象类和一般类的区别:</p>
+<ol>
+<li>抽象类比一般类多了个抽象函数, 就是在类中可以定义抽象方法;</li>
+<li>抽象类不可以实例化;</li>
+</ol>
+</li>
+<li><p>特殊: 抽象类中可以不定义抽象方法, 可以使该类不创建对象;</p>
+</li>
+<li><code>abstract</code> 只可以修饰类和方法, 不能修饰变量;</li>
+</ul>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p> <strong>接口定义时的格式特点</strong>:</p>
+<ul>
+<li>接口转中常见定义: 常量, 抽象方法;</li>
+<li>接口中的成员变量都有固定修饰符:<ol>
+<li>常量:<code>public static final</code></li>
+<li>方法:<code>public abstract</code>  </li>
+</ol>
+</li>
+<li>接口是不可以创建对象的, 因为接口中有抽象方法</li>
+<li>接口需要被子类实现子类对接口的抽象方法全部覆盖后, 子类才可以实例化</li>
+<li>接口可以被类多实现, 也是对不支持多继承的转换形式, Java支持多实现;</li>
+</ul>
+<p><strong>接口与接口之间可以实现多继承</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">showA</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">showB</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">showC</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">implements</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showA</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showB</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showC</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><font color="red"><strong>注意</strong>:</font><br>接口与接口之间的继承中, 被继承的接口中不能含有名字相同, 返回值不同的方法;<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">``` java</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">showA</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">B</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">showB</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="comment">//void test();//错误的写法</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span>, <span class="title">B</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">showC</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">implements</span> <span class="title">C</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showA</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showB</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showC</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -465,8 +509,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/17/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/12/17/GitHub Pages绑定域名/" rel="next" title="GitHub Pages绑定域名">
+                <i class="fa fa-chevron-left"></i> GitHub Pages绑定域名
               </a>
             
           </div>
@@ -475,8 +519,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/11/28/JavaReview-day04/" rel="prev" title="JavaReview-day04">
-                JavaReview-day04 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/23/Java中的23种设计模式-一/" rel="prev" title="Java中的23种设计模式(一)">
+                Java中的23种设计模式(一) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -648,7 +692,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">1.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#位运算符"><span class="nav-number">1.1.</span> <span class="nav-text">位运算符:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语句"><span class="nav-number">1.2.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结束-switch-语句的两种情况-1-遇到-break-2-执行到-switch-语句结束"><span class="nav-number">1.2.1.</span> <span class="nav-text">结束 switch 语句的两种情况: (1).遇到 break; (2). 执行到 switch 语句结束;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果匹配的-case-没有对应的-break-那么程序会继续向下执行-运行可以执行的语句"><span class="nav-number">1.2.2.</span> <span class="nav-text">如果匹配的 case  没有对应的 break, 那么程序会继续向下执行, 运行可以执行的语句,</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#switch-性能比-if…else-更高-if-…-else-只能顺序执行"><span class="nav-number">1.2.3.</span> <span class="nav-text">switch 性能比 if…else 更高(if … else 只能顺序执行)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对区间判断可以或对结果为-boolean-类型的判断使用-if-if-的使用范围更广"><span class="nav-number">1.2.4.</span> <span class="nav-text">对区间判断可以或对结果为 boolean 类型的判断使用 if, if 的使用范围更广</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while-语句"><span class="nav-number">2.</span> <span class="nav-text">while 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#do-while-和-while-的区别"><span class="nav-number">2.1.</span> <span class="nav-text">do..while 和 while 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#do…while-先执行循环体-再判断条件-循环体至少执行一次"><span class="nav-number">2.1.1.</span> <span class="nav-text">do…while 先执行循环体, 再判断条件(循环体至少执行一次);</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while-先判断再执行"><span class="nav-number">2.1.2.</span> <span class="nav-text">while 先判断再执行</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for语句"><span class="nav-number">3.</span> <span class="nav-text">for语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环中的变量初始化语句只执行一次"><span class="nav-number">3.1.</span> <span class="nav-text">for 循环中的变量初始化语句只执行一次</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环中的语句不只是一句-多条语句可用-“-”-隔开-如下"><span class="nav-number">3.2.</span> <span class="nav-text">for 循环中的语句不只是一句,多条语句可用 “,” 隔开,如下:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-和-while-的无限循环的表达形式"><span class="nav-number">3.3.</span> <span class="nav-text">for 和 while 的无限循环的表达形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如果-for-循环的条件不声明-默认为-true"><span class="nav-number">3.4.</span> <span class="nav-text">如果 for 循环的条件不声明, 默认为 true;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while"><span class="nav-number">3.5.</span> <span class="nav-text">while</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#break-和-continue-1-break-可以跳出指定循环-只需要将循环命名即可-具体实现如下"><span class="nav-number">4.</span> <span class="nav-text">break 和 continue 1) break 可以跳出指定循环, 只需要将循环命名即可,具体实现如下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-continue可以继续指定循环-只需要将循环命名即可-具体实现如下"><span class="nav-number">4.1.</span> <span class="nav-text">1)  continue可以继续指定循环, 只需要将循环命名即可,具体实现如下</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break-和-continue语句单独存在时-下面不可以有任何语句-因为执行不到-编译报错"><span class="nav-number">4.2.</span> <span class="nav-text">break 和 continue语句单独存在时, 下面不可以有任何语句, 因为执行不到(编译报错);</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break-必须在-switch-或-loop-循环-语句内-continue必须在-loop-语句内"><span class="nav-number">4.3.</span> <span class="nav-text">break 必须在 switch 或 loop(循环)语句内, continue必须在 loop 语句内</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出等腰三角形"><span class="nav-number">4.4.</span> <span class="nav-text">输出等腰三角形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载-方法名一致-但参数列表不同的函数为重载-名称相同-参数列表相同-但返回值类型不同的两个函数不是重载函数-不能同时存在于一个类中"><span class="nav-number">5.</span> <span class="nav-text">重载 方法名一致, 但参数列表不同的函数为重载; 名称相同, 参数列表相同, 但返回值类型不同的两个函数不是重载函数, 不能同时存在于一个类中;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重写-覆盖"><span class="nav-number">1.1.</span> <span class="nav-text">重写(覆盖)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重写和重载的区别"><span class="nav-number">1.2.</span> <span class="nav-text">重写和重载的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子父类中构造函数的特点"><span class="nav-number">1.3.</span> <span class="nav-text">子父类中构造函数的特点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">1.3.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final-关键字"><span class="nav-number">1.4.</span> <span class="nav-text">final 关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用及特点"><span class="nav-number">1.4.1.</span> <span class="nav-text">作用及特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类-abstract"><span class="nav-number">1.5.</span> <span class="nav-text">抽象类(abstract)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">1.6.</span> <span class="nav-text">接口</span></a></li></ol></li></ol></div>
             
 
           </div>

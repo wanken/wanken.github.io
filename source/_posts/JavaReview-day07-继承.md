@@ -1,5 +1,5 @@
 ---
-title: JavaReview-day07
+title: JavaReview-day07-继承
 date: 2017-12-18 19:14:57
 tags:
   - Java
