@@ -30,7 +30,7 @@ type:
 核心思想就是：有一个Source类,拥有一个方法,待适配,目标接口时Targetable,通过
 Adapter类,将Source的功能扩展到Targetable里,看代码：
 
-```java
+``` java
 public class Source {  
 
     public void method1() {  
@@ -39,7 +39,7 @@ public class Source {
 }  
 ```
 
-```java
+``` java
 public interface Targetable {  
 
     /* 与原类中的方法相同 */  
@@ -51,7 +51,7 @@ public interface Targetable {
 
 ```
 
-```java
+``` java
 public class Adapter extends Source implements Targetable {  
 
     @Override  
@@ -62,7 +62,7 @@ public class Adapter extends Source implements Targetable {
 ```
 Adapter类继承Source类,实现Targetable接口,下面是测试类:
 
-```java
+``` java
 public class AdapterTest {  
 
     public static void main(String[] args) {  
@@ -83,7 +83,7 @@ this is the targetable method!`
 ![](/images/post_images/20171225_03.png)
 
 只需要修改Adapter类的源码即可:
-```java
+``` java
 public class Wrapper implements Targetable {  
 
     private Source source;  
@@ -105,7 +105,7 @@ public class Wrapper implements Targetable {
 ```
 测试类:
 
-```java
+``` java
 public class AdapterTest {  
 
     public static void main(String[] args) {  
@@ -123,7 +123,7 @@ public class AdapterTest {
 
 这个很好理解,在实际开发中,我们也常会遇到这种接口中定义了太多的方法,以致于有时我们在
 一些实现类中并不是都需要。看代码:
-```java
+``` java
 public interface Sourceable {  
 
     public void method1();  
@@ -131,28 +131,28 @@ public interface Sourceable {
 }  
 ```
 抽象类Wrapper2:
-```java
+``` java
 public abstract class Wrapper2 implements Sourceable{  
 
     public void method1(){}  
     public void method2(){}  
 }  
 ```
-```java
+``` java
 public class SourceSub1 extends Wrapper2 {  
     public void method1(){  
         System.out.println("the sourceable interface's first Sub1!");  
     }  
 }
 ```
-```java
+``` java
 public class SourceSub2 extends Wrapper2 {  
     public void method2(){  
         System.out.println("the sourceable interface's second Sub2!");  
     }  
 }  
 ```
-```java
+``` java
 public class WrapperTest {  
 
     public static void main(String[] args) {  
@@ -180,12 +180,12 @@ the sourceable interface's second Sub2!`
 ![](/images/post_images/20171225_05.png)
 
 Source类是被装饰类,Decorator类是一个装饰类,可以为Source类动态的添加一些功能,代码如下:
-```java
+``` java
 public interface Sourceable {  
     public void method();  
 }  
 ```
-```java
+``` java
 public class Source implements Sourceable {  
 
     @Override  
@@ -195,7 +195,7 @@ public class Source implements Sourceable {
 }  
 ```
 
-```java
+``` java
 public class Decorator implements Sourceable {  
 
     private Sourceable source;  
@@ -214,7 +214,7 @@ public class Decorator implements Sourceable {
 ```
 
 测试类:
-```java
+``` java
 public class DecoratorTest {  
 
     public static void main(String[] args) {  
@@ -241,13 +241,13 @@ after decorator!`
 ![](/images/post_images/20171225_06.png)根据上文的阐述,代理模式就比较容易的理解了,
 我们看下代码:
 
-```java
+``` java
 public interface Sourceable {  
     public void method();  
 }  
 ```
 
-```java
+``` java
 public class Source implements Sourceable {  
 
     @Override  
@@ -257,7 +257,7 @@ public class Source implements Sourceable {
 }  
 ```
 
-```java
+``` java
 public class Proxy implements Sourceable {  
 
     private Source source;  
@@ -280,7 +280,7 @@ public class Proxy implements Sourceable {
 }  
 ```
 测试类:
-```java
+``` java
 public class ProxyTest {  
 
     public static void main(String[] args) {  
@@ -307,7 +307,7 @@ after proxy!`
 ![](/images/post_images/20171225_07.png)
 
 我们先看下实现类:
-```java
+``` java
 public class CPU {  
 
     public void startup(){  
@@ -319,7 +319,7 @@ public class CPU {
     }  
 }  
 ```
-```java
+``` java
 public class CPU {  
 
     public void startup(){  
@@ -331,7 +331,7 @@ public class CPU {
     }  
 }  
 ```
-```java
+``` java
 public class Disk {  
 
     public void startup(){  
@@ -343,7 +343,7 @@ public class Disk {
     }  
 }  
 ```
-```java
+``` java
 public class Computer {  
     private CPU cpu;  
     private Memory memory;  
@@ -373,7 +373,7 @@ public class Computer {
 }  
 ```
 User类如下:
-```java
+``` java
 public class User {  
 
     public static void main(String[] args) {  
@@ -403,14 +403,14 @@ public class User {
 ![](/images/post_images/20171225_08.png)
 实现代码:
 先定义接口:
-```java
+``` java
 public interface Sourceable {  
     public void method();  
 }  
 ```
 分别定义两个实现类:
 
-```java
+``` java
 public class SourceSub1 implements Sourceable {  
 
     @Override  
@@ -419,7 +419,7 @@ public class SourceSub1 implements Sourceable {
     }  
 }  
 ```
-```java
+``` java
 public class SourceSub2 implements Sourceable {  
 
     @Override  
@@ -429,7 +429,7 @@ public class SourceSub2 implements Sourceable {
 }  
 ```
 定义一个桥,持有Sourceable的一个实例:
-```java
+``` java
 public abstract class Bridge {  
     private Sourceable source;  
 
@@ -447,7 +447,7 @@ public abstract class Bridge {
 }
 ```
 
-```java
+``` java
 public class MyBridge extends Bridge {  
     public void method(){  
         getSource().method();  
@@ -455,7 +455,7 @@ public class MyBridge extends Bridge {
 }
 ```
 测试类:
-```java
+``` java
 public class BridgeTest {  
 
     public static void main(String[] args) {  
@@ -486,7 +486,7 @@ output：
 ![](/images/post_images/20171225_10.png)
 
 直接来看代码:
-```java
+``` java
 public class TreeNode {  
 
     private String name;  
@@ -530,7 +530,7 @@ public class TreeNode {
 }  
 ```
 
-```java
+``` java
 public class Tree {  
 
     TreeNode root = null;  
@@ -564,7 +564,7 @@ FlyWeightFactory负责创建和管理享元单元,当一个客户端请求时,�
 
 看下数据库连接池的代码:
 
-```java
+``` java
 public class ConnectionPool {  
 
     private Vector<Connection> pool;  

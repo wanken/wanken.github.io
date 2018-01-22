@@ -36,7 +36,7 @@ type:
 
 ### 子父类中构造函数的特点
 
-```java
+``` java
   class Father{
     Father(){
       System.out.println("Father run |");
@@ -65,7 +65,7 @@ type:
 
 - `super()` 语句一定是在子类构造函数的第一行
 
-```java
+``` java
   public class TestExtend {
 
     public static void main(String[] args) {
@@ -143,7 +143,7 @@ type:
 - 接口可以被类多实现, 也是对不支持多继承的转换形式, Java支持多实现;
 
 **接口与接口之间可以实现多继承**
-```java
+``` java
 interface A{
 	void showA();
 }
@@ -165,8 +165,8 @@ class D implements C {
 
 <font color='red'>**注意**:</font>
 接口与接口之间的继承中, 被继承的接口中不能含有名字相同, 返回值不同的方法;
-```java
-```java
+``` java
+``` java
 interface A{
 	void showA();
 	int test();

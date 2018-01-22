@@ -16,7 +16,7 @@ type:
 
 经典格式
 
-```java
+``` java
 try{
 
 }catch(Exception e){
@@ -28,7 +28,7 @@ try{
 2. 第二种:
 
 带有 finally的格式
-```java
+``` java
 try{
 
 }catch(Exception e){
@@ -41,7 +41,7 @@ try{
 
 特殊格式
 
-```java
+``` java
 try{
 
 }finally{
@@ -50,7 +50,7 @@ try{
 ```
 - 第三种格式的特点及作用
 
-```java
+``` java
 class ExceptionDemo{
   public void function(){
     throw new Exception();  
@@ -60,7 +60,7 @@ class ExceptionDemo{
 以上代码会编译失败
 但添加`finally`语句后即可编译成功, 如下:
 
-```java
+``` java
 class ExceptionDemo{
   public void function(){
     try{
@@ -76,7 +76,7 @@ class ExceptionDemo{
 1. 子类在覆盖父类时,如果父类的方法抛出异常, 那么子类的覆盖方法只能抛出父类的异常, 或该异常的子类;
 2. 如果父类方法抛出多个异常, 那么子类方法在覆盖该方法时, 只能抛出父类异常的子集;
 3. 如果父类或接口的方法中没有抛出异常, 那么子类在覆盖该方法时, 也不能抛出异常, 如果子类方法发生类异常, 就必须进行`try`处理, 绝对不能抛出;
-```java
+``` java
 interface  Inter
 {
 	void function();
@@ -209,7 +209,7 @@ finally
 
 有三个结合格式：
 1. 第一种
-```java
+``` java
 try
 	{
 
@@ -219,7 +219,7 @@ try
 	}
 ```
 2. 第二种
-```java
+``` java
 try
 	{
 
@@ -231,7 +231,7 @@ try
 ```
 
 3. 第三种
-```java
+``` java
 try
 	{
 
@@ -260,7 +260,7 @@ try
 
 	当要定义自定义异常的信息时，可以使用父类已经定义好的功能。
 	异常异常信息传递给父类的构造函数。
-```java
+``` java
 	class MyException extends Exception
 	{
 		MyException(String message)
@@ -288,7 +288,7 @@ try
 	4. catch内，需要定义针对性的处理方式。不要简单的定义printStackTrace，输出语句。
 		也不要不写。
 		当捕获到的异常，本功能处理不了时，可以继续在catch中抛出。
-```java
+``` java
   try
   {
   	throw new AException();
@@ -303,7 +303,7 @@ try
 
 或者异常可以处理，当需要将异常产生的和本功能相关的问题提供出去，
 当调用者知道。并处理。也可以将捕获异常处理后，转换新的异常。
-```java
+``` java
 try
 {
 	throw new AException();
@@ -327,7 +327,7 @@ catch (AException e)
 参阅
 ExceptionTest.java 老师用电脑上课
 ExceptionTest1.java 图形面积。
-```java
+``` java
 class  
 {
 	public static void main(String[] args)

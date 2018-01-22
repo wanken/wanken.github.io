@@ -39,13 +39,13 @@ type:
 AbstractCalculator是辅助类,提供辅助方法,接下来,依次实现下每个类：
 首先统一接口:
 
-```java
+``` java
 public interface ICalculator {  
     public int calculate(String exp);  
 }  
 ```
 辅助类:
-```java
+``` java
 public abstract class AbstractCalculator {  
 
     public int[] split(String exp,String opt){  
@@ -59,7 +59,7 @@ public abstract class AbstractCalculator {
 ```
 三个实现类:
 
-```java
+``` java
 public class Plus extends AbstractCalculator implements ICalculator {  
 
     @Override  
@@ -69,7 +69,7 @@ public class Plus extends AbstractCalculator implements ICalculator {
     }  
 }  
 ```
-```java
+``` java
 public class Minus extends AbstractCalculator implements ICalculator {  
 
     @Override  
@@ -80,7 +80,7 @@ public class Minus extends AbstractCalculator implements ICalculator {
 
 }  
 ```
-```java
+``` java
 public class Multiply extends AbstractCalculator implements ICalculator {  
 
     @Override  
@@ -91,7 +91,7 @@ public class Multiply extends AbstractCalculator implements ICalculator {
 }  
 ```
 简单的测试类:
-```java
+``` java
 public class StrategyTest {  
 
     public static void main(String[] args) {  
@@ -117,7 +117,7 @@ public class StrategyTest {
 就是在AbstractCalculator类中定义一个主方法calculate,calculate()调用spilt()等,Plus
 和Minus分别继承AbstractCalculator类,通过对AbstractCalculator的调用实现对子类的调用
 ,看下面的例子:
-```java
+``` java
 public abstract class AbstractCalculator {  
 
     /*主方法,实现对本类其它方法的调用*/  
@@ -138,7 +138,7 @@ public abstract class AbstractCalculator {
     }  
 }  
 ```
-```java
+``` java
 public class Plus extends AbstractCalculator {  
 
     @Override  
@@ -148,7 +148,7 @@ public class Plus extends AbstractCalculator {
 }
 ```
 测试类:
-```java
+``` java
 public class StrategyTest {  
 
     public static void main(String[] args) {  
@@ -180,13 +180,13 @@ public class StrategyTest {
 我们看实现代码：
 
 一个Observer接口:
-```java
+``` java
 public interface Observer {  
     public void update();  
 }  
 ```
 两个实现类:
-```java
+``` java
 public class Observer1 implements Observer {  
 
     @Override  
@@ -195,7 +195,7 @@ public class Observer1 implements Observer {
     }  
 }  
 ```
-```java
+``` java
 public class Observer2 implements Observer {  
 
     @Override  
@@ -206,7 +206,7 @@ public class Observer2 implements Observer {
 }
 ```
 Subject接口及实现类:
-```java
+``` java
 public interface Subject {  
 
     /*增加观察者*/  
@@ -222,7 +222,7 @@ public interface Subject {
     public void operation();  
 }  
 ```
-```java
+``` java
 public abstract class AbstractSubject implements Subject {  
 
     private Vector<Observer> vector = new Vector<Observer>();  
@@ -246,7 +246,7 @@ public abstract class AbstractSubject implements Subject {
 }  
 ```
 
-```java
+``` java
 public class MySubject extends AbstractSubject {  
 
     @Override  
@@ -258,7 +258,7 @@ public class MySubject extends AbstractSubject {
 }  
 ```
 测试类:
-```java
+``` java
 public class ObserverTest {  
 
     public static void main(String[] args) {  
@@ -290,7 +290,7 @@ observer2 has received!`
 
 两个接口:
 
-```java
+``` java
 public interface Collection {  
 
     public Iterator iterator();  
@@ -303,7 +303,7 @@ public interface Collection {
 }  
 
 ```
-```java
+``` java
 public interface Iterator {  
     //前移  
     public Object previous();  
@@ -317,7 +317,7 @@ public interface Iterator {
 }  
 ```
 两个实现:
-```java
+``` java
 public class MyCollection implements Collection {  
 
     public String string[] = {"A","B","C","D","E"};  
@@ -337,7 +337,7 @@ public class MyCollection implements Collection {
     }  
 }  
 ```
-```java
+``` java
 public class MyIterator implements Iterator {  
 
     private Collection collection;  
@@ -382,7 +382,7 @@ public class MyIterator implements Iterator {
 ```
 
 测试类:
-```java
+``` java
 public class Test {  
 
     public static void main(String[] args) {  
@@ -414,13 +414,13 @@ public class Test {
 Abstracthandler类提供了get和set方法,方便MyHandle类设置和修改引用对象,MyHandle类是
 核心,实例化后生成一系列相互持有的对象,构成一条链。
 
-```java
+``` java
 public interface Handler {  
     public void operator();  
 }  
 ```
 
-```java
+``` java
 public abstract class AbstractHandler {  
 
     private Handler handler;  
@@ -436,7 +436,7 @@ public abstract class AbstractHandler {
 }  
 ```
 
-```java
+``` java
 public class MyHandler extends AbstractHandler implements Handler {  
 
     private String name;  
@@ -454,7 +454,7 @@ public class MyHandler extends AbstractHandler implements Handler {
     }  
 }  
 ```
-```java
+``` java
 public class Test {  
 
     public static void main(String[] args) {  
@@ -490,12 +490,12 @@ h3deal!`
 **Invoker** 是调用者（司令员）,**Receiver** 是被调用者（士兵）,**MyCommand** 是命
 令,实现了 **Command** 接口,持有接收对象,看实现代码:
 
-```java
+``` java
 public interface Command {  
     public void exe();  
 }  
 ```
-```java
+``` java
 public class MyCommand implements Command {  
 
     private Receiver receiver;  
@@ -510,14 +510,14 @@ public class MyCommand implements Command {
     }  
 }  
 ```
-```java
+``` java
 public class Receiver {  
     public void action(){  
         System.out.println("command received!");  
     }  
 }  
 ```
-```java
+``` java
 public class Invoker {  
 
     private Command command;  
@@ -531,7 +531,7 @@ public class Invoker {
     }  
 }  
 ```
-```java
+``` java
 public class Test {  
 
     public static void main(String[] args) {  

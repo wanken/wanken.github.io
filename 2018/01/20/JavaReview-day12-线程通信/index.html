@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Waver's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="线程通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。  123456789101112131415161718192021class ProducerConsumerDemo&amp;#123;	public static void main(String[] args)	&amp;#123;		">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaReview-day12-线程通信">
+<meta property="og:url" content="http://wavejoker.github.io/2018/01/20/JavaReview-day12-线程通信/index.html">
+<meta property="og:site_name" content="Waver&#39;s Blog">
+<meta property="og:description" content="线程通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。  123456789101112131415161718192021class ProducerConsumerDemo&amp;#123;	public static void main(String[] args)	&amp;#123;		Resource r = new Resource();		Producer pro = new">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-22T09:45:54.816Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaReview-day12-线程通信">
+<meta name="twitter:description" content="线程通信线程间通讯：其实就是多个线程在操作同一个资源，但是操作的动作不同。  123456789101112131415161718192021class ProducerConsumerDemo&amp;#123;	public static void main(String[] args)	&amp;#123;		Resource r = new Resource();		Producer pro = new">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wavejoker.github.io/2018/01/20/JavaReview-day12-线程通信/"/>
+
+
+
+
+
+  <title>JavaReview-day12-线程通信 | Waver's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Waver's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人知识博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-JavaReview" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wavejoker.github.io/2018/01/20/JavaReview-day12-线程通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Waver">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaReview-day12-线程通信</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T15:20:31+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaReview/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaReview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a>线程通信</h2><font color="red">线程间通讯：<br>其实就是多个线程在操作同一个资源，<br>但是操作的动作不同。</font>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProducerConsumerDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Resource r = <span class="keyword">new</span> Resource();</span><br><span class="line"></span><br><span class="line">		Producer pro = <span class="keyword">new</span> Producer(r);</span><br><span class="line">		Consumer con = <span class="keyword">new</span> Consumer(r);</span><br><span class="line"></span><br><span class="line">		Thread t1 = <span class="keyword">new</span> Thread(pro);</span><br><span class="line">		Thread t2 = <span class="keyword">new</span> Thread(pro);</span><br><span class="line">		Thread t3 = <span class="keyword">new</span> Thread(con);</span><br><span class="line">		Thread t4 = <span class="keyword">new</span> Thread(con);</span><br><span class="line"></span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">		t3.start();</span><br><span class="line">		t4.start();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于多个生产者和消费者。<br>为什么要定义while判断标记。<br>原因：让被唤醒的线程再一次判断标记。</p>
+<p>为什么定义<code>notifyAll</code>，<br>因为需要唤醒对方线程。<br>因为只用notify，容易出现只唤醒本方线程的情况。导致程序中的所有线程都等待。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resource</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">			<span class="comment">//  t1    t2</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(flag)</span><br><span class="line">			<span class="keyword">try</span>&#123;<span class="keyword">this</span>.wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;<span class="comment">//t1(放弃资格)  t2(获取资格)</span></span><br><span class="line">		<span class="keyword">this</span>.name = name+<span class="string">"--"</span>+count++;</span><br><span class="line"></span><br><span class="line">		System.out.println(Thread.currentThread().getName()+<span class="string">"...生产者.."</span>+<span class="keyword">this</span>.name);</span><br><span class="line">		flag = <span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">this</span>.notifyAll();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//  t3   t4  </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(!flag)</span><br><span class="line">			<span class="keyword">try</span>&#123;wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;<span class="comment">//t3(放弃资格) t4(放弃资格)</span></span><br><span class="line">		System.out.println(Thread.currentThread().getName()+<span class="string">"...消费者........."</span>+<span class="keyword">this</span>.name);</span><br><span class="line">		flag = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">this</span>.notifyAll();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Resource res;</span><br><span class="line"></span><br><span class="line">	Producer(Resource res)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.res = res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			res.set(<span class="string">"+商品+"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Resource res;</span><br><span class="line"></span><br><span class="line">	Consumer(Resource res)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.res = res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			res.out();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="进程同步优化解决方案"><a href="#进程同步优化解决方案" class="headerlink" title="进程同步优化解决方案"></a>进程同步优化解决方案</h3><p>JDK1.5 中提供了多线程升级解决方案。<br>将同步Synchronized替换成显式的Lock操作。<br>将Object中的wait，notify notifyAll，替换了Condition对象。<br>该对象可以Lock锁 进行获取。<br>该示例中，实现了本方只唤醒对方操作。</p>
+<ul>
+<li><p>Lock:替代了Synchronized</p>
+<pre><code>lock
+unlock
+newCondition()
+</code></pre></li>
+<li><p>Condition：替代了Object wait notify notifyAll</p>
+<pre><code>await();
+signal();
+signalAll();
+</code></pre></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProducerConsumerDemo2</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Resource r = <span class="keyword">new</span> Resource();</span><br><span class="line"></span><br><span class="line">		Producer pro = <span class="keyword">new</span> Producer(r);</span><br><span class="line">		Consumer con = <span class="keyword">new</span> Consumer(r);</span><br><span class="line"></span><br><span class="line">		Thread t1 = <span class="keyword">new</span> Thread(pro);</span><br><span class="line">		Thread t2 = <span class="keyword">new</span> Thread(pro);</span><br><span class="line">		Thread t3 = <span class="keyword">new</span> Thread(con);</span><br><span class="line">		Thread t4 = <span class="keyword">new</span> Thread(con);</span><br><span class="line"></span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">		t3.start();</span><br><span class="line">		t4.start();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Resource</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">			<span class="comment">//  t1    t2</span></span><br><span class="line">	<span class="keyword">private</span> Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Condition condition_pro = lock.newCondition();</span><br><span class="line">	<span class="keyword">private</span> Condition condition_con = lock.newCondition();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">set</span><span class="params">(String name)</span><span class="keyword">throws</span> InterruptedException</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		lock.lock();</span><br><span class="line">		<span class="keyword">try</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(flag)</span><br><span class="line">				condition_pro.await();<span class="comment">//t1,t2</span></span><br><span class="line">			<span class="keyword">this</span>.name = name+<span class="string">"--"</span>+count++;</span><br><span class="line"></span><br><span class="line">			System.out.println(Thread.currentThread().getName()+<span class="string">"...生产者.."</span>+<span class="keyword">this</span>.name);</span><br><span class="line">			flag = <span class="keyword">true</span>;</span><br><span class="line">			condition_con.signal();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span></span><br><span class="line">		&#123;</span><br><span class="line">			lock.unlock();<span class="comment">//释放锁的动作一定要执行。</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//  t3   t4  </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">out</span><span class="params">()</span><span class="keyword">throws</span> InterruptedException</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		lock.lock();</span><br><span class="line">		<span class="keyword">try</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span>(!flag)</span><br><span class="line">				condition_con.await();</span><br><span class="line">			System.out.println(Thread.currentThread().getName()+<span class="string">"...消费者........."</span>+<span class="keyword">this</span>.name);</span><br><span class="line">			flag = <span class="keyword">false</span>;</span><br><span class="line">			condition_pro.signal();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">finally</span></span><br><span class="line">		&#123;</span><br><span class="line">			lock.unlock();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Resource res;</span><br><span class="line"></span><br><span class="line">	Producer(Resource res)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.res = res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				res.set(<span class="string">"+商品+"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (InterruptedException e)</span><br><span class="line">			&#123;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Resource res;</span><br><span class="line"></span><br><span class="line">	Consumer(Resource res)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.res = res;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				res.out();</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (InterruptedException e)</span><br><span class="line">			&#123;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Res</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String sex;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(String name,String sex)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(flag)</span><br><span class="line">			<span class="keyword">try</span>&#123;<span class="keyword">this</span>.wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.sex = sex;</span><br><span class="line">		flag = <span class="keyword">true</span>;</span><br><span class="line">		<span class="keyword">this</span>.notify();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">out</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(!flag)</span><br><span class="line">			<span class="keyword">try</span>&#123;<span class="keyword">this</span>.wait();&#125;<span class="keyword">catch</span>(Exception e)&#123;&#125;</span><br><span class="line">		System.out.println(name+<span class="string">"........"</span>+sex);</span><br><span class="line">		flag = <span class="keyword">false</span>;</span><br><span class="line">		<span class="keyword">this</span>.notify();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Input</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Res r ;</span><br><span class="line">	Input(Res r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.r = r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x==<span class="number">0</span>)				</span><br><span class="line">				r.set(<span class="string">"mike"</span>,<span class="string">"man"</span>);				</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				r.set(<span class="string">"丽丽"</span>,<span class="string">"女女女女女"</span>);				</span><br><span class="line">			x = (x+<span class="number">1</span>)%<span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Output</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Res r ;</span><br><span class="line"></span><br><span class="line">	Output(Res r)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.r = r;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			r.out();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">InputOutputDemo2</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Res r = <span class="keyword">new</span> Res();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">new</span> Thread(<span class="keyword">new</span> Input(r)).start();</span><br><span class="line">		<span class="keyword">new</span> Thread(<span class="keyword">new</span> Output(r)).start();</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		Input in = new Input(r);</span></span><br><span class="line"><span class="comment">		Output out = new Output(r);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		Thread t1 = new Thread(in);</span></span><br><span class="line"><span class="comment">		Thread t2 = new Thread(out);</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		t1.start();</span></span><br><span class="line"><span class="comment">		t2.start();</span></span><br><span class="line"><span class="comment">		*/</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>等待的线程存放在线程池中</strong><br><strong>最先唤醒的是最先被冻结的线程</strong></p>
+<h3 id="停止线程"><a href="#停止线程" class="headerlink" title="停止线程"></a>停止线程</h3><p><strong>stop方法已经过时。</strong></p>
+<p>如何停止线程？<br>只有一种，run方法结束。<br>开启多线程运行，运行代码通常是循环结构。<br>只要控制住循环，就可以让run方法结束，也就是线程结束。</p>
+<p>特殊情况：<br>当线程处于了冻结状态。<br>就不会读取到标记。那么线程就不会结束。</p>
+<p>当没有指定的方式让冻结的线程恢复到运行状态是，这时需要对冻结进行清除。<br>强制让线程恢复到运行状态中来。这样就可以操作标记让线程结束。</p>
+<p>Thread类提供该方法 <code>interrupt()</code>;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StopThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">boolean</span> flag =<span class="keyword">true</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(flag)</span><br><span class="line">		&#123;</span><br><span class="line"></span><br><span class="line">			System.out.println(Thread.currentThread().getName()+<span class="string">"....run"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changeFlag</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		flag = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">StopThreadDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		StopThread st = <span class="keyword">new</span> StopThread();</span><br><span class="line"></span><br><span class="line">		Thread t1 = <span class="keyword">new</span> Thread(st);</span><br><span class="line">		Thread t2 = <span class="keyword">new</span> Thread(st);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		t1.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">		t2.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span>(<span class="keyword">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(num++ == <span class="number">60</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//st.changeFlag();</span></span><br><span class="line">				<span class="comment">//t1.interrupt();</span></span><br><span class="line">				<span class="comment">//t2.interrupt();</span></span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(Thread.currentThread().getName()+<span class="string">"......."</span>+num);</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"over"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="守护进程"><a href="#守护进程" class="headerlink" title="守护进程"></a>守护进程</h3><p>join:<br>当A线程执行到了B线程的.join()方法时，A就会等待。等B线程都执行完，A才会执行。</p>
+<p>join可以用来临时加入线程执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;<span class="number">70</span>; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(Thread.currentThread().toString()+<span class="string">"....."</span>+x);</span><br><span class="line">			Thread.yield();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">JoinDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Demo d = <span class="keyword">new</span> Demo();</span><br><span class="line">		Thread t1 = <span class="keyword">new</span> Thread(d);</span><br><span class="line">		Thread t2 = <span class="keyword">new</span> Thread(d);</span><br><span class="line">		t1.start();</span><br><span class="line"></span><br><span class="line">		<span class="comment">//t1.setPriority(Thread.MAX_PRIORITY);</span></span><br><span class="line"></span><br><span class="line">		t2.start();</span><br><span class="line"></span><br><span class="line">		<span class="comment">//t1.join();</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;<span class="number">80</span>; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//System.out.println("main....."+x);</span></span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"over"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Thread.currentThread().sleep(<span class="number">3000</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println(<span class="string">"MyThread running"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTest</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String argv[])</span> </span>&#123;</span><br><span class="line">		MyThread t = <span class="keyword">new</span> MyThread();</span><br><span class="line">		t.run();</span><br><span class="line">		t.start();</span><br><span class="line">		System.out.println(<span class="string">"Thread Test"</span>);</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码分析过程："><a href="#代码分析过程：" class="headerlink" title="代码分析过程："></a>代码分析过程：</h4><p><code>MyThread t = new MyThread();</code><br>创建了一个线程。<br><code>t.run();</code><br>调用<code>MyThread</code>对象的<code>run()</code>方法。<br>这是只有一个线程在运行就是主线程。<br>当主线程执行到了<code>run()</code>方法中的<code>sleep(3000);</code>时。<br>这是主线程处于冻结状态。程序并没有任何执行。<br>当3秒过后，主线程打印了  <code>MyThread running</code>。 <code>run()</code>方法执行结束。</p>
+<p><code>t.start();</code><br>开启了t线程。<br><strong>有两种可能情况。</strong></p>
+<ol>
+<li><p>第一种情况:<br>主线程在只执行了<code>t.start()</code>后，还具有执行权，继续往下执行，<br>打印了<code>Thread Test</code>。主线程结束。<br>t线程获取执行权，调用自己的run方法。然后执行的<code>sleep(3000);</code>冻结3秒。<br>3秒后，打印MyThread running t线程结束，整个程序结束。</p>
+</li>
+<li><p>第二种情况：<br>主线程执行到<code>t.start();</code>开启了t线程，t线程就直接获取到了执行权。<br>就调用自己的<code>run()</code>方法。<br>指定到<code>sleep(3000)</code>.t线程冻结3秒，这是t线程就是释放了执行权。<br>那么主线程开始执行打印了<code>Thread Test</code>，主线程结束。<br>等到3秒后，t线程打印<code>MyThread running</code> ，然后t线程结束。<br>程序结束。</p>
+</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="线程间通信。"><a href="#线程间通信。" class="headerlink" title="线程间通信。"></a>线程间通信。</h4><pre><code>等待/唤醒机制。
+
+也就是常见的生产者消费者问题。
+
+1. 当多个生产者消费者出现时，
+需要让获取执行权的线程判断标记。
+通过while完成。
+
+2. 需要将对方的线程唤醒。
+仅仅用notify，是不可以的。因为有可能出现只唤醒本方。
+有可能会导致，所有线程都等待。
+所以可以通过notifyAll的形式来完成 。
+</code></pre><p><em>这个程序有一个bug。就是每次notifyAll。都会唤醒本方。<br>可不可以只唤醒对方呢？</em></p>
+<p><strong>JDK1.5版本提供了一些新的对象，优化了等待唤醒机制。</strong></p>
+<ol>
+<li>将synchronized 替换成了Lock接口。<br> 将隐式锁，升级成了显示锁。<br> <strong>Lock</strong><pre><code>- 获取锁：lock();
+- 释放锁：unlock();注意：释放的动作一定要执行，所以通常定义在finally中。
+- 获取Condition对象：newCondition();
+</code></pre></li>
+<li>将Object中的wait，notify，notifyAll方法都替换成了Condition的await，signal，signalAll。<br> 和以前不同是：一个同步代码块具备一个锁，该所以具备自己的独立wait和notify方法。<br> 现在是将wait，notify等方法，封装进一个特有的对象Condition，而一个Lock锁上可以有多个Condition对象。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Lock lock = <span class="keyword">new</span> ReentrantLock();</span><br><span class="line"></span><br><span class="line">Condition conA = lock.newCondition();</span><br><span class="line">Condition conB = lock.newCondition();</span><br><span class="line"></span><br><span class="line">con.await();<span class="comment">//生产，，消费</span></span><br><span class="line">con.signal();生产</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">set()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(flag)</span><br><span class="line">		conA.await();<span class="comment">//生产者，</span></span><br><span class="line">	code......;</span><br><span class="line"></span><br><span class="line">	flag = <span class="keyword">true</span>;</span><br><span class="line">	conB.signal();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">out()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(!flag)</span><br><span class="line">		conB.await();<span class="comment">//消费者</span></span><br><span class="line"></span><br><span class="line">	code....;</span><br><span class="line">	flag = <span class="keyword">false</span>;</span><br><span class="line">	conA.signal();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>wait和sleep的区别：<br>wait:释放cpu执行权，释放同步中锁。<br>sleep:释放cpu执行权，不释放同步中锁。</li>
+</ul>
+<p><code>synchronized(锁)
+{
+wait();
+}</code></p>
+<h4 id="停止线程："><a href="#停止线程：" class="headerlink" title="停止线程："></a>停止线程：</h4><pre><code>**stop过时。**
+原理：run方法结束。run方法中通常定义循环，指定控制住循环线程即可结束。
+
+1. 定义结束标记。
+2. 当线程处于了冻结状态，没有执行标记，程序一样无法结束。
+    这时可以循环，正常退出冻结状态，或者强制结束冻结状态。
+    强制结束冻结状态：interrupt();目的是线程强制从冻结状态恢复到运行状态。
+    但是会发生InterruptedException异常。
+</code></pre><ul>
+<li><p>线程中一些常见方法：<br>  setDaemon(boolean):将线程标记为后台线程，后台线程和前台线程一样，开启，一样抢执行权运行，<br>  只有在结束时，有区别，当前台线程都运行结束后，后台线程会自动结束。</p>
+<p>  join():什么意思？等待该线程结束。当A线程执行到了B的.join方法时，A就会处于冻结状态。</p>
+<pre><code>A什么时候运行呢？当B运行结束后，A就会具备运行资格，继续运行。
+</code></pre><p>  加入线程，可以完成对某个线程的临时加入执行。</p>
+</li>
+</ul>
+<p><strong>多线程重点:</strong></p>
+<ol>
+<li><p>多线程的创建的两种方式，以及区别。</p>
+</li>
+<li><p>同步的特点。<br>   同步的好处：<br>   同步的弊端：<br>   同步的前提：<br>   同步的表现形式以及区别。<br>   特例：static同步函数锁是哪一个。</p>
+<p> <strong>死锁代码要求写的出来。</strong></p>
+</li>
+<li><p>线程间通信，看以上总结。</p>
+</li>
+</ol>
+<ol>
+<li>wait和sleep，  <code>yield()</code>: 临时暂停，可以让线程是释放执行权。<br><code>yield()</code>方法API:<br>`给调度程序的一个提示，当前线程愿意得到它当前的处理器的使用。调度程序可以自由地忽略这个提示。<br>产量是一个启发式的尝试，以改善线程之间的相对进展，否则将过度使用一个中央处理器。它的使用应结合详细的分析和基准，以确保它实际上有所需的效果。</li>
+</ol>
+<p>使用这种方法是不恰当的。它可能是有用的调试或测试的目的，它可能有助于重现由于种族条件的错误。这也可能是有用的在设计并发控制结构如在java.util.concurrent.locks包的。<br>`</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/19/JavaReview-day11/" rel="next" title="JavaReview-day11">
+                <i class="fa fa-chevron-left"></i> JavaReview-day11
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/21/JavaReview-day13-String/" rel="prev" title="JavaReview-day13-String">
+                JavaReview-day13-String <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="Waver" />
+            
+              <p class="site-author-name" itemprop="name">Waver</p>
+              <p class="site-description motion-element" itemprop="description">路漫漫其修远兮, 吾将上下而求索</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:jokerwaver@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/105010541415941865996" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/waverjoker" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程通信"><span class="nav-number">1.</span> <span class="nav-text">线程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进程同步优化解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">进程同步优化解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#停止线程"><span class="nav-number">1.2.</span> <span class="nav-text">停止线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#守护进程"><span class="nav-number">1.3.</span> <span class="nav-text">守护进程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#练习"><span class="nav-number">1.4.</span> <span class="nav-text">练习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#代码分析过程："><span class="nav-number">1.4.1.</span> <span class="nav-text">代码分析过程：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程间通信。"><span class="nav-number">1.5.1.</span> <span class="nav-text">线程间通信。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#停止线程："><span class="nav-number">1.5.2.</span> <span class="nav-text">停止线程：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Waver</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

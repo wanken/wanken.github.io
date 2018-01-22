@@ -68,14 +68,14 @@ type:
 举例如下：（我们举一个发送邮件和短信的例子）
 首先,创建二者的共同接口:
 
-```java
+``` java
   public interface Sender {  
       public void Send();  
   }  
 ```
 其次,创建实现类:
 
-```java
+``` java
   public class MailSender implements Sender {
       @Override
       public void Send() {
@@ -84,7 +84,7 @@ type:
   }
 ```
 
-```java
+``` java
   public class SmsSender implements Sender {
 
       @Override  
@@ -96,7 +96,7 @@ type:
 
 最后,建工厂类:
 
-```java
+``` java
 public class SendFactory {  
 
     public Sender produce(String type) {  
@@ -112,7 +112,7 @@ public class SendFactory {
 }  
 ```
 我们来测试下:
-```java
+``` java
   public class FactoryTest {  
 
       public static void main(String[] args) {  
@@ -129,7 +129,7 @@ public class SendFactory {
 ![](/images/post_images/20171224_Factory.png)
 
 将上面的代码做下修改,改动下SendFactory类就行,如下:
-```java
+``` java
 public class SendFactory {  
 
     public Sender produceMail(){  
@@ -142,7 +142,7 @@ public class SendFactory {
 }  
 ```
 测试类如下:
-```java
+``` java
 public class FactoryTest {  
 
     public static void main(String[] args) {  
@@ -157,7 +157,7 @@ public class FactoryTest {
 ### 3. 静态工厂方法模式
   将上面的多个工厂方法模式里的方法置为静态的,不需要创建实例,直接调用即可。
 
-```java
+``` java
 public class SendFactory {  
 
     public static Sender produceMail(){  
@@ -169,7 +169,7 @@ public class SendFactory {
     }  
 }  
 ```
-```java
+``` java
 public class FactoryTest {  
 
     public static void main(String[] args) {      
@@ -188,13 +188,13 @@ public class FactoryTest {
 
 请看例子:
 
-```java
+``` java
 public interface Sender {  
     public void Send();  
 }  
 ```
 两个实现类:
-```java
+``` java
 public class MailSender implements Sender {  
     @Override  
     public void Send() {  
@@ -203,7 +203,7 @@ public class MailSender implements Sender {
 }  
 ```
 两个工厂类:
-```java
+``` java
   public class SendMailFactory implements Provider {  
 
       @Override  
@@ -213,7 +213,7 @@ public class MailSender implements Sender {
   }  
 ```
 
-```java
+``` java
 public class SendSmsFactory implements Provider{  
 
     @Override  
@@ -223,14 +223,14 @@ public class SendSmsFactory implements Provider{
 }
 ```
 在提供一个接口:
-```java
+``` java
 public interface Provider {  
     public Sender produce();  
 }  
 ```
 测试类:
 
-```java
+``` java
 public class Test {  
 
     public static void main(String[] args) {  
@@ -249,7 +249,7 @@ public class Test {
 3. 有些类如交易所的核心交易引擎,控制着交易流程,如果该类可以创建多个的话,系统完全乱了。（比如一个军队出现了多个司令员同时指挥,肯定会乱成一团）,所以只有使用单例模式,才能保证核心交易服务器独立控制整个流程。
 
 首先我们写一个简单的单例类：
-```java
+``` java
 public class Singleton {  
 
     /* 持有私有静态实例,防止被引用,此处赋值为null,目的是实现延迟加载 */  
@@ -275,7 +275,7 @@ public class Singleton {
 ```
 
 这个类可以满足基本要求,但是,像这样毫无线程安全保护的类,如果我们把它放入多线程的环境下,肯定就会出现问题了,如何解决？我们首先会想到对getInstance方法加synchronized关键字,如下:
-```java
+``` java
 public static synchronized Singleton getInstance() {  
         if (instance == null) {  
             instance = new Singleton();  
@@ -286,7 +286,7 @@ public static synchronized Singleton getInstance() {
 
 但是,synchronized关键字锁住的是这个对象,这样的用法,在性能上会有所下降,因为每次调用getInstance(),都要对对象上锁,事实上,只有在第一次创建对象的时候需要加锁,之后就不需要了,所以,这个地方需要改进。我们改成下面这个：
 
-```java
+``` java
 public static Singleton getInstance() {  
         if (instance == null) {  
             synchronized (instance) {  
@@ -300,7 +300,7 @@ public static Singleton getInstance() {
 ```
 
 似乎解决了之前提到的问题,将synchronized关键字加在了内部,也就是说当调用的时候是不需要加锁的,只有在instance为null,并创建对象的时候才需要加锁,性能有一定的提升。但是,这样的情况,还是有可能有问题的,看下面的情况：在Java指令中创建对象和赋值操作是分开进行的,也就是说instance = new Singleton();语句是分两步执行的。但是JVM并不保证这两个操作的先后顺序,也就是说有可能JVM会为新的Singleton实例分配空间,然后直接赋值给instance成员,然后再去初始化这个Singleton实例。这样就可能出错了,我们以A、B两个线程为例：a>A、B线程同时进入了第一个if判断b>A首先进入synchronized块,由于instance为null,所以它执行instance = newSingleton();c>由于JVM内部的优化机制,JVM先画出了一些分配给Singleton实例的空白内存,并赋值给instance成员（注意此时JVM没有开始初始化这个实例）,然后A离开了synchronized块。d>B进入synchronized块,由于instance此时不是null,因此它马上离开了synchronized块并将结果返回给调用该方法的程序。e>此时B线程打算使用Singleton实例,却发现它没有被初始化,于是错误发生了。所以程序还是有可能发生错误,其实程序在运行过程是很复杂的,从这点我们就可以看出,尤其是在写多线程环境下的程序更有难度,有挑战性。我们对该程序做进一步优化：
-```java
+``` java
 private static class SingletonFactory{           
         private static Singleton instance = new Singleton();           
     }           
@@ -311,7 +311,7 @@ private static class SingletonFactory{
 
 实际情况是,单例模式使用内部类来维护单例的实现,JVM内部的机制能够保证当一个类被加载的时候,这个类的加载过程是线程互斥的。这样当我们第一次调用getInstance的时候,JVM能够帮我们保证instance只被创建一次,并且会保证把赋值给instance的内存初始化完毕,这样我们就不用担心上面的问题。同时该方法也只会在第一次调用的时候使用互斥机制,这样就解决了低性能问题。这样我们暂时总结一个完美的单例模式:
 
-```java
+``` java
 public class Singleton {  
 
     /* 私有构造方法,防止被实例化 */  
@@ -337,7 +337,7 @@ public class Singleton {
 
 其实说它完美,也不一定,如果在构造函数中抛出异常,实例将永远得不到创建,也会出错。所以
 说,十分完美的东西是没有的,我们只能根据实际情况,选择最适合自己应用场景的实现方法。也有人这样实现：因为我们只需要在创建类的时候进行同步,所以只要将创建和getInstance()分开,单独为创建加synchronized关键字,也是可以的:
-```java
+``` java
 public class SingletonTest {  
 
     private static SingletonTest instance = null;  
@@ -362,7 +362,7 @@ public class SingletonTest {
 
 考虑性能的话,整个程序只需创建一次实例,所以性能也不会有什么影响。<font color='red'>补充：采用"影子实例"的办法为单例对象的属性同步更新</font>
 
-```java
+``` java
 public class SingletonTest {  
 
     private static SingletonTest instance = null;  
@@ -406,7 +406,7 @@ public class SingletonTest {
 工厂类模式提供的是创建单个类的模式,而建造者模式则是将各种产品集中起来进行管理,用来创建复合对象,所谓复合对象就是指某个类具有不同的属性,其实建造者模式就是前面抽象工厂模式和最后的Test结合起来得到的。我们看一下代码：
 还和前面一样,一个Sender接口,两个实现类MailSender和SmsSender。最后,建造者类如下：
 
-```java
+``` java
 public class Builder {  
 
     private List<Sender> list = new ArrayList<Sender>();  
@@ -426,7 +426,7 @@ public class Builder {
 ```
 测试类:
 
-```java
+``` java
 public class Test {  
 
     public static void main(String[] args) {  
@@ -441,7 +441,7 @@ public class Test {
 ## 5. 原型模式(Prototype)
   原型模式虽然是创建型的模式,但是与工程模式没有关系,从名字即可看出,该模式的思想就是将一个对象作为原型,对其进行复制、克隆,产生一个和原对象类似的新对象。本小结会通过对象的复制,进行讲解。在Java中,复制对象是通过clone()实现的,先创建一个原型类：
 
-```java
+``` java
 public class Prototype implements Cloneable {  
 
     public Object clone() throws CloneNotSupportedException {  
@@ -458,7 +458,7 @@ public class Prototype implements Cloneable {
 - 深复制：将一个对象复制后,不论是基本数据类型还有引用类型,都是重新创建的。简单来说,
 就是深复制进行了完全彻底的复制,而浅复制不彻底。此处,写一个深浅复制的例子：
 
-```java
+``` java
 public class Prototype implements Cloneable, Serializable {  
 
     private static final long serialVersionUID = 1L;  
