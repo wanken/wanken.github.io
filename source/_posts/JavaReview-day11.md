@@ -60,7 +60,7 @@ Thread类用于描述线程。
 
 也就是说Thread类中的run方法，用于存储线程要运行的代码。
 
-``` java
+```java
 class Demo extends Thread
 {
 	public void run()
@@ -92,7 +92,7 @@ class ThreadDemo
 
 ### 练习
 
-``` java
+```java
 /*
 练习：
 创建两个线程，和主线程交替运行。
@@ -147,7 +147,7 @@ class ThreadTest
 ### 线程的状态图
 ![](/images/post_images/javaReview_day11_img_01)
 
-``` java
+```java
 /*
 需求：
 银行有一个金库。
@@ -219,7 +219,7 @@ class  BankDemo
 静态的同步方法，使用的锁是该方法所在类的字节码文件对象。 类名.class
 
 
-``` java
+```java
 
 class Ticket implements Runnable
 {
@@ -281,7 +281,7 @@ class  StaticMethodDemo
 需求：简单的卖票程序。
 多个窗口同时买票。
 
-``` java
+```java
 class Ticket implements Runnable//extends Thread
 {
 	private  int tick = 100;
@@ -371,7 +371,7 @@ class  TicketDemo
 一个线程在同步函数中。
 都在执行买票动作。
 
-``` java
+```java
 class Ticket implements Runnable
 {
 	private  int tick = 100;
@@ -435,7 +435,7 @@ class  ThisLockDemo
 ### 线程安全在单例设计模式中的应用
 
 - 饿汉式
-``` java
+```java
 class Single
 {
 	private static final Single s = new Single();
@@ -449,7 +449,7 @@ class Single
 
 - 懒汉式
 
-``` java
+```java
 
 
 class Single
@@ -488,7 +488,7 @@ class SingleDemo
 死锁。
 同步中嵌套同步。
 
-``` java
+```java
 class Ticket implements Runnable
 {
 	private  int tick = 1000;
@@ -541,7 +541,7 @@ class  DeadLockDemo
 ```
 
 #### 死锁练习
-``` java
+```java
 
 class Test implements Runnable
 {
@@ -730,7 +730,7 @@ Java就对这种解决方式提供了专业的代码。
 
 ### 第二重点：同步的所有特性
 
-``` java
+```java
 
 class Thread
 {

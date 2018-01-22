@@ -27,7 +27,7 @@ type:
 
 ### 静态变量和非静态变量的举例
 
-``` java
+```java
     class Person{
          String name;//成员变量，实例变量
        static String country = "CN";//静态变量。类变量
@@ -90,7 +90,7 @@ type:
 
   PS: 向 main 函数中传入 "hehe" "enen" "oo" 三个参数
 
-``` java
+```java
   class MainDemo
   {
       public static void main(String[] args) {
@@ -128,7 +128,7 @@ type:
 
 - 只有用到类中的内容是, 类才被加载
 
-``` java
+```java
 class Demo{
   System.out.println("a");
 }
@@ -178,7 +178,7 @@ class TestDemo{
 
 - 格式:
 
-  ``` java
+  ```java
   class{
     static{
         //静态代码块中的执行语句
@@ -192,7 +192,7 @@ class TestDemo{
 
 ### 应用: 类中各个代码块之间的执行顺序
 
-``` java
+```java
 
   class StaticCode{
 
@@ -238,7 +238,7 @@ class StaticCodeDemo{
 
 ## 对象的初始化过程
 
-``` java
+```java
 class class Person
 {
     private int age;
@@ -286,7 +286,7 @@ class  PersonDemo
 #### 例子
 
 下面是一个简单的单例设计模式的例子
-``` java
+```java
 
   class Single{
 
@@ -305,7 +305,7 @@ class  PersonDemo
 ```
 #### 饿汉式
 
-``` java
+```java
 
   class Single{
     private Single(){}
@@ -319,7 +319,7 @@ class  PersonDemo
 
 ### 懒汉式
 
-``` java
+```java
 
   class Single{
     private Single(){}
@@ -341,7 +341,7 @@ class  PersonDemo
 - 饿汉式不管调不调用, 都会先加载对象, 而懒汉式则会在需要时才会进行加载对象
 
 ##### 懒汉式最终解决方案
-``` java
+```java
   class Single{
     private Single(){}
     private static Single single = null;

@@ -17,7 +17,7 @@ type:
 其实就是多个线程在操作同一个资源，
 但是操作的动作不同。</font>
 
-``` java
+```java
 class ProducerConsumerDemo
 {
 	public static void main(String[] args)
@@ -51,7 +51,7 @@ class ProducerConsumerDemo
 
 
 
-``` java
+```java
 class Resource
 {
 	private String name;
@@ -135,7 +135,7 @@ JDK1.5 中提供了多线程升级解决方案。
   	signal();
   	signalAll();
 
-``` java
+```java
 import java.util.concurrent.locks.*;
 
 class ProducerConsumerDemo2
@@ -261,7 +261,7 @@ class Consumer implements Runnable
 }
 ```
 
-``` java
+```java
 class Res
 {
 	private String name;
@@ -374,7 +374,7 @@ class  InputOutputDemo2
 
 Thread类提供该方法 `interrupt()`;
 
-``` java
+```java
 
 class StopThread implements Runnable
 {
@@ -438,7 +438,7 @@ join:
 join可以用来临时加入线程执行。
 
 
-``` java
+```java
 
 class Demo implements Runnable
 {
@@ -479,7 +479,7 @@ class  JoinDemo
 
 ### 练习
 
-``` java
+```java
 class MyThread extends Thread{
 	public void run(){
 		try {
@@ -562,7 +562,7 @@ t线程获取执行权，调用自己的run方法。然后执行的`sleep(3000);
 	和以前不同是：一个同步代码块具备一个锁，该所以具备自己的独立wait和notify方法。
 	现在是将wait，notify等方法，封装进一个特有的对象Condition，而一个Lock锁上可以有多个Condition对象。
 
-``` java
+```java
 
 	Lock lock = new ReentrantLock();
 

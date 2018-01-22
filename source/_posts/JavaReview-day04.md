@@ -32,7 +32,7 @@ type:
 #### 数组排序
 ##### 选择排序
 
-``` java
+```java
         public void selectSort(int[] arr){
             for(int x = 0; x < arr.length-1; x++){
                 for(int y = x + 1; y < arr.length; y++){
@@ -48,7 +48,7 @@ type:
 > 说明: 选择排序是用当前元素与其他所有元素比较, 如果符合条件,就交换位置
 
 ##### 冒泡排序
-``` java
+```java
         public void bubbleSort(int[] arr){
             for(int x = 0; x < arr.length; x ++){
                 for(int y = 0; y < arr.length - x - 1; y ++){
@@ -66,7 +66,7 @@ type:
 ##### 使用 java.util包中的 Array.sort(arr); 可以进行排序数组
 
 - 将数组交换的方法进行封装
-``` java
+```java
         public void swap(int[] arr, int a, int b){
             int temp = arr[a];
             arr[b] = arr[a];
@@ -75,7 +75,7 @@ type:
 ```
 ##### 使用异或方式实现
 
-``` java
+```java
         public void swap1(int arr, int a, int b){
             arr[b] = arr[b] ^ arr[a];
             arr[a] = arr[b] ^ arr[a];
@@ -85,7 +85,7 @@ type:
 
 #### 折半查找
 ##### 第一种方式
-``` java
+```java
      public int halfSearch (int[] arr, int key){
        int min = 0;
        int max = arr.length - 1;
@@ -102,7 +102,7 @@ type:
      }
 ```
 ##### 第二种方式
-``` java
+```java
      public int halfSearch2(int arr[], int key){
        int min = 0;
        int max = arr.length;
@@ -128,7 +128,7 @@ type:
 - 思路: 通过折半查找, 找到所插入数组的下标, 如果数组中存在与插入值相同的值,则在该元素之前插入
 
 ##### 十进制转二进制
-  ``` java
+  ```java
     public void decimalToBinary() {
             int num = 8;
             StringBuffer sb = new StringBuffer();
@@ -143,7 +143,7 @@ type:
 ##### 十进制转十六进制
  - 第一种方式
 
-``` java
+```java
   public void decimalToHexadecimal() {
         int num = 60;
         StringBuffer stringBuffer = new StringBuffer();
@@ -161,7 +161,7 @@ type:
 ```
 **二维数组的定义方法**
 
-``` java
+```java
 int[][] array = {{1,2},{34,5,7}};
 int[][] array1 = new int[][]{{10,20,30},{40,50},{60}};
 short[][] array3 = new short[5][8];

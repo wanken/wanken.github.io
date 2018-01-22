@@ -56,7 +56,7 @@ type:
 
 #### 构造代码块示例:
 
-  ``` java
+  ```java
   class User{
     private String name;
     //以下'{}'和其中的内容为构造代码块
@@ -72,14 +72,14 @@ type:
 ### this 关键字:
   1. this 代表的是本类对象, 即 this 所在函数所属对象的引用
   2. this语句:
-    ``` java
+    ```java
     this(xxx);
     ```
     作用: this()用于构造函数之间的调用
     特性: this() 必须在第一行，以保证在执行任何动作前，对象已经完成了初始化。
   3. **注意: 以下代码会进入死循环状态, 构造函数之间不可以循环调用**
 
-  ``` java
+  ```java
     class Persion{
       int age;
       String name;
