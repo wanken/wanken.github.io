@@ -24,16 +24,21 @@
 
   {% elseif theme.disqus.enable %}
     <div class="comments" id="comments">
-    <!--添加disqus延迟加载按钮-->
-      <div style="text-align:center;">
+    <!--添加disqus延迟加载-->
+    <div style="text-align:center;">
+      <button class="btn" id="load-livere" onclick="livere.load();">加载 LiveRe 评论</button>
+    </div>
+    <div style="text-align:center;">
         <button class="disbtn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button>
       </div>
+
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
           <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
       </div>
+      <div id="lv-container" data-id="city" data-uid="{{ theme.livere_uid }}"></div>
     </div>
 
   {% elseif theme.hypercomments_id %}
