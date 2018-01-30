@@ -88,6 +88,7 @@ menu:
   categories: /categories/ || th
   archives: /archives/ || archive
   tags: /tags/ || tags
+  photos: /photos/
   #about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -352,8 +353,8 @@ han: false
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: waver
   count: true
 
 # Hypercomments

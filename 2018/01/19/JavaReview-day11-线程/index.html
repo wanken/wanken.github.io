@@ -107,7 +107,7 @@
 
 
 
-<meta name="description" content="线程进程和线程的区别 进程:是一个正在执行中的程序。  每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制元。  线程：就是进程中的一个独立的控制单元。 线程在控制着进程的执行。 特点一个进程中至少有一个线程。   举例: Java VM  启动的时候会有一个进程java.exe.该进程中至少一有个线">
+<meta name="description" content="线程进程和线程的区别 进程:是一个正在执行中的程序。  每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制元。  线程：就是进程中的一个独立的控制单元。 线程在控制着进程的执行。 特点一个进程中至少有一个线程。   举例: Java VM  启动的时候会有一个进程java.exe.该进程中至少一有个线程负责java程序的执行。而且这个线程运行的代码存在于main方法中。该线程称之">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaReview-day11-线程">
@@ -250,6 +250,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            photos
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -381,6 +391,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/19/JavaReview-day11-线程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/19/JavaReview-day11-线程/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -626,6 +647,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -677,7 +708,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -688,7 +719,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -699,7 +730,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -930,6 +961,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://waver.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://wavejoker.github.io/2018/01/19/JavaReview-day11-线程/';
+          this.page.identifier = '2018/01/19/JavaReview-day11-线程/';
+          this.page.title = 'JavaReview-day11-线程';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://waver.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -942,10 +993,6 @@
   
 
 
-
-
-
-  
 
 
 

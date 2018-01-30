@@ -107,7 +107,7 @@
 
 
 
-<meta name="description" content="String及其他 本篇主要介绍介绍String和其他基本数据类型的包装类型及其常用方法;  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class StringDemo&amp;#">
+<meta name="description" content="String及其他 本篇主要介绍介绍String和其他基本数据类型的包装类型及其常用方法;  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class StringDemo&amp;#123;	public static void main(String[] args)">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaReview-day13-String">
@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Waver&#39;s Blog">
 <meta property="og:description" content="String及其他 本篇主要介绍介绍String和其他基本数据类型的包装类型及其常用方法;  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class StringDemo&amp;#123;	public static void main(String[] args)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-22T10:10:07.656Z">
+<meta property="og:updated_time" content="2018-01-27T06:27:06.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaReview-day13-String">
 <meta name="twitter:description" content="String及其他 本篇主要介绍介绍String和其他基本数据类型的包装类型及其常用方法;  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950class StringDemo&amp;#123;	public static void main(String[] args)">
@@ -245,6 +245,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            photos
           </a>
         </li>
       
@@ -379,6 +389,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/21/JavaReview-day13-String/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/21/JavaReview-day13-String/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -591,6 +612,7 @@ toOctalString();</code></li>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntegerDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sop</span><span class="params">(String str)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//整数类型的最大值。</span></span><br><span class="line">		<span class="comment">//sop("int max :"+Integer.MAX_VALUE);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//		将一个字符串转成整数。</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> num = Integer.parseInt(<span class="string">"123"</span>);<span class="comment">//必须传入数字格式的字符串。</span></span><br><span class="line">		<span class="comment">//long x = Long.parseLong("123");</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//		sop("num="+(num+4));</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//		sop(Integer.toBinaryString(-6));</span></span><br><span class="line"><span class="comment">//		sop(Integer.toHexString(60));</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> x = Integer.parseInt(<span class="string">"3c"</span>,<span class="number">16</span>);</span><br><span class="line"></span><br><span class="line">		sop(<span class="string">"x="</span>+x);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="Integer常用方法"><a href="#Integer常用方法" class="headerlink" title="Integer常用方法"></a>Integer常用方法</h3><p>/*<br>JDK1.5版本以后出现的新特性。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntegerDemo1</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//		Integer x = new Integer(4);</span></span><br><span class="line"></span><br><span class="line">		Integer x = <span class="number">4</span>;<span class="comment">//自动装箱。//new Integer(4)</span></span><br><span class="line">		x = x<span class="comment">/* x.intValue() */</span> + <span class="number">2</span>;<span class="comment">//x+2:x 进行自动拆箱。变成成了int类型。和2进行加法运算。</span></span><br><span class="line">		<span class="comment">//再将和进行装箱赋给x。</span></span><br><span class="line"></span><br><span class="line">		Integer m = <span class="number">128</span>;</span><br><span class="line">		Integer n = <span class="number">128</span>;</span><br><span class="line"></span><br><span class="line">		sop(<span class="string">"m==n:"</span>+(m==n));</span><br><span class="line"></span><br><span class="line">		Integer a = <span class="number">127</span>;</span><br><span class="line">		Integer b = <span class="number">127</span>;</span><br><span class="line"></span><br><span class="line">		sop(<span class="string">"a==b:"</span>+(a==b));<span class="comment">//结果为true。因为a和b指向了同一个Integer对象。</span></span><br><span class="line">	   <span class="comment">//因为当数值在byte范围内容，对于新特性，如果该数值已经存在，则不会在开辟新的空间。</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Integer x = <span class="keyword">new</span> Integer(<span class="string">"123"</span>);</span><br><span class="line"></span><br><span class="line">		Integer y = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">		sop(<span class="string">"x==y:"</span>+(x==y));</span><br><span class="line">		sop(<span class="string">"x.equals(y):"</span>+x.equals(y));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sop</span><span class="params">(String str)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sop</span><span class="params">(Object str)</span><span class="comment">//Object str = new Integer(4);</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">		sop(<span class="number">4</span>);</span><br><span class="line"><span class="comment">//		int[] arr = &#123;3,1,5,8,23,9&#125;;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//		System.out.println(toString(arr));</span></span><br><span class="line"><span class="comment">//		System.out.println(toString_2(arr));</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toString_2</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">		sb.append(<span class="string">"["</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;arr.length; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x!=arr.length-<span class="number">1</span>)</span><br><span class="line">				sb.append(arr[x]+<span class="string">", "</span>);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				sb.append(arr[x]+<span class="string">"&#125;"</span>);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span>  sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toString</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String str = <span class="string">"["</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;arr.length; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x!=arr.length-<span class="number">1</span>)</span><br><span class="line">				str += arr[x]+<span class="string">", "</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				str += arr[x]+<span class="string">"]"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> str;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -663,6 +685,16 @@ toOctalString();</code></li>
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -714,7 +746,7 @@ toOctalString();</code></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -725,7 +757,7 @@ toOctalString();</code></li>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -736,7 +768,7 @@ toOctalString();</code></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -804,7 +836,7 @@ toOctalString();</code></li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String及其他"><span class="nav-number">1.</span> <span class="nav-text">String及其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-获取。"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.获取。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-判断。"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.判断。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-转换。"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.转换。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-替换"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-切割"><span class="nav-number">1.1.5.</span> <span class="nav-text">5.切割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-子串。获取字符串中的一部分。"><span class="nav-number">1.1.6.</span> <span class="nav-text">6.子串。获取字符串中的一部分。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-转换，去除空格，比较。"><span class="nav-number">1.1.7.</span> <span class="nav-text">7.转换，去除空格，比较。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String实战"><span class="nav-number">2.</span> <span class="nav-text">String实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实战一"><span class="nav-number">2.1.</span> <span class="nav-text">实战一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战二"><span class="nav-number">2.2.</span> <span class="nav-text">实战二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战三"><span class="nav-number">2.3.</span> <span class="nav-text">实战三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战四"><span class="nav-number">2.4.</span> <span class="nav-text">实战四</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuffer"><span class="nav-number">3.</span> <span class="nav-text">StringBuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点："><span class="nav-number">3.1.</span> <span class="nav-text">特点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuilder"><span class="nav-number">4.</span> <span class="nav-text">StringBuilder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">4.1.</span> <span class="nav-text">API:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装类"><span class="nav-number">5.</span> <span class="nav-text">包装类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型对象包装类的最常见作用，"><span class="nav-number">5.1.</span> <span class="nav-text">基本数据类型对象包装类的最常见作用，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer常用方法"><span class="nav-number">5.2.</span> <span class="nav-text">Integer常用方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#String及其他"><span class="nav-number">1.</span> <span class="nav-text">String及其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.1.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-获取。"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.获取。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-判断。"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.判断。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-转换。"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.转换。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-替换"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-切割"><span class="nav-number">1.1.5.</span> <span class="nav-text">5.切割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-子串。获取字符串中的一部分。"><span class="nav-number">1.1.6.</span> <span class="nav-text">6.子串。获取字符串中的一部分。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-转换，去除空格，比较。"><span class="nav-number">1.1.7.</span> <span class="nav-text">7.转换，去除空格，比较。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String实战"><span class="nav-number">2.</span> <span class="nav-text">String实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实战一"><span class="nav-number">2.1.</span> <span class="nav-text">实战一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战二"><span class="nav-number">2.2.</span> <span class="nav-text">实战二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战三"><span class="nav-number">2.3.</span> <span class="nav-text">实战三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实战四"><span class="nav-number">2.4.</span> <span class="nav-text">实战四</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuffer"><span class="nav-number">3.</span> <span class="nav-text">StringBuffer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#特点："><span class="nav-number">3.1.</span> <span class="nav-text">特点：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StringBuilder"><span class="nav-number">4.</span> <span class="nav-text">StringBuilder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">4.1.</span> <span class="nav-text">API:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装类"><span class="nav-number">5.</span> <span class="nav-text">包装类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基本数据类型对象包装类的最常见作用，"><span class="nav-number">5.1.</span> <span class="nav-text">基本数据类型对象包装类的最常见作用，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Integer常用方法"><span class="nav-number">5.2.</span> <span class="nav-text">Integer常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Demo"><span class="nav-number">5.2.1.</span> <span class="nav-text">Demo</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -967,6 +999,26 @@ toOctalString();</code></li>
 
   
 
+    
+      <script id="dsq-count-scr" src="https://waver.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://wavejoker.github.io/2018/01/21/JavaReview-day13-String/';
+          this.page.identifier = '2018/01/21/JavaReview-day13-String/';
+          this.page.title = 'JavaReview-day13-String';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://waver.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -979,10 +1031,6 @@ toOctalString();</code></li>
   
 
 
-
-
-
-  
 
 
 

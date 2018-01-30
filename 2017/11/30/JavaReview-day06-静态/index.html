@@ -107,7 +107,7 @@
 
 
 
-<meta name="description" content="Java复习第6天static 关键字static 的特点: 内存特点  存储位置: data segment(数据区 [也叫 共享区/方法区]); 可以通过 “类名.静态成员” 的方式调用; 随着类的加载而加载, 随着类的消失而消失(说明它的生命周期最长); 优先于对象存在(加载); 被所有对象所共享 只有数据被多个">
+<meta name="description" content="Java复习第6天static 关键字static 的特点: 内存特点  存储位置: data segment(数据区 [也叫 共享区/方法区]); 可以通过 “类名.静态成员” 的方式调用; 随着类的加载而加载, 随着类的消失而消失(说明它的生命周期最长); 优先于对象存在(加载); 被所有对象所共享 只有数据被多个对象共享是才适合定义静态 可以直接被类名调用    静态变量和非静态变量的举例1">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaReview-day06-静态">
@@ -248,6 +248,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            photos
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -379,6 +389,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/30/JavaReview-day06-静态/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/11/30/JavaReview-day06-静态/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -640,6 +661,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -691,7 +722,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -702,7 +733,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -713,7 +744,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -944,6 +975,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://waver.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://wavejoker.github.io/2017/11/30/JavaReview-day06-静态/';
+          this.page.identifier = '2017/11/30/JavaReview-day06-静态/';
+          this.page.title = 'JavaReview-day06-静态';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://waver.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -956,10 +1007,6 @@
   
 
 
-
-
-
-  
 
 
 

@@ -107,7 +107,7 @@
 
 
 
-<meta name="description" content="继承特点:  提高了代码的复用性; 让类与类之间产生了关系. 有了这个关系, 才有了多态的特性; Java中只支持单继承, 不支持多继承, 因为继承容易带来安全隐患  重写(覆盖) 当子类中出现和父类一模一样的函数时, 当子类对象调用该函数, 会运行子类函数的内容, 如同父类的函数被覆盖一样. 当子类继承父类, 沿袭了">
+<meta name="description" content="继承特点:  提高了代码的复用性; 让类与类之间产生了关系. 有了这个关系, 才有了多态的特性; Java中只支持单继承, 不支持多继承, 因为继承容易带来安全隐患  重写(覆盖) 当子类中出现和父类一模一样的函数时, 当子类对象调用该函数, 会运行子类函数的内容, 如同父类的函数被覆盖一样. 当子类继承父类, 沿袭了父类的功能, 到子类中, 但是子类具备该功能, 但是功能的内容却和父类不一致,">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaReview-day07-继承">
@@ -248,6 +248,16 @@
           </a>
         </li>
       
+        
+        <li class="menu-item menu-item-photos">
+          <a href="/photos/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            photos
+          </a>
+        </li>
+      
 
       
         <li class="menu-item menu-item-search">
@@ -379,6 +389,17 @@
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/18/JavaReview-day07-继承/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/18/JavaReview-day07-继承/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -551,6 +572,16 @@
           
 
   
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
 
 
 
@@ -602,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -613,7 +644,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -624,7 +655,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -855,6 +886,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://waver.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://wavejoker.github.io/2017/12/18/JavaReview-day07-继承/';
+          this.page.identifier = '2017/12/18/JavaReview-day07-继承/';
+          this.page.title = 'JavaReview-day07-继承';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://waver.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -867,10 +918,6 @@
   
 
 
-
-
-
-  
 
 
 
