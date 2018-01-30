@@ -625,6 +625,10 @@ after proxy!</code></p>
 
   
     <div class="comments" id="comments">
+    <!--添加disqus延迟加载按钮-->
+      <div style="text-align:center;">
+        <button class="disbtn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button>
+      </div>
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
@@ -943,6 +947,7 @@ after proxy!</code></p>
     
 
     
+      <!-- 替换为点击加载
       <script type="text/javascript">
         var disqus_config = function () {
           this.page.url = 'http://wavejoker.github.io/2017/12/25/Java中的23中设计模式-二/';
@@ -954,7 +959,30 @@ after proxy!</code></p>
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
       </script>
+      -->
+
+      <script type="text/javascript">
+        var disqus = {
+          load : function disqus(){
+            if(typeof DISQUS !== 'object') {
+              (function () {
+                var disqus_config = function () {
+                this.page.url = 'http://wavejoker.github.io/2017/12/25/Java中的23中设计模式-二/';
+              this.page.identifier = '2017/12/25/Java中的23中设计模式-二/';
+              this.page.title = 'Java中的23中设计模式(二)';
+              };
+              var d = document, s = d.createElement('script');
+              s.src = 'https://waver.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', '' + +new Date());
+              (d.head || d.body).appendChild(s);
+              }());
+              $('#load-disqus').remove(); ///加载后移除按钮
+              }
+            }
+          }
+    </script>
     
+
 
   
 

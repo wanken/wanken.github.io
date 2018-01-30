@@ -24,6 +24,10 @@
 
   {% elseif theme.disqus.enable %}
     <div class="comments" id="comments">
+    <!--添加disqus延迟加载按钮-->
+      <div style="text-align:center;">
+        <button class="disbtn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button>
+      </div>
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the

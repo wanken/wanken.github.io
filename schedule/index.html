@@ -350,6 +350,10 @@
 
   
     <div class="comments" id="comments">
+    <!--添加disqus延迟加载按钮-->
+      <div style="text-align:center;">
+        <button class="disbtn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button>
+      </div>
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
@@ -643,6 +647,7 @@
     
 
     
+      <!-- 替换为点击加载
       <script type="text/javascript">
         var disqus_config = function () {
           this.page.url = 'http://wavejoker.github.io/schedule/index.html';
@@ -654,7 +659,30 @@
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
       </script>
+      -->
+
+      <script type="text/javascript">
+        var disqus = {
+          load : function disqus(){
+            if(typeof DISQUS !== 'object') {
+              (function () {
+                var disqus_config = function () {
+                this.page.url = 'http://wavejoker.github.io/schedule/index.html';
+              this.page.identifier = 'schedule/index.html';
+              this.page.title = 'schedule';
+              };
+              var d = document, s = d.createElement('script');
+              s.src = 'https://waver.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', '' + +new Date());
+              (d.head || d.body).appendChild(s);
+              }());
+              $('#load-disqus').remove(); ///加载后移除按钮
+              }
+            }
+          }
+    </script>
     
+
 
   
 
