@@ -687,16 +687,16 @@ pace: false
 # pace_theme: pace-theme-center-simple
 pace_theme: pace-theme-corner-indicator
 
-# Canvas-nest
+# Canvas-nest 连点动画
 canvas_nest: false
 
-# three_waves
+# three_waves 波浪动画
 three_waves: false
 
-# canvas_lines
+# canvas_lines 射线
 canvas_lines: false
 
-# canvas_sphere
+# canvas_sphere 页面中央球状动画
 canvas_sphere: false
 
 # Only fit scheme Pisces
@@ -706,7 +706,7 @@ canvas_sphere: false
 # zIndex: The display level of the ribbon.
 canvas_ribbon:
   enable: false
-  size: 300
+  size: 100
   alpha: 0.6
   zIndex: -1
 
