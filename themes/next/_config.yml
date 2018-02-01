@@ -696,7 +696,7 @@ pace: false
 pace_theme: pace-theme-corner-indicator
 
 # Canvas-nest 连点动画
-canvas_nest: false
+canvas_nest: true
 
 # three_waves 波浪动画
 three_waves: false
