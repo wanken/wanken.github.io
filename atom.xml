@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wavejoker.coding.me/"/>
-  <updated>2018-01-28T10:25:06.731Z</updated>
+  <updated>2018-02-01T16:18:51.954Z</updated>
   <id>http://wavejoker.coding.me/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 找不到或无法加载主类XXX终极解决方案</title>
+    <link href="http://wavejoker.coding.me/2018/02/01/Java-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BBXXX%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://wavejoker.coding.me/2018/02/01/Java-找不到或无法加载主类XXX终极解决方案/</id>
+    <published>2018-02-01T15:47:43.000Z</published>
+    <updated>2018-02-01T16:18:51.954Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="起因-作者的悲惨经历-可略过"><a href="#起因-作者的悲惨经历-可略过" class="headerlink" title="起因(作者的悲惨经历,可略过)"></a>起因(作者的悲惨经历,可略过)</h2><p>今天突发奇想用命令行运行Java文件, 但惊喜的发现出现了找不到或无法加载主类这个错误,  这个错误以前也遇到过, 便轻车熟路的改了, 发现在确认完文件名, 类名, CLASSPATH,  临时环境变量等所有可能的因素后,依然报这个错, 好歹也是搞过好几年Java的人了,不能在这跌跟头, 经过一方折腾后, 但是结果又让人欲哭无泪…</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h2><h3 id="配置错误"><a href="#配置错误" class="headerlink" title="配置错误"></a>配置错误</h3><p>入门就遇到这样的问题，环境变量按网上说的配好了，直接java 和 javac都有提示出来，说明没问题了，</p><p>​    主要是以下两点要注意：</p><ol><li>在classpath的最前面要加一个本目录路径，用.表示，由于后面还有java的dt和tools两个路径，所以.后要加;进行分隔表示。   </li><li>更为重要的是，在cmd下运行javac 和java的时候，必须在该java文件的目录下运行，这样生成的class也在该目录下，java的时候也会第一个就在本目录下找class文件，就不 会提示找不到了。这个cmd运行路径由于一般不太注意，输入cmd就会直接到c:\个人文件夹下，而一般的java文件会用其它软件编写，放在选定的路径 下，这两个路径很少能主动重合，一运行当然找不到了，但是javac能认到，不知为什么java就提示找不到？这点有点奇怪。网上各种解决方法里很少注意 到其实就是这个小问题造成的找不到类，都想当然的以为是在java源文件路径下运行java，那当然就找不到基本问题所在了。</li></ol><p>​    如果1、2都做了还是没变化，那就是该计算机改了环境变量后需要重新启动下让新的设置生效，重启下即可</p><blockquote><p>以上解决方案转自 <a href="http://blog.csdn.net/wangjiaweiwei/article/details/42212525" target="_blank" rel="noopener">javac编译成功，用java运行class文件出现“找不到或无法加载主类” 的问题</a></p></blockquote><h3 id="语法错误"><a href="#语法错误" class="headerlink" title="语法错误"></a>语法错误</h3><p>语法错误分两种:</p><ol><li><p>文件名与主类名不相同</p></li><li><p>package 包不存在</p><p><strong>第二种错误很容易忽视.在这踩个坑</strong> (笔者就是因为将IDEA中的文件直接考出来才…….,一切尽在不言中, 你们可能很难想象在半夜12点数次装Java配环境变量的紧张与刺激!)​</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;起因-作者的悲惨经历-可略过&quot;&gt;&lt;a href=&quot;#起因-作者的悲惨经历-可略过&quot; class=&quot;headerlink&quot; title=&quot;起因(作者的悲惨经历,可略过)&quot;&gt;&lt;/a&gt;起因(作者的悲惨经历,可略过)&lt;/h2&gt;&lt;p&gt;今天突发奇想用命令行运行Java文件, 
+      
+    
+    </summary>
+    
+      <category term="Exception" scheme="http://wavejoker.coding.me/categories/Exception/"/>
+    
+    
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>工具推荐-第一期-AutoHotKey</title>
@@ -521,35 +546,6 @@
       <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
       <category term="FTP" scheme="http://wavejoker.coding.me/tags/FTP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次Redis连接用尽异常解决</title>
-    <link href="http://wavejoker.coding.me/2017/12/01/%E8%AE%B0%E4%B8%80%E6%AC%A1Redis%E8%BF%9E%E6%8E%A5%E7%94%A8%E5%B0%BD%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/"/>
-    <id>http://wavejoker.coding.me/2017/12/01/记一次Redis连接用尽异常解决/</id>
-    <published>2017-12-01T03:04:30.000Z</published>
-    <updated>2018-01-22T09:45:56.126Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>不知怎么突然jedis出现 “Could not get a resource from the pool” 错误,错误原因是连接池中的链接用尽</p></blockquote><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法:"></a>解决方法:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool  </span><br><span class="line">    at redis.clients.util.Pool.getResource(Pool.java:22)  </span><br><span class="line">    at com.derbysoft.jredis.longkeytest.BorrowObject.run(BorrowObject.java:22)  </span><br><span class="line">    at java.lang.Thread.run(Thread.java:662)  </span><br><span class="line">Caused by: java.util.NoSuchElementException: Timeout waiting for idle object  </span><br><span class="line">    at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1134)  </span><br><span class="line">    at redis.clients.util.Pool.getResource(Pool.java:20)  </span><br><span class="line">    ... 2 more</span><br></pre></td></tr></table></figure><a id="more"></a><h3 id="增加-Jedis-的活动连接数"><a href="#增加-Jedis-的活动连接数" class="headerlink" title="增加 Jedis 的活动连接数:"></a>增加 Jedis 的活动连接数:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;jedisPoolConfig&quot; class=&quot;redis.clients.jedis.JedisPoolConfig&quot;&gt;</span><br><span class="line">&lt;!-- 最大连接数 --&gt;</span><br><span class="line">&lt;property name=&quot;maxTotal&quot; value=&quot;300&quot; /&gt;</span><br><span class="line">&lt;!-- 最大空闲连接数 --&gt;</span><br><span class="line">&lt;property name=&quot;maxIdle&quot; value=&quot;50&quot; /&gt;</span><br><span class="line">&lt;!-- 每次释放连接的最大数目 --&gt;</span><br><span class="line">&lt;property name=&quot;numTestsPerEvictionRun&quot; value=&quot;1024&quot; /&gt;</span><br><span class="line">&lt;!-- 释放连接的扫描间隔（毫秒） --&gt;</span><br><span class="line">&lt;property name=&quot;timeBetweenEvictionRunsMillis&quot; value=&quot;30000&quot; /&gt;</span><br><span class="line">&lt;!-- 连接最小空闲时间 --&gt;</span><br><span class="line">&lt;property name=&quot;minEvictableIdleTimeMillis&quot; value=&quot;1800000&quot; /&gt;</span><br><span class="line">&lt;!-- 连接空闲多久后释放, 当空闲时间&gt;该值 且 空闲连接&gt;最大空闲连接数 时直接释放 --&gt;</span><br><span class="line">&lt;property name=&quot;softMinEvictableIdleTimeMillis&quot; value=&quot;10000&quot; /&gt;</span><br><span class="line">&lt;!-- 获取连接时的最大等待毫秒数,小于零:阻塞不确定的时间,默认-1 --&gt;</span><br><span class="line">&lt;property name=&quot;maxWaitMillis&quot; value=&quot;1500&quot; /&gt;</span><br><span class="line">&lt;!-- 在获取连接的时候检查有效性, 默认false --&gt;</span><br><span class="line">&lt;property name=&quot;testOnBorrow&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">&lt;!-- 在空闲时检查有效性, 默认false --&gt;</span><br><span class="line">&lt;property name=&quot;testWhileIdle&quot; value=&quot;true&quot; /&gt;</span><br><span class="line">&lt;!-- 连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true --&gt;</span><br><span class="line">&lt;property name=&quot;blockWhenExhausted&quot; value=&quot;false&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure><h3 id="将最大连接数增加到-300-但是错误仍然出现-检查代码发现-连接用完后并没有释放"><a href="#将最大连接数增加到-300-但是错误仍然出现-检查代码发现-连接用完后并没有释放" class="headerlink" title="将最大连接数增加到 300, 但是错误仍然出现, 检查代码发现, 连接用完后并没有释放."></a>将最大连接数增加到 300, 但是错误仍然出现, 检查代码发现, 连接用完后并没有释放.</h3><ul><li>使用 <strong>jedis.close();</strong> 释放资源后问题解决, 修改前的代码:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public String get(String key) &#123;</span><br><span class="line">     Jedis jedis = jedisPool.getResource();</span><br><span class="line">     String get = jedis.get(key);</span><br><span class="line">     return get;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li></ul><p>修改后的代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public String get(String key) &#123;</span><br><span class="line">     Jedis jedis = jedisPool.getResource();</span><br><span class="line">     String get = jedis.get(key);</span><br><span class="line">     jedis.close();</span><br><span class="line">     return get;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;不知怎么突然jedis出现 “Could not get a resource from the pool” 错误,错误原因是连接池中的链接用尽&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;解决方法&quot;&gt;&lt;a href=&quot;#解决方法&quot; class=&quot;headerlink&quot; title=&quot;解决方法:&quot;&gt;&lt;/a&gt;解决方法:&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;redis.clients.jedis.exceptions.JedisConnectionException: Could not get a resource from the pool  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at redis.clients.util.Pool.getResource(Pool.java:22)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at com.derbysoft.jredis.longkeytest.BorrowObject.run(BorrowObject.java:22)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at java.lang.Thread.run(Thread.java:662)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Caused by: java.util.NoSuchElementException: Timeout waiting for idle object  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1134)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    at redis.clients.util.Pool.getResource(Pool.java:20)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ... 2 more&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="Exception" scheme="http://wavejoker.coding.me/categories/Exception/"/>
-    
-    
-      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
-    
-      <category term="Redis" scheme="http://wavejoker.coding.me/tags/Redis/"/>
-    
-      <category term="Jedis" scheme="http://wavejoker.coding.me/tags/Jedis/"/>
     
   </entry>
   
