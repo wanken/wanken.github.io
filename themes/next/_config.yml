@@ -89,6 +89,7 @@ menu:
   archives: /archives/ || archive
   tags: /tags/ || tags
   image: /image/ || image
+  comments: /comments/ || comments
   #about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -97,6 +98,13 @@ menu:
 # Enable/Disable menu icons.
 menu_icons:
   enable: true
+  home: home
+  about: user
+  categories: th
+  tags: tags
+  image: photo
+  archives: archive
+  comments: comments
 
 
 # ---------------------------------------------------------------
@@ -105,8 +113,8 @@ menu_icons:
 
 # Schemes
 #scheme: Muse
-#scheme: Mist
-scheme: Pisces
+scheme: Mist
+#scheme: Pisces
 #scheme: Gemini
 
 

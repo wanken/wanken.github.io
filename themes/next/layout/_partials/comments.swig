@@ -26,7 +26,7 @@
     <div class="comments" id="comments">
     <!--添加disqus延迟加载-->
     <div style="text-align:center;">
-      <button class="btn" id="load-livere" onclick="livere.load();">加载 LiveRe 评论</button>
+      <button class="mybtn" id="load-livere" onclick="livere.load();">加载 LiveRe 评论</button>
     </div>
     <div style="text-align:center;">
         <button class="disbtn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button>
