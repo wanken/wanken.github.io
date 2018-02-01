@@ -5,9 +5,9 @@
   <subtitle>个人知识博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://wavejoker.github.io/"/>
+  <link href="http://wavejoker.coding.me/"/>
   <updated>2018-01-28T10:25:06.731Z</updated>
-  <id>http://wavejoker.github.io/</id>
+  <id>http://wavejoker.coding.me/</id>
   
   <author>
     <name>Waver</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>工具推荐-第一期-AutoHotKey</title>
-    <link href="http://wavejoker.github.io/2018/01/28/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90-%E7%AC%AC%E4%B8%80%E6%9C%9F-AutoHotKey/"/>
-    <id>http://wavejoker.github.io/2018/01/28/工具推荐-第一期-AutoHotKey/</id>
+    <link href="http://wavejoker.coding.me/2018/01/28/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90-%E7%AC%AC%E4%B8%80%E6%9C%9F-AutoHotKey/"/>
+    <id>http://wavejoker.coding.me/2018/01/28/工具推荐-第一期-AutoHotKey/</id>
     <published>2018-01-28T09:32:04.000Z</published>
     <updated>2018-01-28T10:25:06.731Z</updated>
     
@@ -35,19 +35,19 @@
     
     </summary>
     
-      <category term="程序人生" scheme="http://wavejoker.github.io/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
+      <category term="程序人生" scheme="http://wavejoker.coding.me/categories/%E7%A8%8B%E5%BA%8F%E4%BA%BA%E7%94%9F/"/>
     
     
-      <category term="工具推荐" scheme="http://wavejoker.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/"/>
+      <category term="工具推荐" scheme="http://wavejoker.coding.me/tags/%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/"/>
     
-      <category term="工作效率" scheme="http://wavejoker.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/"/>
+      <category term="工作效率" scheme="http://wavejoker.coding.me/tags/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day14-集合框架[1]</title>
-    <link href="http://wavejoker.github.io/2018/01/22/JavaReview-day14-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%5B1%5D/"/>
-    <id>http://wavejoker.github.io/2018/01/22/JavaReview-day14-集合框架[1]/</id>
+    <link href="http://wavejoker.coding.me/2018/01/22/JavaReview-day14-%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%5B1%5D/"/>
+    <id>http://wavejoker.coding.me/2018/01/22/JavaReview-day14-集合框架[1]/</id>
     <published>2018-01-22T09:39:21.000Z</published>
     <updated>2018-01-28T09:44:57.950Z</updated>
     
@@ -62,17 +62,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day13-String</title>
-    <link href="http://wavejoker.github.io/2018/01/21/JavaReview-day13-String/"/>
-    <id>http://wavejoker.github.io/2018/01/21/JavaReview-day13-String/</id>
+    <link href="http://wavejoker.coding.me/2018/01/21/JavaReview-day13-String/"/>
+    <id>http://wavejoker.coding.me/2018/01/21/JavaReview-day13-String/</id>
     <published>2018-01-21T07:06:53.000Z</published>
     <updated>2018-01-27T06:27:06.518Z</updated>
     
@@ -88,17 +88,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day12-线程通信</title>
-    <link href="http://wavejoker.github.io/2018/01/20/JavaReview-day12-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
-    <id>http://wavejoker.github.io/2018/01/20/JavaReview-day12-线程通信/</id>
+    <link href="http://wavejoker.coding.me/2018/01/20/JavaReview-day12-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/"/>
+    <id>http://wavejoker.coding.me/2018/01/20/JavaReview-day12-线程通信/</id>
     <published>2018-01-20T07:20:31.000Z</published>
     <updated>2018-01-22T11:23:17.773Z</updated>
     
@@ -113,17 +113,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day11-线程</title>
-    <link href="http://wavejoker.github.io/2018/01/19/JavaReview-day11-%E7%BA%BF%E7%A8%8B/"/>
-    <id>http://wavejoker.github.io/2018/01/19/JavaReview-day11-线程/</id>
+    <link href="http://wavejoker.coding.me/2018/01/19/JavaReview-day11-%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://wavejoker.coding.me/2018/01/19/JavaReview-day11-线程/</id>
     <published>2018-01-19T04:01:06.000Z</published>
     <updated>2018-01-22T11:34:02.701Z</updated>
     
@@ -138,17 +138,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day10-异常</title>
-    <link href="http://wavejoker.github.io/2018/01/17/JavaReview-day10-%E5%BC%82%E5%B8%B8/"/>
-    <id>http://wavejoker.github.io/2018/01/17/JavaReview-day10-异常/</id>
+    <link href="http://wavejoker.coding.me/2018/01/17/JavaReview-day10-%E5%BC%82%E5%B8%B8/"/>
+    <id>http://wavejoker.coding.me/2018/01/17/JavaReview-day10-异常/</id>
     <published>2018-01-17T03:54:27.000Z</published>
     <updated>2018-01-22T11:34:28.473Z</updated>
     
@@ -167,17 +167,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day09-内部类</title>
-    <link href="http://wavejoker.github.io/2018/01/08/JavaReview-day09-%E5%86%85%E9%83%A8%E7%B1%BB/"/>
-    <id>http://wavejoker.github.io/2018/01/08/JavaReview-day09-内部类/</id>
+    <link href="http://wavejoker.coding.me/2018/01/08/JavaReview-day09-%E5%86%85%E9%83%A8%E7%B1%BB/"/>
+    <id>http://wavejoker.coding.me/2018/01/08/JavaReview-day09-内部类/</id>
     <published>2018-01-08T13:43:07.000Z</published>
     <updated>2018-01-22T11:34:49.576Z</updated>
     
@@ -192,17 +192,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>Struts2 - 1</title>
-    <link href="http://wavejoker.github.io/2018/01/06/Struts2-1/"/>
-    <id>http://wavejoker.github.io/2018/01/06/Struts2-1/</id>
+    <link href="http://wavejoker.coding.me/2018/01/06/Struts2-1/"/>
+    <id>http://wavejoker.coding.me/2018/01/06/Struts2-1/</id>
     <published>2018-01-06T06:59:00.000Z</published>
     <updated>2018-01-06T06:59:00.118Z</updated>
     
@@ -215,8 +215,8 @@
   
   <entry>
     <title>微信跳一跳高分攻(外)略(挂)</title>
-    <link href="http://wavejoker.github.io/2018/01/02/%E5%BE%AE%E4%BF%A1%E8%B7%B3%E4%B8%80%E8%B7%B3%E9%AB%98%E5%88%86%E6%94%BB-%E5%A4%96-%E7%95%A5-%E6%8C%82/"/>
-    <id>http://wavejoker.github.io/2018/01/02/微信跳一跳高分攻-外-略-挂/</id>
+    <link href="http://wavejoker.coding.me/2018/01/02/%E5%BE%AE%E4%BF%A1%E8%B7%B3%E4%B8%80%E8%B7%B3%E9%AB%98%E5%88%86%E6%94%BB-%E5%A4%96-%E7%95%A5-%E6%8C%82/"/>
+    <id>http://wavejoker.coding.me/2018/01/02/微信跳一跳高分攻-外-略-挂/</id>
     <published>2018-01-02T05:39:35.000Z</published>
     <updated>2018-01-02T05:58:26.790Z</updated>
     
@@ -231,21 +231,21 @@
     
     </summary>
     
-      <category term="Python" scheme="http://wavejoker.github.io/categories/Python/"/>
+      <category term="Python" scheme="http://wavejoker.coding.me/categories/Python/"/>
     
-      <category term="外挂" scheme="http://wavejoker.github.io/categories/Python/%E5%A4%96%E6%8C%82/"/>
+      <category term="外挂" scheme="http://wavejoker.coding.me/categories/Python/%E5%A4%96%E6%8C%82/"/>
     
     
-      <category term="Android" scheme="http://wavejoker.github.io/tags/Android/"/>
+      <category term="Android" scheme="http://wavejoker.coding.me/tags/Android/"/>
     
-      <category term="Python" scheme="http://wavejoker.github.io/tags/Python/"/>
+      <category term="Python" scheme="http://wavejoker.coding.me/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>Result Maps collection already contains value for xxx.xxx.Mapper.BaseResultMap异常解决</title>
-    <link href="http://wavejoker.github.io/2017/12/29/Result%20Maps%20collection%20already%20contains%20value%20for%20xxx.xxx.Mapper.BaseResultMap/"/>
-    <id>http://wavejoker.github.io/2017/12/29/Result Maps collection already contains value for xxx.xxx.Mapper.BaseResultMap/</id>
+    <link href="http://wavejoker.coding.me/2017/12/29/Result%20Maps%20collection%20already%20contains%20value%20for%20xxx.xxx.Mapper.BaseResultMap/"/>
+    <id>http://wavejoker.coding.me/2017/12/29/Result Maps collection already contains value for xxx.xxx.Mapper.BaseResultMap/</id>
     <published>2017-12-29T12:02:29.000Z</published>
     <updated>2018-01-03T03:54:40.061Z</updated>
     
@@ -260,17 +260,17 @@
     
     </summary>
     
-      <category term="Exception" scheme="http://wavejoker.github.io/categories/Exception/"/>
+      <category term="Exception" scheme="http://wavejoker.coding.me/categories/Exception/"/>
     
     
-      <category term="Exception" scheme="http://wavejoker.github.io/tags/Exception/"/>
+      <category term="Exception" scheme="http://wavejoker.coding.me/tags/Exception/"/>
     
   </entry>
   
   <entry>
     <title>maven管理SSM时xml和properties文件丢失异常</title>
-    <link href="http://wavejoker.github.io/2017/12/28/maven%E7%AE%A1%E7%90%86SSM%E6%97%B6xml%E5%92%8Cproperties%E6%96%87%E4%BB%B6%E4%B8%A2%E5%A4%B1%E5%BC%82%E5%B8%B8/"/>
-    <id>http://wavejoker.github.io/2017/12/28/maven管理SSM时xml和properties文件丢失异常/</id>
+    <link href="http://wavejoker.coding.me/2017/12/28/maven%E7%AE%A1%E7%90%86SSM%E6%97%B6xml%E5%92%8Cproperties%E6%96%87%E4%BB%B6%E4%B8%A2%E5%A4%B1%E5%BC%82%E5%B8%B8/"/>
+    <id>http://wavejoker.coding.me/2017/12/28/maven管理SSM时xml和properties文件丢失异常/</id>
     <published>2017-12-28T10:52:23.000Z</published>
     <updated>2017-12-28T11:11:42.537Z</updated>
     
@@ -285,19 +285,19 @@
     
     </summary>
     
-      <category term="Exception" scheme="http://wavejoker.github.io/categories/Exception/"/>
+      <category term="Exception" scheme="http://wavejoker.coding.me/categories/Exception/"/>
     
     
-      <category term="Exception" scheme="http://wavejoker.github.io/tags/Exception/"/>
+      <category term="Exception" scheme="http://wavejoker.coding.me/tags/Exception/"/>
     
-      <category term="Spring" scheme="http://wavejoker.github.io/tags/Spring/"/>
+      <category term="Spring" scheme="http://wavejoker.coding.me/tags/Spring/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day08-多态</title>
-    <link href="http://wavejoker.github.io/2017/12/26/JavaReview-day08-%E5%A4%9A%E6%80%81/"/>
-    <id>http://wavejoker.github.io/2017/12/26/JavaReview-day08-多态/</id>
+    <link href="http://wavejoker.coding.me/2017/12/26/JavaReview-day08-%E5%A4%9A%E6%80%81/"/>
+    <id>http://wavejoker.coding.me/2017/12/26/JavaReview-day08-多态/</id>
     <published>2017-12-26T05:30:58.000Z</published>
     <updated>2018-01-22T11:35:18.214Z</updated>
     
@@ -312,17 +312,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>Java中的23中设计模式-四</title>
-    <link href="http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%9B%9B/"/>
-    <id>http://wavejoker.github.io/2017/12/25/Java中的23中设计模式-四/</id>
+    <link href="http://wavejoker.coding.me/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%9B%9B/"/>
+    <id>http://wavejoker.coding.me/2017/12/25/Java中的23中设计模式-四/</id>
     <published>2017-12-25T10:41:56.000Z</published>
     <updated>2018-01-22T11:23:17.808Z</updated>
     
@@ -339,21 +339,21 @@
     
     </summary>
     
-      <category term="Java" scheme="http://wavejoker.github.io/categories/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/categories/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>Java中的23中设计模式-三</title>
-    <link href="http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%89/"/>
-    <id>http://wavejoker.github.io/2017/12/25/Java中的23中设计模式-三/</id>
+    <link href="http://wavejoker.coding.me/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%89/"/>
+    <id>http://wavejoker.coding.me/2017/12/25/Java中的23中设计模式-三/</id>
     <published>2017-12-25T10:04:02.000Z</published>
     <updated>2018-01-22T09:45:54.893Z</updated>
     
@@ -370,21 +370,21 @@
     
     </summary>
     
-      <category term="Java" scheme="http://wavejoker.github.io/categories/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/categories/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>Java中的23中设计模式(二)</title>
-    <link href="http://wavejoker.github.io/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%8C/"/>
-    <id>http://wavejoker.github.io/2017/12/25/Java中的23中设计模式-二/</id>
+    <link href="http://wavejoker.coding.me/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BA%8C/"/>
+    <id>http://wavejoker.coding.me/2017/12/25/Java中的23中设计模式-二/</id>
     <published>2017-12-25T00:27:27.000Z</published>
     <updated>2018-01-22T11:23:17.828Z</updated>
     
@@ -401,21 +401,21 @@
     
     </summary>
     
-      <category term="Java" scheme="http://wavejoker.github.io/categories/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/categories/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>Java中的23种设计模式(一)</title>
-    <link href="http://wavejoker.github.io/2017/12/23/Java%E4%B8%AD%E7%9A%8423%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80/"/>
-    <id>http://wavejoker.github.io/2017/12/23/Java中的23种设计模式-一/</id>
+    <link href="http://wavejoker.coding.me/2017/12/23/Java%E4%B8%AD%E7%9A%8423%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80/"/>
+    <id>http://wavejoker.coding.me/2017/12/23/Java中的23种设计模式-一/</id>
     <published>2017-12-23T09:32:21.000Z</published>
     <updated>2018-01-22T09:45:54.794Z</updated>
     
@@ -432,21 +432,21 @@
     
     </summary>
     
-      <category term="Java" scheme="http://wavejoker.github.io/categories/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/categories/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
-      <category term="设计模式" scheme="http://wavejoker.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="设计模式" scheme="http://wavejoker.coding.me/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>JavaReview-day07-继承</title>
-    <link href="http://wavejoker.github.io/2017/12/18/JavaReview-day07-%E7%BB%A7%E6%89%BF/"/>
-    <id>http://wavejoker.github.io/2017/12/18/JavaReview-day07-继承/</id>
+    <link href="http://wavejoker.coding.me/2017/12/18/JavaReview-day07-%E7%BB%A7%E6%89%BF/"/>
+    <id>http://wavejoker.coding.me/2017/12/18/JavaReview-day07-继承/</id>
     <published>2017-12-18T11:14:57.000Z</published>
     <updated>2018-01-22T11:35:25.918Z</updated>
     
@@ -464,17 +464,17 @@
     
     </summary>
     
-      <category term="JavaReview" scheme="http://wavejoker.github.io/categories/JavaReview/"/>
+      <category term="JavaReview" scheme="http://wavejoker.coding.me/categories/JavaReview/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>GitHub Pages绑定域名</title>
-    <link href="http://wavejoker.github.io/2017/12/17/GitHub%20Pages%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/"/>
-    <id>http://wavejoker.github.io/2017/12/17/GitHub Pages绑定域名/</id>
+    <link href="http://wavejoker.coding.me/2017/12/17/GitHub%20Pages%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/"/>
+    <id>http://wavejoker.coding.me/2017/12/17/GitHub Pages绑定域名/</id>
     <published>2017-12-17T05:11:03.000Z</published>
     <updated>2017-12-17T11:55:29.617Z</updated>
     
@@ -490,17 +490,17 @@
     
     </summary>
     
-      <category term="Blog" scheme="http://wavejoker.github.io/categories/Blog/"/>
+      <category term="Blog" scheme="http://wavejoker.coding.me/categories/Blog/"/>
     
     
-      <category term="Blog" scheme="http://wavejoker.github.io/tags/Blog/"/>
+      <category term="Blog" scheme="http://wavejoker.coding.me/tags/Blog/"/>
     
   </entry>
   
   <entry>
     <title>FTP storFile返回false 解决方法</title>
-    <link href="http://wavejoker.github.io/2017/12/04/FTPClient.storFile%E8%BF%94%E5%9B%9Efalse-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
-    <id>http://wavejoker.github.io/2017/12/04/FTPClient.storFile返回false-解决方法/</id>
+    <link href="http://wavejoker.coding.me/2017/12/04/FTPClient.storFile%E8%BF%94%E5%9B%9Efalse-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/"/>
+    <id>http://wavejoker.coding.me/2017/12/04/FTPClient.storFile返回false-解决方法/</id>
     <published>2017-12-04T11:59:29.000Z</published>
     <updated>2017-12-11T06:01:57.223Z</updated>
     
@@ -515,19 +515,19 @@
     
     </summary>
     
-      <category term="Exception" scheme="http://wavejoker.github.io/categories/Exception/"/>
+      <category term="Exception" scheme="http://wavejoker.coding.me/categories/Exception/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
-      <category term="FTP" scheme="http://wavejoker.github.io/tags/FTP/"/>
+      <category term="FTP" scheme="http://wavejoker.coding.me/tags/FTP/"/>
     
   </entry>
   
   <entry>
     <title>记一次Redis连接用尽异常解决</title>
-    <link href="http://wavejoker.github.io/2017/12/01/%E8%AE%B0%E4%B8%80%E6%AC%A1Redis%E8%BF%9E%E6%8E%A5%E7%94%A8%E5%B0%BD%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/"/>
-    <id>http://wavejoker.github.io/2017/12/01/记一次Redis连接用尽异常解决/</id>
+    <link href="http://wavejoker.coding.me/2017/12/01/%E8%AE%B0%E4%B8%80%E6%AC%A1Redis%E8%BF%9E%E6%8E%A5%E7%94%A8%E5%B0%BD%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/"/>
+    <id>http://wavejoker.coding.me/2017/12/01/记一次Redis连接用尽异常解决/</id>
     <published>2017-12-01T03:04:30.000Z</published>
     <updated>2018-01-22T09:45:56.126Z</updated>
     
@@ -542,14 +542,14 @@
     
     </summary>
     
-      <category term="Exception" scheme="http://wavejoker.github.io/categories/Exception/"/>
+      <category term="Exception" scheme="http://wavejoker.coding.me/categories/Exception/"/>
     
     
-      <category term="Java" scheme="http://wavejoker.github.io/tags/Java/"/>
+      <category term="Java" scheme="http://wavejoker.coding.me/tags/Java/"/>
     
-      <category term="Redis" scheme="http://wavejoker.github.io/tags/Redis/"/>
+      <category term="Redis" scheme="http://wavejoker.coding.me/tags/Redis/"/>
     
-      <category term="Jedis" scheme="http://wavejoker.github.io/tags/Jedis/"/>
+      <category term="Jedis" scheme="http://wavejoker.coding.me/tags/Jedis/"/>
     
   </entry>
   
