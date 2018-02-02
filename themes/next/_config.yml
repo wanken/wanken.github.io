@@ -327,7 +327,7 @@ font:
   # Fallback to `global` font settings.
   logo:
     external: true
-    family:
+    family: Special Elite
     size:
 
   # Font settings for <code> and code blocks.
