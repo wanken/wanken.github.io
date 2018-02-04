@@ -5,7 +5,7 @@
 # Site
 title: Waver's Blog
 subtitle: 个人知识博客
-description: 路漫漫其修远兮, 吾将上下而求索
+description: 我与我周旋久,宁作我
 author: Waver
 language: zh-Hans
 timezone:
@@ -82,4 +82,3 @@ deploy:
   type: git
   repo: git@github.com:wavejoker/wavejoker.github.io.git
   branch: master
-  

@@ -88,7 +88,7 @@ menu:
   categories: /categories/ || th
   archives: /archives/ || archive
   tags: /tags/ || tags
-  image: /image/ || image
+  picture: /picture/ || image
   comments: /comments/ || comments
   #about: /about/ || user
   #schedule: /schedule/ || calendar
@@ -102,7 +102,7 @@ menu_icons:
   about: user
   categories: th
   tags: tags
-  image: photo
+  picture: photo
   archives: archive
   comments: comments
 
