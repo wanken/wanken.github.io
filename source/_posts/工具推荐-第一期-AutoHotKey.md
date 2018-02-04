@@ -12,7 +12,7 @@ type:
 最近发现一款高(neng)大(zhuang)上(bi)的神器-------AutoHotKey, 可以自定义Windows的快捷键, 可以使你彻底脱离鼠标, 这酸爽, 谁用谁知道.
 
 下载地址: [www.autohotkey.com](https://www.autohotkey.com/)
-中文帮助文档下载: [帮助文档](/files/AutoHotkey.chm)
+中文帮助文档下载: [帮助文档](https://waver.me/Resource/Files/AutoHotkey.chm)
 最后附上ChinaUnix博主xiaogangzgg写的教程: [AutoHotkey的几个入门级应用](http://blog.chinaunix.net/uid-26811377-id-3166486.html)
 
 ## 入门教程
