@@ -5,14 +5,14 @@
 # Site
 title: Waver's Blog
 subtitle: 个人知识博客
-description: 精通写Bug,专业造轮子
+description: 专心修炼,早日成仙
 author: Waver
 language: zh-Hans
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://wavejoker.coding.me
+url: https://waver.me
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -82,3 +82,14 @@ deploy:
   type: git
   repo: git@github.com:wavejoker/wavejoker.github.io.git
   branch: master
+
+# encrypt
+encrypt:
+  pwdfile: encrypt_password		# this store the password in a file, the whole content of this file will be regarded as the password
+  #password: 123456 # this set password here
+  #replace_all_url: false # this will replace img url in all posts
+  #base_url: http://you img base url/	# this will connect with you img url in you post, except full url(start with http://)
+  #qiniu_ak: your qiniu access key
+  #qiniu_sk: your qiniu secrect key
+  #img_url_ttl: 3600  # 3600 second, the ttl for qiniu img url
+  #type: qiniu # or base64, if base64, the base_url, qiniu_ak, qiniu_sk and img_url_ttl is unnecessary # optional, it's html template include html and js. in js, you should call doDecrypt(password, onErrorCallbackFunc) with you password
