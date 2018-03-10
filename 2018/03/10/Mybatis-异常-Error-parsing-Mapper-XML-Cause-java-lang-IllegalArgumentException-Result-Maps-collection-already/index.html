@@ -102,7 +102,7 @@
 
 
 
-  <meta name="keywords" content="Java," />
+  <meta name="keywords" content="Exception," />
 
 
 
@@ -115,18 +115,18 @@
 
 
 
-<meta name="description" content="Java 复习第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;">
-<meta name="keywords" content="Java">
+<meta name="description" content="前几天遇到一个非常神奇的错误,Error parsing Mapper XML. Cause:java.lang.IllegalArgumentException: Result Maps collection already, 搞了半天,也没搞明白, 而且时有时无,很是神奇,最终发现最终原因是因为…….懒!  错误描述123456789Error parsing Mapper XML. Cau">
+<meta name="keywords" content="Exception">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javareview-day05-封装">
-<meta property="og:url" content="https://waver.me/2017/11/29/Javareview-day05-封装/index.html">
+<meta property="og:title" content="Mybatis 异常: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already">
+<meta property="og:url" content="https://waver.me/2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/index.html">
 <meta property="og:site_name" content="Waver&#39;s Blog">
-<meta property="og:description" content="Java 复习第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;">
+<meta property="og:description" content="前几天遇到一个非常神奇的错误,Error parsing Mapper XML. Cause:java.lang.IllegalArgumentException: Result Maps collection already, 搞了半天,也没搞明白, 而且时有时无,很是神奇,最终发现最终原因是因为…….懒!  错误描述123456789Error parsing Mapper XML. Cau">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-22T11:36:25.730Z">
+<meta property="og:updated_time" content="2018-03-10T10:03:41.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javareview-day05-封装">
-<meta name="twitter:description" content="Java 复习第五天封装 私有只是封装的一种表现形式 封装可以增加代码的健壮性  构造函数 对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作); 当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法; 当在类中定义了构造函数后,默认的构造函数就会消失; 构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;">
+<meta name="twitter:title" content="Mybatis 异常: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already">
+<meta name="twitter:description" content="前几天遇到一个非常神奇的错误,Error parsing Mapper XML. Cause:java.lang.IllegalArgumentException: Result Maps collection already, 搞了半天,也没搞明白, 而且时有时无,很是神奇,最终发现最终原因是因为…….懒!  错误描述123456789Error parsing Mapper XML. Cau">
 
 
 
@@ -156,13 +156,13 @@
 
 
 
-  <link rel="canonical" href="https://waver.me/2017/11/29/Javareview-day05-封装/"/>
+  <link rel="canonical" href="https://waver.me/2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/"/>
 
 
 
 
 
-  <title>Javareview-day05-封装 | Waver's Blog</title>
+  <title>Mybatis 异常: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already | Waver's Blog</title>
   
 
 
@@ -347,12 +347,12 @@
   
   
 
-  <article class="post post-type-JavaReview" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-Exception" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://waver.me/2017/11/29/Javareview-day05-封装/">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Waver">
@@ -369,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javareview-day05-封装</h1>
+          <h1 class="post-title" itemprop="name headline">Mybatis 异常: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already</h1>
         
 
         <div class="post-meta">
@@ -381,8 +381,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-29T18:55:32+08:00">
-                2017-11-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-10T17:31:39+08:00">
+                2018-03-10
               </time>
             
 
@@ -397,8 +397,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-22T19:36:25+08:00">
-                2018-01-22
+              <time title="更新于" itemprop="dateModified" datetime="2018-03-10T18:03:41+08:00">
+                2018-03-10
               </time>
             
           </span>
@@ -416,8 +416,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaReview/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaReview</span>
+                  <a href="/categories/Exception/" itemprop="url" rel="index">
+                    <span itemprop="name">Exception</span>
                   </a>
                 </span>
 
@@ -434,9 +434,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/11/29/Javareview-day05-封装/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/11/29/Javareview-day05-封装/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -444,7 +444,7 @@
 
           
           
-             <span id="/2017/11/29/Javareview-day05-封装/" class="leancloud_visitors" data-flag-title="Javareview-day05-封装">
+             <span id="/2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/" class="leancloud_visitors" data-flag-title="Mybatis 异常: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -475,61 +475,15 @@
       
 
       
-        <h1 id="Java-复习第五天"><a href="#Java-复习第五天" class="headerlink" title="Java 复习第五天"></a>Java 复习第五天</h1><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><ul>
-<li>私有只是封装的一种表现形式</li>
-<li>封装可以增加代码的健壮性</li>
-</ul>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><ol>
-<li>对象一建立,就会调用与之对应的构造函数(可以用于对象的初始化工作);</li>
-<li>当一个类中没有定义构造函数时, 那么系统会默认给该类加入一个空参数的构造方法;</li>
-<li>当在类中定义了构造函数后,默认的构造函数就会消失;</li>
-<li>构造函数和在对象一建立就运行, 给对象初始化; 而一般方法是对象调用才运行, 是给对象添加对象具备的功能;</li>
-</ol>
-<h2 id="成员变量和局部变量"><a href="#成员变量和局部变量" class="headerlink" title="成员变量和局部变量"></a>成员变量和局部变量</h2><h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><ol>
-<li>成员变量作用于整个类中, 局部变量作用于函数中或者语句中;</li>
-<li><p>在内存中的位置:</p>
-<ul>
-<li>成员变量: 在堆内存中, 因为对象的存在, 才在内存中存在;</li>
-<li>局部变量: 存在栈内存中<h4 id="其他区别"><a href="#其他区别" class="headerlink" title="其他区别"></a>其他区别</h4>成员变量都有默认值, 在不赋值的情况下也可以参与运算.</li>
-</ul>
-</li>
-</ol>
-<h3 id="匿名对象"><a href="#匿名对象" class="headerlink" title="匿名对象"></a>匿名对象</h3><ul>
-<li>匿名对象使用方式之一: 当对对象的方法只调用一次时, 可以用匿名对象来完成, 这样写比较优化</li>
-<li>如果对一个对象进行多个成员调用, 必须给这个对象起个名字</li>
-<li>匿名对象可以作为实际参数进行传递</li>
-</ul>
-<h3 id="构造代码块"><a href="#构造代码块" class="headerlink" title="构造代码块"></a>构造代码块</h3><h4 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h4><ul>
-<li>给对象进行初始化</li>
-</ul>
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h4><ul>
-<li>对象一建立就运行, 而且优先于构造函数执行;</li>
-</ul>
-<h4 id="和构造函数的区别"><a href="#和构造函数的区别" class="headerlink" title="和构造函数的区别:"></a>和构造函数的区别:</h4><ul>
-<li>构造代码块是给所有对象进行统一初始化</li>
-<li>构造函数是给对应的对象进行初始化</li>
-<li>构造代码块中定义的事不同对象共性的初始化内容</li>
-</ul>
-<h4 id="构造代码块示例"><a href="#构造代码块示例" class="headerlink" title="构造代码块示例:"></a>构造代码块示例:</h4>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="comment">//以下'&#123;&#125;'和其中的内容为构造代码块</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字:"></a>this 关键字:</h3><ol>
-<li>this 代表的是本类对象, 即 this 所在函数所属对象的引用</li>
-<li><p>this语句:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>(xxx);</span><br></pre></td></tr></table></figure>
-<p>作用: this()用于构造函数之间的调用<br>特性: this() 必须在第一行，以保证在执行任何动作前，对象已经完成了初始化。</p>
-</li>
-<li><p><strong>注意: 以下代码会进入死循环状态, 构造函数之间不可以循环调用</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Persion</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String name;</span><br><span class="line">  Persion()&#123;</span><br><span class="line">    <span class="keyword">this</span>(name);</span><br><span class="line">  &#125;</span><br><span class="line">  Persion(String name)&#123;</span><br><span class="line">    <span class="keyword">this</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">  Persion p = <span class="keyword">new</span> Persion();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="this-和-super-关键字的特点"><a href="#this-和-super-关键字的特点" class="headerlink" title="this 和 super 关键字的特点:"></a>this 和 super 关键字的特点:</h3><ol>
-<li><p>this 和 super 关键字不能再 static 类型的方法或 static 的代码块中</p>
-<ul>
-<li>原因1: 加载顺序: static 类型的方法/代码块/方法会先于类加载, 所以当前时间点类对象并未初始化完成,所以无法调用</li>
-<li>原因2: 无法再静态代码中加载非静态的关键字</li>
-</ul>
-</li>
-</ol>
+        <blockquote>
+<p>前几天遇到一个非常神奇的错误,Error parsing Mapper XML. Cause:<br>java.lang.IllegalArgumentException: Result Maps collection already, 搞了半天,也没搞明白, 而且时有时无,很是神奇,最终发现最终原因是因为…….懒!</p>
+</blockquote>
+<h3 id="错误描述"><a href="#错误描述" class="headerlink" title="错误描述"></a>错误描述</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains</span><br><span class="line">value for org.hc.jiankunking.system.member.dao.OrderLogMapper.BaseResultMap;</span><br><span class="line">nestedexception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name &apos;sqlSessionFactory&apos; defined in file [E:\16年文</span><br><span class="line">件\JAVAdemo\jiankunking\jiankunking-web\target\jiankunking-web-1.0-SNAPSHOT\WEB-INF\classes\spring\spring-mybatis.xml]: Invocation of init method</span><br><span class="line">failed; nested exception is org.springframework.core.NestedIOException:</span><br><span class="line">Failed to parse mapping resource: &apos;URL [jar:file:/E:/16年文件/JAVAdemo/jiankunking/jiankunking-web/target/jiankunking-web-1.0-SNAPSHOT/</span><br><span class="line">WEB-INF/lib/jiankunking-system-1.0-SNAPSHOT.jar!/mapper/OrderLogMapper.xml]&apos;; nested exception is org.apache.ibatis.builder.BuilderException: Error</span><br><span class="line">parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already contains value for</span><br><span class="line">org.hc.jiankunking.system.member.dao.OrderLogMapper.BaseResultMap</span><br></pre></td></tr></table></figure>
+<h3 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h3><p>  因为Mybatis官方提供了逆向工程的模块, 所以平时开发几乎都用这个,可以省不少事, 但是<br>  问题来了, 在开发过程中有可能遇到数据库变动的情况, 所以这时就不得不重新生成mapper<br>  和pojo文件, 但是! 如果原先的文件不删除的话, 新生成的文件不会覆盖旧文件, 而是在旧<br>  文件的结尾继续添加, 所以这也就是 <code>Result Maps collection already</code> 的原因了.</p>
+<pre><code>所以....这个懒还是不要偷的好, 重新生成文件前一定要把旧文件清理干净.
 
+在这里给自己踩踩坑-_-!
+</code></pre>
       
     </div>
     
@@ -546,7 +500,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"># Java</a>
+            <a href="/tags/Exception/" rel="tag"># Exception</a>
           
         </div>
       
@@ -559,8 +513,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/28/JavaReview-day04-数组/" rel="next" title="JavaReview-day04-数组">
-                <i class="fa fa-chevron-left"></i> JavaReview-day04-数组
+              <a href="/2018/02/26/加油-专科生/" rel="next" title="加油! 专科生!!">
+                <i class="fa fa-chevron-left"></i> 加油! 专科生!!
               </a>
             
           </div>
@@ -568,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/30/JavaReview-day06-静态/" rel="prev" title="JavaReview-day06-静态">
-                JavaReview-day06-静态 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -793,7 +743,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-复习第五天"><span class="nav-number">1.</span> <span class="nav-text">Java 复习第五天</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">1.1.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量和局部变量"><span class="nav-number">1.3.</span> <span class="nav-text">成员变量和局部变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用范围"><span class="nav-number">1.3.1.</span> <span class="nav-text">作用范围</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#其他区别"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">其他区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名对象"><span class="nav-number">1.3.2.</span> <span class="nav-text">匿名对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造代码块"><span class="nav-number">1.3.3.</span> <span class="nav-text">构造代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#作用"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">作用:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">特点:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和构造函数的区别"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">和构造函数的区别:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#构造代码块示例"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">构造代码块示例:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-关键字"><span class="nav-number">1.3.4.</span> <span class="nav-text">this 关键字:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this-和-super-关键字的特点"><span class="nav-number">1.3.5.</span> <span class="nav-text">this 和 super 关键字的特点:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#错误描述"><span class="nav-number">1.</span> <span class="nav-text">错误描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方式"><span class="nav-number">2.</span> <span class="nav-text">解决方式</span></a></li></ol></div>
             
 
           </div>
@@ -959,9 +909,9 @@
       <!-- 替换为点击加载
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://waver.me/2017/11/29/Javareview-day05-封装/';
-          this.page.identifier = '2017/11/29/Javareview-day05-封装/';
-          this.page.title = 'Javareview-day05-封装';
+          this.page.url = 'https://waver.me/2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/';
+          this.page.identifier = '2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/';
+          this.page.title = 'Mybatis 异常: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://waver.disqus.com/embed.js';
@@ -976,9 +926,9 @@
             if(typeof DISQUS !== 'object') {
               (function () {
                 var disqus_config = function () {
-                this.page.url = 'https://waver.me/2017/11/29/Javareview-day05-封装/';
-                this.page.identifier = '2017/11/29/Javareview-day05-封装/';
-                this.page.title = 'Javareview-day05-封装';
+                this.page.url = 'https://waver.me/2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/';
+                this.page.identifier = '2018/03/10/Mybatis-异常-Error-parsing-Mapper-XML-Cause-java-lang-IllegalArgumentException-Result-Maps-collection-already/';
+                this.page.title = 'Mybatis 异常: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: Result Maps collection already';
                 };
                 var d = document, s = d.createElement('script');
                 s.src = 'https://waver.disqus.com/embed.js';

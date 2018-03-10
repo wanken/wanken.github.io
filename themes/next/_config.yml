@@ -463,10 +463,10 @@ needmoreshare2:
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
-#google_site_verification:
+google_site_verification: h7s9U8msd2y_IQaK9E0qVaucNDF7TipP2666PkbduZM
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-115460777-1
 
 # Bing Webmaster tools verification setting
 # See: https://www.bing.com/webmaster/
@@ -533,8 +533,8 @@ rating:
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
   enable: true
-  app_id: Y2AIUL8APX1A6nd92yWI0gC4-gzGzoHsz
-  app_key: GtyjxANoCLVEWfztojUaKMO8
+  app_id: j99m29EgfOPXb7WAc98J7oAE-gzGzoHsz
+  app_key: lnadPPANyVDI1boTgoHcex63
 
 # Another tool to show number of visitors to each article.
 # visit https://console.firebase.google.com/u/0/ to get apiKey and projectId
