@@ -6,3 +6,5 @@
 /node_modules/
 /source/
 .deploy*/
+/_config.yml
+/themes/
