@@ -9,6 +9,7 @@
     "gitalk": "^1.2.2",
     "gitment": "0.0.3",
     "hexo": "^3.5.0",
+    "hexo-baidu-url-submit": "0.0.5",
     "hexo-deployer-git": "^0.3.1",
     "hexo-encrypt": "^0.5.4",
     "hexo-generator-archive": "^0.1.4",
@@ -25,6 +26,7 @@
     "hexo-server": "^0.2.2",
     "lunar-calendar": "^0.1.4",
     "moment": "^2.21.0",
+    "npm": "^5.7.1",
     "react-flip-move": "^3.0.1",
     "uglify-js": "^3.3.9"
   }
