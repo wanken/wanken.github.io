@@ -5,7 +5,7 @@
 # Site
 title: Waver's Blog
 subtitle: 个人知识博客
-description: 爆肝菜鸟程序员
+description: 一知半解,似懂非懂
 author: Waver
 language: zh-Hans
 timezone:
@@ -79,9 +79,11 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: git@github.com:wavejoker/wavejoker.github.io.git
-  branch: master
+# - type: git
+#   repo: git@github.com:wavejoker/wavejoker.github.io.git
+#   branch: master
+  type: baidu_url_submitter ## 这是新加的
+  bucket: waver.me
 
 # encrypt
 encrypt:
@@ -93,3 +95,10 @@ encrypt:
   #qiniu_sk: your qiniu secrect key
   #img_url_ttl: 3600  # 3600 second, the ttl for qiniu img url
   #type: qiniu # or base64, if base64, the base_url, qiniu_ak, qiniu_sk and img_url_ttl is unnecessary # optional, it's html template include html and js. in js, you should call doDecrypt(password, onErrorCallbackFunc) with you password
+
+#百度网站推荐
+baidu_url_submit:
+  count: 1 ## 提交最新的一个链接
+  host: www.hui-wang.info ## 在百度站长平台中注册的域名
+  token: 0XEutJ0IDTP9Sb3x ## 请注意这是您的秘钥， 所以请不要把博客源代码发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
