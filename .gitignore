@@ -3,8 +3,8 @@
 /Thumbs.db
 /db.json
 /*.log
-/source/
+/source
 .deploy*/
-/node_modules/
+/node_modules
 /_config.yml
-/themes/
+/themes
