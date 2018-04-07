@@ -288,32 +288,6 @@
   </entry>
   
   <entry>
-    <title>Diary-2018-02-05(Locked)</title>
-    <link href="https://waver.me/2018/02/05/Diary-2018-02-05(Locked)/"/>
-    <id>https://waver.me/2018/02/05/Diary-2018-02-05(Locked)/</id>
-    <published>2018-02-05T14:53:37.000Z</published>
-    <updated>2018-02-06T06:58:39.115Z</updated>
-    
-    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>function doDecrypt(pwd, onError) {console.log("in doDecrypt");var txt = document.getElementById("enc_content").innerHTML;var plantext;try {  var bytes = CryptoJS.AES.decrypt(txt, pwd);plaintext = bytes.toString(CryptoJS.enc.Utf8);} catch(err) {if(onError) {onError(err);}return;}document.getElementById("enc_content").innerHTML = plaintext;document.getElementById("enc_content").style.display = "block";   document.getElementById("enc_passwd").style.display = "none";}</script><div id="enc_content" style="display:none">U2FsdGVkX1/Ks9uIbtFyS7y4J4QToptQ2frGQXOweZ71fTvGY87qEv3MFyGYeWsshnpezCxWWEY6+p8ldJa6t9E8JcJBqTV8G+c9nieCW7XZoHsfLH97wpC32I1X9PfwXiTtL5ybDgcIR/Mvca7iSujgV9PHPb5q7NupW4D5sHooBPXCGP5pOKvrMEjEZXqy5El2ZU9ocfblHtPOXw11MF9aT250fcwWXHgHDUwIGgtB8SMNOFaV2qORldCS5scCcEZUGxttKvT40G/ew5p8e2CeTkhRhWPYzxkW0AuKd+xN7eI+H3tWfWdWK4IFN5swa+GQGFCVoD+RKnB+J9dxuVQfYyXYAsKpxtG193SAg2Rz8rOR7XmbyW/EmAbgr/BvHxfWLDlZKg/hxTHPPUjhQ6isd6w0XWhaoQiHQK1lDphn/SR9xJ4A0NDLbJrl+B5exQ2odljdf6GmxacSt0RztAZZppUjpAJGiDg08bP+cWA2AB0iqxOZP9IWOzABOl95/KKd8Z+zz8+7imcb60/GJbdzWDUX7WV9DRyWdP2B7PdMi4vPjndfKl0iU5bKlkYtInPIgzWA1L03kG6Z9qgmoS2ZThaDqL/7DOKkCxGxkuPA9fpf7efC9NblpLzlqMrjj9J/J76N+c1TgqlcBhsQQ7r9zmcf/pUl4hPpp5DNYkXie8pX9ccV5KDD6pzeX2bO21Bz+uot/PRu2DBq4Gf8h8HbBQbrpDSphF8rwIMUGwopSRUUcyvnZH9q7cQ/LL0riQynSNyUa5uf8SA8eFqL0MmUMhGvje7kABjFGOiYjwVwIznGIXdEyS4y/yds/22TdGXfFR2biEAyiJMraKEq7MQyUXFOtGzOozip46QwYp0YSm48/MbnLnYy/mtG+IrGWROMAE6MMzOAcNuK2xAttmguONl9w4He3VFLxRYWruBVqFBIhGLu1kHx26JEDXWHZgRTJEwQucb+yHgJwbNb14JgUu9AImXAKn8/RBYS3LgmuABtcT/gMfdG8ZuERgxik/J+NAUD9IU66pWgJTVNDoRKhFuqh8dxYCc/JA2MJprpMVxA4Qk7m/WzjZTZjIjMm/w4jjoYjiwMnzxuK6W9y61e4cuymOoxQKQALjVrNf0JxtjnJ8d4Vmc83+uaQtIAGYH/h87fCNG7AJh5cnqefslhrhbfLppoyCpn0CJ7Iw+Tr5q86XDnI20e/cKAdKxVuFTBq6WSggt9dlLDmRLcN1w8elRWlc0LxpBcAbwahujhk8vMXB0oy/gss8X5CP1nF6TX8lfbaC0GucqBLaeeicgjmHke6F5exEFigDflzaA3D9/JQKCN4+MK8rLVjbYWNx2iEK5bK6nRjCA8tA43atZuawxS7XLE5NmIN+Nve8HTtev9y0xl4ZfJr2/fQEsjjZ0qYfBBCLsfXbFPPASWv/2YjaVE8+LqL2j95CqmJPGUQJquHGgclDLb/mROtnG3JJubyhQ94ZrLAQww4hWAzZiFXiF38D5Y0QzVXvjUPOBtvFLrBQZtD6Qx5wZ+sFtu8Awu7BSAxYEVhYNzpKqbXFhSzCukng+CjuBTxMXauqdXoQzMITAsUFmg7Nk+4CTEip/l0dwAKITfBCsj8c2dl0+8wnrgeiQ+heGubMtGk2dtObhMZZrRm0+Mernrdw3a+QzEWoh0+DYVaABURWsX1r56k1AJG5TweYxtunT0CboA+cb8208n6gPeZeM5/XgNYDpYCDEtA7IEKVxbhSnb3gNcpYMzRaLNwy322UV5NhsE4J+5UqdGeNQB3eAlXX6+j8e+WPm/wjGTACAtKj7xM7W5C3aW8O8TFJ4lD7zv6Lxd8Bcftvd3NtemOlZKqqPs1YH49RNBZusILxenVvszgi8VZ8yZDFxGwaIKjIC+wiQvTaSMxTrVxC2a3e9Ca97eCPex9hzlrc6tlrdGR5OE1wpPcttz9W9VDIsXw2XYvSAno/dfMoL4ODcoQ20BUfKGm2gogACReo8VgseJyYXDWZ3I82tPbg1yTnhZk2wR21LaCvbNn8sdYJj8tnswqkre+IbmaIPTXZmA/L6mmeflFm2HRjZMkogYtH3r6luMveq7r5+WKqvxhgqq5eZD1zX2hIe3g2acPt/FvGdaTZTdYfFTY/seAjweRpKEqINdXqwCaARRBjqxPYEc7LR2VOKU5AMj9yAPerAZumGGFSSeus9979NPp7UhjmZbqF21pZ5KlmqfNPqxYJwzwNO212+pacMNwRYv8oZImRJJWj+UjjmGorqcYOmRkMHTMuwNsiPIVls0ZBPINNQw51nPSVmbz2DD/FD1jNAqoXolhpY9j5qwxcbqVSvzG9Xi1o7k4FtGIoaA7DZjRlwpo8Q1N6pFbB1tgTXYxHpwDsT5zHHe7m9ZbyIMO8WgkGkCN4Zab7Hv6AmF4y7DmMucNypZiPGxAnIoXyvQixndPV9TZiF8Nsk/1rAAqVgfhS8Wq/JegqvU+AGfGzsciF3jyC477vuLB5s6Rqjn18qdz3xzSm7ZkqKqEaB0kLjZIm7jPwf5+dVlSi9tID7GkYFqD6zUeqc+e84bZVOeg4j7FQ/JYDyx30ugwgHmnZMdFVh8E9VflbgHb4mlX3eC1QzLVE0nDqDSSzHQAZ8sS6dqOE+m1wl8oz2We4iZkYqwxmvXau7Q5X33a5VblgW9yjXH6kQx4Ds31Si2O1Kr4lkpmtuJk6iLx4/kIzA97KKx0zS8nuU6pvstIkah39PN+alSYvNsfysASMr16KINQ09q/+CiBuKxwyjNpRL6x6M6kDAbCHnFL62OCFk5OkpZbijQy0TYaT7sC9ZNTr8tJfKVcM9HU0I1M07JTI//Xin4todg4YPCFtAWrWGHwUXFCxXbjotdAAqopWAScVLmtC4cilv964UIEQ==</div><div id="enc_passwd"> <input id="enc_pwd_input" type="text" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div><script>var onError = function(error) {document.getElementById("enc_error").innerHTML = "password error!"};function decrypt() {var passwd = document.getElementById("enc_pwd_input").value;console.log(passwd);doDecrypt(passwd, onError);}</script></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;script src=/js/crypto-js.js&gt;&lt;/script&gt;&lt;script&gt;
-function doDecrypt(pwd, onError) {
-	console.log(&quot;in doDecrypt&quot;);
-	var txt = document.getEleme
-      
-    
-    </summary>
-    
-    
-      <category term="Java" scheme="https://waver.me/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java 找不到或无法加载主类XXX终极解决方案</title>
     <link href="https://waver.me/2018/02/01/Java-%E6%89%BE%E4%B8%8D%E5%88%B0%E6%88%96%E6%97%A0%E6%B3%95%E5%8A%A0%E8%BD%BD%E4%B8%BB%E7%B1%BBXXX%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>https://waver.me/2018/02/01/Java-找不到或无法加载主类XXX终极解决方案/</id>
@@ -532,6 +506,35 @@ function doDecrypt(pwd, onError) {
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>微信跳一跳高分攻(外)略(挂)</title>
+    <link href="https://waver.me/2018/01/02/%E5%BE%AE%E4%BF%A1%E8%B7%B3%E4%B8%80%E8%B7%B3%E9%AB%98%E5%88%86%E6%94%BB-%E5%A4%96-%E7%95%A5-%E6%8C%82/"/>
+    <id>https://waver.me/2018/01/02/微信跳一跳高分攻-外-略-挂/</id>
+    <published>2018-01-02T05:39:35.000Z</published>
+    <updated>2018-01-02T05:58:26.790Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近看微信的跳一跳特别火, 作为一名程序员, 感觉有必要运用一下自己的专(找)业(挂)知(能)识(力), 搞一个高分外挂.<br>具体流程请参考<a href="https://github.com/wavejoker/wechat_jump_game" target="_blank" rel="noopener">传送门</a>, 本文只介绍环境搭建过程;</p><h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>笔者只用过 3.6 其他版本, 推荐使用</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近看微信的跳一跳特别火, 作为一名程序员, 感觉有必要运用一下自己的专(找)业(挂)知(能)识(力), 搞一个高分外挂.&lt;br&gt;具体流程请参考&lt;a href=&quot;https://github.com/wavejoker/wechat_jump_game&quot; target=&quot;_
+      
+    
+    </summary>
+    
+      <category term="Python" scheme="https://waver.me/categories/Python/"/>
+    
+      <category term="外挂" scheme="https://waver.me/categories/Python/%E5%A4%96%E6%8C%82/"/>
+    
+    
+      <category term="Android" scheme="https://waver.me/tags/Android/"/>
+    
+      <category term="Python" scheme="https://waver.me/tags/Python/"/>
     
   </entry>
   
