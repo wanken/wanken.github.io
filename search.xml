@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CentOS搭建git]]></title>
+    <url>%2F2018%2F05%2F13%2FCentOS%E6%90%AD%E5%BB%BAgit%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[JS实现浏览器录音并将录音文件上传]]></title>
+    <url>%2F2018%2F05%2F13%2FJS%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BD%95%E9%9F%B3%E5%B9%B6%E5%B0%86%E5%BD%95%E9%9F%B3%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Jackson Direct self-reference leading to cycle 异常解决]]></title>
+    <url>%2F2018%2F05%2F13%2FJackson-Direct-self-reference-leading-to-cycle-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%2F</url>
+    <content type="text"><![CDATA[错误信息如图所示:代码如下:由错误信息可以看出保存是因为PageResult类中使用了this对象, 从而导致了自引用异常,将其改写成返回属性值后可回复正常StackOverFlow 上 的回答]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Exception</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[RandomAccess接口理解]]></title>
     <url>%2F2018%2F04%2F01%2FRandomAccess%E6%8E%A5%E5%8F%A3%E7%90%86%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[本文转自&gt; Stick2It — RandomAccess接口理解 根据javadoc上面的的解释是： RandomAccess 是一个标记接口，用于标明实现该接口的List支持快速随机访问，主要目的是使算法能够在随机和顺序访问的list中表现的更加高效。 我们可以简单的看下Collections下的binarySearch方法的源码: 12345678view plain copypublic static &lt;T&gt; int binarySearch(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key) &#123; if (list instanceof RandomAccess || list.size()&lt;BINARYSEARCH_THRESHOLD) return Collections.indexedBinarySearch(list, key); else return Collections.iteratorBinarySearch(list, key); &#125; 从源码中我们可以看到，在进行二分查找的时候，list会先判断是否是RandomAccess也即是否实现了RandomAccess接口，接着在调用想用的二分查找算法来进行，（其中: BINARYSEARCH_THRESHOLD Collections的一个常量（5000），它是二分查找的阀值。）如果实现了RandomAccess接口的List，执行indexedBinarySearch方法，否则执行 iteratorBinarySearch方法。 分别看下这两个方法的实现: indexedBinarySearch 方法:123456789101112131415161718192021view plain copyprivate static &lt;T&gt; int indexedBinarySearch(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key) &#123; int low = 0; int high = list.size()-1; while (low &lt;= high) &#123; int mid = (low + high) &gt;&gt;&gt; 1; Comparable&lt;? super T&gt; midVal = list.get(mid); int cmp = midVal.compareTo(key); if (cmp &lt; 0) low = mid + 1; else if (cmp &gt; 0) high = mid - 1; else return mid; // key found &#125; return -(low + 1); // key not found &#125; indexedBinarySearch 方法是直接通过get来访问元素 iteratorBinarySearch方法: 12345678910111213141516171819202122view plain copyprivate static &lt;T&gt; int iteratorBinarySearch(List&lt;? extends Comparable&lt;? super T&gt;&gt; list, T key) &#123; int low = 0; int high = list.size()-1; ListIterator&lt;? extends Comparable&lt;? super T&gt;&gt; i = list.listIterator(); while (low &lt;= high) &#123; int mid = (low + high) &gt;&gt;&gt; 1; Comparable&lt;? super T&gt; midVal = get(i, mid); int cmp = midVal.compareTo(key); if (cmp &lt; 0) low = mid + 1; else if (cmp &gt; 0) high = mid - 1; else return mid; // key found &#125; return -(low + 1); // key not found &#125; iteratorBinarySearch中ListIterator来查找相应的元素 javadoc中特别指出: It is recognized that the distinction between random and sequential access is often fuzzy. For example, some List implementations provide asymptotically linear access times if they get huge, but constant access times in practice. Such a Listimplementation should generally implement this interface. As a rule of thumb, a List implementation should implement this interface if, for typical instances of the class, this loop: for (int i=0, n=list.size(); i &lt; n; i++) list.get(i); runs faster than this loop: for (Iterator i=list.iterator(); i.hasNext(); ) i.next(); 总结：实现RandomAccess接口的的List可以通过简单的for循环来访问数据比使用iterator访问来的高效快速。参考文档:]]></content>
