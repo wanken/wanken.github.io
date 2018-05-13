@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://waver.me/2018/05/13/Jackson-Direct-self-reference-leading-to-cycle-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/</loc>
+    
+    <lastmod>2018-05-13T14:22:13.702Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://waver.me/2018/05/13/CentOS%E6%90%AD%E5%BB%BAgit/</loc>
     
     <lastmod>2018-05-13T14:14:56.533Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://waver.me/2018/05/13/JS%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BD%95%E9%9F%B3%E5%B9%B6%E5%B0%86%E5%BD%95%E9%9F%B3%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</loc>
     
     <lastmod>2018-05-13T14:11:15.201Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://waver.me/2018/05/13/Jackson-Direct-self-reference-leading-to-cycle-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/</loc>
-    
-    <lastmod>2018-05-13T14:09:46.538Z</lastmod>
     
   </url>
   

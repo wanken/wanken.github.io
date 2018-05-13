@@ -13,7 +13,7 @@
   <entry>
     <title><![CDATA[Jackson Direct self-reference leading to cycle 异常解决]]></title>
     <url>%2F2018%2F05%2F13%2FJackson-Direct-self-reference-leading-to-cycle-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%2F</url>
-    <content type="text"><![CDATA[错误信息如图所示:代码如下:由错误信息可以看出保存是因为PageResult类中使用了this对象, 从而导致了自引用异常,将其改写成返回属性值后可回复正常StackOverFlow 上 的回答]]></content>
+    <content type="text"><![CDATA[错误信息如图所示:代码如下:由错误信息可以看出保存是因为PageResult类中使用了this对象, 从而导致了自引用异常,将其改写成返回属性值后可回复正常StackOverFlow 上 的]]></content>
       <categories>
         <category>Java</category>
       </categories>
