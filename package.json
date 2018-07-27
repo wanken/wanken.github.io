@@ -6,6 +6,7 @@
     "version": "3.7.1"
   },
   "dependencies": {
+    "g": "^2.0.1",
     "gitalk": "^1.2.2",
     "gitment": "0.0.3",
     "hexo": "^3.7.1",
@@ -25,7 +26,7 @@
     "hexo-server": "^0.2.2",
     "lunar-calendar": "^0.1.4",
     "moment": "^2.21.0",
-    "npm": "^6.1.0",
+    "npm": "^6.2.0",
     "react-flip-move": "^3.0.1",
     "uglify-js": "^3.3.9"
   }
