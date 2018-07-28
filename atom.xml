@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://waver.me/"/>
-  <updated>2018-07-27T06:33:21.130Z</updated>
+  <updated>2018-07-27T06:37:40.000Z</updated>
   <id>https://waver.me/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://waver.me/2018/07/12/Jrebel%E6%BF%80%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
     <id>https://waver.me/2018/07/12/Jrebel激活服务器及使用方法/</id>
     <published>2018-07-12T06:19:53.000Z</published>
-    <updated>2018-07-27T06:33:21.130Z</updated>
+    <updated>2018-07-27T06:37:40.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前几天写代码写的正开心,突然屏幕右下角提示我激活Jrebel, WTF???, 注册后不是可以免费使用的吗? 等心情平复后感觉为知识付费没什么不对的, 然后就准备买一个注册码, 然后我就看见了这副场面:<br><img src="https://waver.me/album/images/post/2018/07/jrebel_buy.png" alt=""><br>这…. 既然你有以难为我胖虎, 那就不要怪我胖虎翻脸了,那么接下来就说一下怎么破解它吧 (￣_,￣ )</p><h2 id="破解方法"><a href="#破解方法" class="headerlink" title="破解方法"></a>破解方法</h2><h3 id="1-使用激活软件"><a href="#1-使用激活软件" class="headerlink" title="1.使用激活软件"></a>1.使用激活软件</h3><p><a href="https://github.com/ilanyu/ReverseProxy/releases" target="_blank" rel="noopener">github:ilanyu</a></p><h3 id="2-使用激活服务器"><a href="#2-使用激活服务器" class="headerlink" title="2.使用激活服务器"></a>2.使用激活服务器</h3><p>这个方法和第一个方法原理上是一致的,只是这个更方便一些;</p><h4 id="激活步骤-这里以IDEA为例"><a href="#激活步骤-这里以IDEA为例" class="headerlink" title="激活步骤:这里以IDEA为例"></a>激活步骤:这里以IDEA为例</h4><ol><li>菜单栏 Intellij IDEA-&gt;Preference…</li><li>选择 JRebel-&gt;JRebel License</li><li>点击 Connect to License Server</li><li>填入服务器 <a href="http://65.49.200.145:8081/{username}" target="_blank" rel="noopener">http://65.49.200.145:8081/{username}</a> {username}替换为任何guid即可(末尾没有斜线”/“)</li><li>填入邮箱 邮箱随便填(jokerwaver@gmail.com)</li><li>点击 Activate</li><li>激活完成！</li></ol><p>激活完后大概是这个样子的:</p><p><img src="https://waver.me/album/images/post/2018/07/jrebel_active.png" alt=""></p><p>上面提到的这个服务器是笔者自己搭的,各位请放心使用; 当然, 假如挂了也可以评论告诉我下, 我会尽快修复</p><h2 id="其他资源链接"><a href="#其他资源链接" class="headerlink" title="其他资源链接"></a>其他资源链接</h2><h3 id="在线生成guid的网站"><a href="#在线生成guid的网站" class="headerlink" title="在线生成guid的网站:"></a>在线生成guid的网站:</h3><p><a href="https://www.guidgen.com/" target="_blank" rel="noopener">Create GUIDs online</a><br><a href="https://www.guidgenerator.com/" target="_blank" rel="noopener">Online GUID Generator</a></p><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://qinjiangbo.com/build-jrebel-license-server-with-docker.html" target="_blank" rel="noopener">秦江波的个人博客</a><br><a href="https://blog.csdn.net/qq_20607505/article/details/80513012" target="_blank" rel="noopener">qq_20607505的博客</a><br><a href="https://blog.csdn.net/allen_liyu/article/details/80984378" target="_blank" rel="noopener">Allen_liyu的博客</a></p>]]></content>
     
@@ -224,7 +224,7 @@
     <link href="https://waver.me/2018/03/30/IDEA%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98/"/>
     <id>https://waver.me/2018/03/30/IDEA性能调优/</id>
     <published>2018-03-30T14:15:53.000Z</published>
-    <updated>2018-06-27T05:18:31.087Z</updated>
+    <updated>2018-06-27T05:18:31.000Z</updated>
     
     <content type="html"><![CDATA[<p>优化参数如下:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">-server</span><br><span class="line">-Xms1024m</span><br><span class="line">-Xmx4096m</span><br><span class="line">-XX:NewRatio=3</span><br><span class="line">-Xss16m</span><br><span class="line">-XX:+UseConcMarkSweepGC</span><br><span class="line">-XX:+CMSParallelRemarkEnabled</span><br><span class="line">-XX:ConcGCThreads=4</span><br><span class="line">-XX:ReservedCodeCacheSize=1024m</span><br><span class="line">-XX:+AlwaysPreTouch</span><br><span class="line">-XX:+TieredCompilation</span><br><span class="line">-XX:+UseCompressedOops</span><br><span class="line">-XX:SoftRefLRUPolicyMSPerMB=50</span><br><span class="line">-Dsun.io.useCanonCaches=false</span><br><span class="line">-Djava.net.preferIPv4Stack=true</span><br><span class="line">-Djsse.enableSNIExtension=false</span><br><span class="line">-ea</span><br><span class="line">-Dide.no.platform.update=true</span><br></pre></td></tr></table></figure>]]></content>
     

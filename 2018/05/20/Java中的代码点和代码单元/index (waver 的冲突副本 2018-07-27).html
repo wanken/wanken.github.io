@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="h7s9U8msd2y_IQaK9E0qVaucNDF7TipP2666PkbduZM" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Special Elite:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,Java 基础," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Waver's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本文转自Java中的代码点和代码单元,原出处没找到,对不起原作者了  摘要本文介绍 Java 平台支持增补字符的方式。增补字符是 Unicode 标准中代码点超出 U+FFFF 的字符,因此它们无法在 Java 编程语言中描述为单个的 16 位实体(例如char数据类型)。这些字符一般极少用,但是,有些会在诸如中文或日文人名中用到,因此,在东亚国家,政府应用程序通常会要求支持这些字符。   Ja">
+<meta name="keywords" content="Java,Java 基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的代码点和代码单元">
+<meta property="og:url" content="https://waver.me/2018/05/20/Java中的代码点和代码单元/index.html">
+<meta property="og:site_name" content="Waver&#39;s Blog">
+<meta property="og:description" content="本文转自Java中的代码点和代码单元,原出处没找到,对不起原作者了  摘要本文介绍 Java 平台支持增补字符的方式。增补字符是 Unicode 标准中代码点超出 U+FFFF 的字符,因此它们无法在 Java 编程语言中描述为单个的 16 位实体(例如char数据类型)。这些字符一般极少用,但是,有些会在诸如中文或日文人名中用到,因此,在东亚国家,政府应用程序通常会要求支持这些字符。   Ja">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-20T13:02:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中的代码点和代码单元">
+<meta name="twitter:description" content="本文转自Java中的代码点和代码单元,原出处没找到,对不起原作者了  摘要本文介绍 Java 平台支持增补字符的方式。增补字符是 Unicode 标准中代码点超出 U+FFFF 的字符,因此它们无法在 Java 编程语言中描述为单个的 16 位实体(例如char数据类型)。这些字符一般极少用,但是,有些会在诸如中文或日文人名中用到,因此,在东亚国家,政府应用程序通常会要求支持这些字符。   Ja">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://waver.me/2018/05/20/Java中的代码点和代码单元/"/>
+
+
+
+
+
+  <title>Java中的代码点和代码单元 | Waver's Blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-115460777-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Waver's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">个人知识博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-picture">
+          <a href="/picture/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-image"></i> <br />
+            
+            相册
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-comments">
+          <a href="/comments/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-comments"></i> <br />
+            
+            留言
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-Java" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/05/20/Java中的代码点和代码单元/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Waver">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java中的代码点和代码单元</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T20:27:39+08:00">
+                2018-05-20
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-05-20T21:02:03+08:00">
+                2018-05-20
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/20/Java中的代码点和代码单元/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/05/20/Java中的代码点和代码单元/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/05/20/Java中的代码点和代码单元/" class="leancloud_visitors" data-flag-title="Java中的代码点和代码单元">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>本文转自<a href="https://blog.csdn.net/weizhaozhe/article/details/3909079" target="_blank" rel="noopener">Java中的代码点和代码单元</a>,原出处没找到,对不起原作者了</p>
+</blockquote>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文介绍 Java 平台支持增补字符的方式。增补字符是 Unicode 标准中代码点超出 U+FFFF 的字符,因此它们无法在 Java 编程语言中描述为单个的 16 位实体(例如char数据类型)。这些字符一般极少用,但是,有些会在诸如中文或日文人名中用到,因此,在东亚国家,政府应用程序通常会要求支持这些字符。</p>
+<p>  Java 平台目前正在改进,以便支持对增补字符的处理,这种改进对现有的应用程序影响微乎其微。新的低层 API 在需要时能够使用单个的字符运行。不过,大多数文本处理 API 均使用字符序列,例如String类或字符数组。现在,这些均解释为 UTF-16 序列,而且,这些 API 实现已转变为正确地处理增补字符。这些改进已融入 Java 2 平台 5.0 版,标准版 (J2SE)。</p>
+<p>  除详细解释这些改进之外,本文同时为应用程序开发人员确定和实现必要的更改提供指导,以支持整个 Unicode 字符集的使用。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p> Unicode 最初设计是作为一种固定宽度的 16 位字符编码。在 Java 编程语言中,基本数据类型char初衷是通过提供一种简单的、能够包含任何字符的数据类型来充分利用这种设计的优点。不过,现在看来,16 位编码的所有 65,536 个字符并不能完全表示全世界所有正在使用或曾经使用的字符。于是,Unicode 标准已扩展到包含多达 1,112,064 个字符。那些超出原来的 16 位限制的字符被称作增补字符。Unicode 标准 2.0 版是第一个包含启用增补字符设计的版本,但是,直到 3.1 版才收入第一批增补字符集。由于 J2SE 的 5.0 版必须支持 Unicode 标准 4.0 版,因此它必须支持增补字符。</p>
+<p>  对增补字符的支持也可能会成为东亚市场的一个普遍商业要求。政府应用程序会需要这些增补字符,以正确表示一些包含罕见中文字符的姓名。出版应用程序可能会需要这些增补字符,以表示所有的古代字符和变体字符。中国政府要求支持 GB18030(一种对整个 Unicode 字符集进行编码的字符编码标准),因此,如果是 Unicode 3.1 版或更新版本,则将包括增补字符。台湾标准 CNS-11643 包含的许多字符在 Unicode 3.1 中列为增补字符。香港政府定义了一种针对粤语的字符集,其中的一些字符是 Unicode 中的增补字符。最后,日本的一些供应商正计划利用增补字符空间中大量的专用空间收入 50,000 多个日文汉字字符变体,以便从其专有系统迁移至基于 Java 平台的解决方案。</p>
+<p>   因此,Java 平台不仅需要支持增补字符,而且必须使应用程序能够方便地做到这一点。由于增补字符打破了 Java 编程语言的基础设计构想,而且可能要求对编程模型进行根本性的修改,因此,Java Community Process 召集了一个专家组,以期找到一个适当的解决方案。该小组被称为 JSR-204 专家组,使用Unicode 增补字符支持的 Java 技术规范请求的编号。从技术上来说,该专家组的决定仅适用于 J2SE 平台,但是由于 Java 2 平台企业版 (J2EE) 处于 J2SE 平台的最上层,因此它可以直接受益,我们期望 Java 2 平台袖珍版 (J2ME) 的配置也采用相同的设计方法。</p>
+<p>   不过,在了解 JSR-204 专家组确定的解决方案之前,我们需要先理解一些术语。</p>
+<h2 id="代码点、字符编码方案、UTF-16：这些是指什么？"><a href="#代码点、字符编码方案、UTF-16：这些是指什么？" class="headerlink" title="代码点、字符编码方案、UTF-16：这些是指什么？"></a>代码点、字符编码方案、UTF-16：这些是指什么？</h2><p>  不幸的是,引入增补字符使字符模型变得更加复杂了。在过去,我们可以简单地说“字符”,在一个基于 Unicode 的环境(例如 Java 平台)中,假定字符有 16 位,而现在我们需要更多的术语。我们会尽量介绍得相对简单一些 — 如需了解所有详细的讨论信息,您可以阅读Unicode 标准第 2 章或 Unicode 技术报告 17“字符编码模型”。Unicode 专业人士可略过所有介绍直接参阅本部分中的最后定义。</p>
+<p>  字符是抽象的最小文本单位。它没有固定的形状(可能是一个字形),而且没有值。“A”是一个字符,“€”(德国、法国和许多其他欧洲国家通用货币的标志)也是一个字符。</p>
+<p>   字符集是字符的集合。例如,汉字字符是中国人最先发明的字符,在中文、日文、韩文和越南文的书写中使用。</p>
+<p>   编码字符集是一个字符集,它为每一个字符分配一个唯一数字。Unicode 标准的核心是一个编码字符集,字母“A”的编码为 004116 和字符“€”的编码为20AC16.Unicode 标准始终使用十六进制数字,而且在书写时在前面加上前缀“U+”,所以“A”的编码书写为“U+0041”。</p>
+<p>   代码点是指可用于编码字符集的数字。编码字符集定义一个有效的代码点范围,但是并不一定将字符分配给所有这些代码点。有效的 Unicode 代码点范围是 U+0000 至 U+10FFFF.Unicode 4.0 将字符分配给一百多万个代码点中的 96,382 代码点。</p>
+<pre><code>增补字符是代码点在 U+10000 至 U+10FFFF 范围之间的字符,也就是那些使用原始的 Unicode 的 16 位设计无法表示的字符。从 U+0000 至 U+FFFF 之间的字符集有时候被称为基本多语言面 (BMP)。因此,每一个 Unicode 字符要么属于 BMP,要么属于增补字符。
+
+字符编码方案是从一个或多个编码字符集到一个或多个固定宽度代码单元序列的映射。最常用的代码单元是字节，但是 16 位或 32 位整数也可用于内部处理。UTF-32、UTF-16 和 UTF-8 是 Unicode 标准的编码字符集的字符编码方案。
+
+UTF-32 即将每一个 Unicode 代码点表示为相同值的 32 位整数。很明显，它是内部处理最方便的表达方式，但是，如果作为一般字符串表达方式，则要消耗更多的内存。
+
+UTF-16 使用一个或两个未分配的 16 位代码单元的序列对 Unicode 代码点进行编码。值 U+0000 至 U+FFFF 编码为一个相同值的 16 位单元。增补字符编码为两个代码单元，第一个单元来自于高代理范围(U+D800 至 U+DBFF)，第二个单元来自于低代理范围(U+DC00 至 U+DFFF)。这在概念上可能看起来类似于多字节编码，但是其中有一个重要区别：值 U+D800 至 U+DFFF 保留用于 UTF-16;没有这些值分配字符作为代码点。这意味着，对于一个字符串中的每个单独的代码单元，软件可以识别是否该代码单元表示某个单单元字符，或者是否该代码单元是某个双单元字符的第一个或第二单元。这相当于某些传统的多字节字符编码来说是一个显著的改进，在传统的多字节字符编码中，字节值 0x41 既可能表示字母“A”，也可能是一个双字节字符的第二个字节。
+
+UTF-8 使用一至四个字节的序列对编码 Unicode 代码点进行编码。U+0000 至 U+007F 使用一个字节编码，U+0080 至 U+07FF 使用两个字节，U+0800 至 U+FFFF 使用三个字节，而 U+10000 至 U+10FFFF 使用四个字节。UTF-8 设计原理为：字节值 0x00 至 0x7F 始终表示代码点 U+0000 至 U+007F(Basic Latin 字符子集，它对应 ASCII 字符集)。这些字节值永远不会表示其他代码点，这一特性使 UTF-8 可以很方便地在软件中将特殊的含义赋予某些 ASCII 字符。
+</code></pre><h3 id="下表所示为几个字符不同表达方式的比较："><a href="#下表所示为几个字符不同表达方式的比较：" class="headerlink" title="下表所示为几个字符不同表达方式的比较："></a>下表所示为几个字符不同表达方式的比较：</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">Unicode 代码点</th>
+<th style="text-align:center">U+0041</th>
+<th style="text-align:center">U+00DF</th>
+<th style="text-align:center">U+6771</th>
+<th style="text-align:center">U+10400</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">表示字形</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">UTF-32 代码单元</td>
+<td style="text-align:center">00000041</td>
+<td style="text-align:center">000000DF</td>
+<td style="text-align:center">00006771</td>
+<td style="text-align:center">00010400</td>
+</tr>
+<tr>
+<td style="text-align:center">UTF-16 代码单元</td>
+<td style="text-align:center">0041</td>
+<td style="text-align:center">00DF</td>
+<td style="text-align:center">6771</td>
+<td style="text-align:center">D801 DC00</td>
+</tr>
+<tr>
+<td style="text-align:center">UTF-8 代码单元</td>
+<td style="text-align:center">41</td>
+<td style="text-align:center">C3 9F</td>
+<td style="text-align:center">E6 9D B1</td>
+<td style="text-align:center">F0 90 90 80</td>
+</tr>
+</tbody>
+</table>
+<p> 另外，本文在许多地方使用术语字符序列或char序列概括 Java 2 平台识别的所有字符序列的容器：char[]， java.lang.CharSequence的实现(例如String类)，和java.text.CharacterIterator的实现。</p>
+<p> 这么多术语。它们与在 Java 平台中支持增补字符有什么关系呢？</p>
+<h2 id="Java-平台中增补字符的设计方法"><a href="#Java-平台中增补字符的设计方法" class="headerlink" title="Java 平台中增补字符的设计方法"></a>Java 平台中增补字符的设计方法</h2><p>JSR-204 专家组必须作出的主要决定是如何在 Java API 中表示增补字符，包括单个字符和所有形式的字符序列。专家组考虑并排除了多种方法：</p>
+<p> 重新定义基本类型char，使其具有 32 位，这样也会使所有形式的char序列成为 UTF-32 序列。</p>
+<p>  在现有的 16 位类型char的基础上，为字符引入一种新的 32 位基本类型(例如，char32)。所有形式的 Char 序列均基于 UTF-16.</p>
+<p>  在现有的 16 位类型char的基础上，为字符引入一种新的 32 位基本类型(例如，char32)。String和StringBuffer接受并行 API，并将它们解释为 UTF-16 序列或 UTF-32 序列;其他char序列继续基于 UTF-16.</p>
+<p> 使用int表示增补的代码点。String和StringBuffer接受并行 API，并将它们解释为 UTF-16 序列或 UTF-32 序列;其他char序列继续基于 UTF-16.</p>
+<p> 使用代理char对，表示增补代码点。所有形式的char序列基于 UTF-16.</p>
+<p> 引入一种封装字符的类。String和StringBuffer接受新的 API，并将它们解释为此类字符的序列。</p>
+<p> 使用一个CharSequence实例和一个索引的组合表示代码点</p>
+<p>  在这些方法中，一些在早期就被排除了。例如，重新定义基本类型char，使其具有 32 位，这对于全新的平台可能会非常有吸引力，但是，对于 J2SE 来说，它会与现有的 Java 虚拟机1、序列化和其他接口不兼容，更不用说基于 UTF-32 的字符串要使用两倍于基于 UTF-16 的字符串的内存了。添加一种新类型的char32可能会简单一些，但是仍然会出现虚拟机和序列化方面的问题。而且，语言更改通常需要比 API 更改有更长的提前期，因此，前面两种方法会对增补字符支持带来无法接受的延迟。为了在余下的方法中筛选出最优方案，实现小组使用四种不同的方法，在大量进行低层字符处理的代码(java.util.regex包)中实现了对增补字符支持，并对这四种方法的难易程度和运行表现进行了比较。</p>
+<p>  最终，专家组确定了一种分层的方法：</p>
+<p>使用基本类型int在低层 API 中表示代码点，例如Character类的静态方法。<br>将所有形式的char序列均解释为 UTF-16 序列，并促进其在更高层级 API 中的使用。<br>提供 API，以方便在各种char和基于代码点的表示法之间的转换。</p>
+<p>  在需要时，此方法既能够提供一种概念简明且高效的单个字符表示法，又能够充分利用通过改进可支持增补字符的现有 API.同时，还能够促进字符序列在单个字符上的应用，这一点一般对于国际化的软件很有好处。</p>
+<p>  在这种方法中，一个char表示一个 UTF-16 代码单元，这样对于表示代码点有时并不够用。您会注意到，J2SE 技术规范现在使用术语代码点和 UTF-16 代码单元(表示法是相关的)以及通用术语字符(表示法与该讨论没有关系)。API 通常使用名称codePoint描述表示代码点的类型int的变量，而 UTF-16 代码单元的类型当然为char.我们将在下面两部分中了解到 J2SE 平台的实质变化 — 其中一部分介绍单个代码点的低层 API，另一部分介绍采用字符序列的高层接口。</p>
+<p>  开放的增补字符：基于代码点的 API</p>
+<p>  新增的低层 API 分为两大类：用于各种char和基于代码点的表示法之间转换的方法和用于分析和映射代码点的方法。</p>
+<p>  最基本的转换方法是Character.toCodePoint(char high， char low)(用于将两个 UTF-16 代码单元转换为一个代码点)和Character.toChars(int codePoint)(用于将指定的代码点转换为一个或两个 UTF-16 代码单元，然后封装到一个char[]内。不过，由于大多数情况下文本以字符序列的形式出现，因此，另外提供codePointAt和codePointBefore方法，用于将代码点从各种字符序列表示法中提取出来：Character.codePointAt(char[] a， int index)和String.codePointBefore(int index)是两种典型的例子。在将代码点插入字符序列时，大多数情况下均有一些针对StringBuffer和StringBuilder类的appendCodePoint(int codePoint)方法，以及一个用于提取表示代码点的int[]的String构建器。</p>
+<p>  几种用于分析代码单元和代码点的方法有助于转换过程：Character 类中的isHighSurrogate和isLowSurrogate方法可以识别用于表示增补字符的char值;charCount(int codePoint)方法可以确定是否需要将某个代码点转换为一个或两个char.但是，大多数基于代码点的方法均能够对所有 Unicode 字符实现基于char的旧方法对 BMP 字符所实现的功能。以下是一些典型例子：</p>
+<p>  Character.isLetter(int codePoint)可根据 Unicode 标准识别字母。<br>  Character.isJavaIdentifierStart(int codePoint)可根据 Java 语言规范确定代码点是否可以启动标识符。<br>  Character.UnicodeBlock.of(int codePoint)可搜索代码点所属的 Unicode 字符子集。<br>  Character.toUpperCase(int codePoint)可将给定的代码点转换为其大写等值字符。尽管此方法能够支持增补字符，但是它仍然不能解决根本的问题，即在某些情况下，逐个字符的转换无法正确完成。例如，德文字符“”？””应该转换为“SS”，这需要使用String.toUpperCase方法。</p>
+<p>  注意大多数接受代码点的方法并不检查给定的int值是否处于有效的 Unicode 代码点范围之内(如上所述，只有 0x0 至 0x10FFFF 之间的范围是有效的)。在大多数情况下，该值是以确保其有效的方法产生的，在这些低层 API 中反复检查其有效性可能会对系统性能造成负面的影响。在无法确保有效性的情况下，应用程序必须使用Character.isValidCodePoint方法确保代码点有效。大多数方法对于无效的代码点采取的行为没有特别加以指定，不同的实现可能会有所不同。</p>
+<p>  API 包含许多简便的方法，这些方法可使用其他低层的 API 实现，但是专家组觉得，这些方法很常用，将它们添加到 J2SE 平台上很有意义。不过，专家组也排除了一些建议的简便方法，这给我们提供了一次展示自己实现此类方法能力的机会。例如，专家组经过讨论，排除了一种针对String类的新构建器(该构建器可以创建一个保持单个代码点的String)。以下是使应用程序使用现有的 API 提供功能的一种简便方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 创建仅含有指定代码点的新 String.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function">String <span class="title">newString</span><span class="params">(<span class="keyword">int</span> codePoint)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> String(Character.toChars(codePoint));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 您会注意到，在这个简单的实现中，toChars方法始终创建一个中间数列，该数列仅使用一次即立即丢弃。如果该方法在您的性能评估中出现，您可能会希望将其优化为针对最为普通的情况，即该代码点为 BMP 字符：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">* 创建仅含有指定代码点的新 String.</span></span><br><span class="line"><span class="comment">* 针对 BMP 字符优化的版本。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function">String <span class="title">newString</span><span class="params">(<span class="keyword">int</span> codePoint)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (Character.charCount(codePoint) == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> String.valueOf((<span class="keyword">char</span>) codePoint);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(Character.toChars(codePoint));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者，如果您需要创建许多个这样的 string，则可能希望编写一个重复使用toChars方法所使用的数列的通用版本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 创建每一个均含有一个指定</span></span><br><span class="line"><span class="comment">* 代码点的新 String.</span></span><br><span class="line"><span class="comment">* 针对 BMP 字符优化的版本。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">String[] newStrings(<span class="keyword">int</span>[] codePoints)&#123;</span><br><span class="line">    String[] result = <span class="keyword">new</span> String[codePoints.length];</span><br><span class="line">    <span class="keyword">char</span>[] codeUnits = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; codePoints.length; i++) &#123;</span><br><span class="line">         <span class="keyword">int</span> count = Character.toChars(codePoints[i], codeUnits, <span class="number">0</span>);</span><br><span class="line">        result[i] = <span class="keyword">new</span> String(codeUnits, <span class="number">0</span>, count);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  不过，最终您可能会发现，您需要的是一个完全不同的解决方案。新的构建器String(int codePoint)实际上建议作为String.valueOf(char)的一个基于代码点的备选方案。在很多情况下，此方法用于消息生成的环境，例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"Character "</span> + String.valueOf(<span class="keyword">char</span>) + <span class="string">" is invalid."</span>);</span><br></pre></td></tr></table></figure>
+<p>新的格式化 API支持增补文字，提供一种更加简单的备选方案：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">"Character %c is invalid.%n"</span>, codePoint);</span><br></pre></td></tr></table></figure></p>
+<p>使用此高层 API 不仅简捷，而它有很多特殊的优点：它可以避免串联(串联会使消息很难本地化)，并将需要移进资源包 (resource bundle) 的字符串数量从两个减少到一个。</p>
+<h2 id="增补字符透视：功能增强"><a href="#增补字符透视：功能增强" class="headerlink" title="增补字符透视：功能增强"></a>增补字符透视：功能增强</h2><p>在支持使用增补字符的 Java 2 平台中的大部分更改没有反映到新的 API 内。一般预期是，处理字符序列的所有接口将以适合其功能的方式处理增补字符。本部分着重讲述为达到此预期所作一些功能增强。</p>
+<h2 id="Java-编程语言中的标识符"><a href="#Java-编程语言中的标识符" class="headerlink" title="Java 编程语言中的标识符"></a>Java 编程语言中的标识符</h2><p>  Java 语言规范指出所有 Unicode 字母和数字均可用于标识符。许多增补字符是字母或数字，因此 Java 语言规范已经参照新的基于代码点的方法进行更新，以在标识符内定义合法字符。为使用这些新方法，需要检测标识符的 javac 编译器和其他工具都进行了修订。</p>
+<h3 id="库内的增补字符支持"><a href="#库内的增补字符支持" class="headerlink" title="库内的增补字符支持"></a>库内的增补字符支持</h3><p>许多 J2SE 库已经过增强，可以通过现有接口支持增补字符。以下是一些例子：</p>
+<p>  字符串大小写转换功能已更新，可以处理增补字符，也可以实现 Unicode 标准中规定的特殊大小写规则。<br>  java.util.regex包已更新，这样模式字符串和目标字符串均可以包含增补字符并将其作为完整单元处理。<br>  现在，在java.text包内进行整理处理时，会将增补字符看作完整单元。<br>  java.text.Bidi类已更新，可以处理增补字符和 Unicode 4.0 中新增的其他字符。请注意，Cypriot Syllabary 字符子集内的增补字符具有从右至左的方向性。</p>
+<p>  Java 2D API 内的字体渲染和打印技术已经过增强，可以正确渲染和测量包含增补字符的字符串。</p>
+<p>  Swing 文本组件实现已更新，可以处理包含增补字符的文本。</p>
+<h3 id="字符转换"><a href="#字符转换" class="headerlink" title="字符转换"></a>字符转换</h3><p>  只有很少的字符编码可以表示增补字符。如果是基于 Unicode 的编码(如 UTF-8 和 UTF-16LE)，则旧版的 J2RE 内的字符转换器已经按照正确处理增补字符的方式实现转换。对于 J2RE 5.0，可以表示增补字符的其他编码的转换器已更新：GB18030、x-EUC-TW(现在实现所有 CNS 11643 层面)和 Big5-HKSCS(现在实现 HKSCS-2001)。</p>
+<h2 id="在源文件内表示增补字符"><a href="#在源文件内表示增补字符" class="headerlink" title="在源文件内表示增补字符"></a>在源文件内表示增补字符</h2><p>  在 Java 编程语言源文件中，如果使用可以直接表示增补字符的字符编码，则使用增补字符最为方便。UTF-8 是最佳的选择。在所使用的字符编码无法直接表示字符的情况下，Java 编程语言提供一种 Unicode 转义符语法。此语法没有经过增强，无法直接表示增补字符。而是使用两个连续的 Unicode 转义符将其表示为 UTF-16 字符表示法中的两个编码单元。例如，字符 U+20000 写作“/uD840/uDC00”。您也许不愿意探究这些转义序列的含义;最好是写入支持所需增补字符的编码，然后使用一种工具(如 native2ascii)将其转换为转义序列。</p>
+<p>  遗憾的是，由于其编码问题，属性文件仍局限于 ISO 8859-1(除非您的应用程序使用新的 XML 格式)。这意味着您始终必须对增补字符使用转义序列，而且可能要使用不同的编码进行编写，然后使用诸如 native2ascii 的工具进行转换。</p>
+<h3 id="经修订的-UTF-8"><a href="#经修订的-UTF-8" class="headerlink" title="经修订的 UTF-8"></a>经修订的 UTF-8</h3><p>  Java 平台对经修订的 UTF-8 已经很熟悉，但是，问题是应用程序开发人员在可能包含增补字符的文本和 UTF-8 之间进行转换时需要更加留神。需要特别注意的是，某些 J2SE 接口使用的编码与 UTF-8 相似但与其并不兼容。以前，此编码有时被称为“Java modified UTF-8”(经 Java 修订的 UTF-8)或(错误地)直接称为“UTF-8”。对于 J2SE 5.0，其说明文档正在更新，此编码将统称为“modified UTF-8”(经修订的 UTF-8)。</p>
+<p>  经修订的 UTF-8 和标准 UTF-8 之间之所以不兼容，其原因有两点。其一，经修订的 UTF-8 将字符 U+0000 表示为双字节序列 0xC0 0x80，而标准 UTF-8 使用单字节值 0x0.其二，经修订的 UTF-8 通过对其 UTF-16 表示法的两个代理代码单元单独进行编码表示增补字符。每个代理代码单元由三个字节来表示，共有六个字节。而标准 UTF-8 使用单个四字节序列表示整个字符。</p>
+<p>  Java 虚拟机及其附带的接口(如 Java 本机接口、多种工具接口或 Java 类文件)在java.io.DataInput和DataOutput接口和类中使用经修订的 UTF-8 实现或使用这些接口和类，并进行序列化。Java 本机接口提供与经修订的 UTF-8 之间进行转换的例程。而标准 UTF-8 由String类、java.io.InputStreamReader和OutputStreamWriter类、java.nio.charset设施 (facility) 以及许多其上层的 API 提供支持。</p>
+<p>  由于经修订的 UTF-8 与标准的 UTF-8 不兼容，因此切勿同时使用这两种版本的编码。经修订的 UTF-8 只能与上述的 Java 接口配合使用。在任何其他情况下，尤其对于可能来自非基于 Java 平台的软件的或可能通过其编译的数据流，必须使用标准的 UTF-8.需要使用标准的 UTF-8 时，则不能使用 Java 本机接口例程与经修订的 UTF-8 进行转换。</p>
+<h3 id="在应用程序内支持增补字符"><a href="#在应用程序内支持增补字符" class="headerlink" title="在应用程序内支持增补字符"></a>在应用程序内支持增补字符</h3><p>  现在，对大多数读者来说最为重要的问题是：必须对应用程序进行哪些更改才能支持增补字符？</p>
+<p>  答案取决于在应用程序中进行哪种类型的文本处理和使用哪些 Java 平台 API.对于仅以各种形式char序列([char[]、java.lang.CharSequence实现、java.text.CharacterIterator实现)处理文本和仅使用接受和退回序列(如char序列)的 Java API 的应用程序，可能根本不需要进行任何更改。Java 平台 API 的实现应该能够处理增补字符。</p>
+<p>  对于本身解释单个字符、将单个字符传送给 Java 平台 API 或调用能够返回单个字符的方法的应用程序，则需要考虑这些字符的有效值。在很多情况下，往往不要求支持增补字符。例如，如果某应用程序搜索char序列中的 HTML 标记，并逐一检查每个char，它会知道这些标记仅使用 Basic Latin 字符子集中的字符。如果所搜索的文本含有增补字符，则这些字符不会与标记字符混淆，因为 UTF-16 使用代码单元表示增补字符，而代码单元的值不会用于 BMP 字符。</p>
+<p>  只有在某应用程序本身解释单个字符、将单个字符传送给 Java 平台 API 或调用能够返回单个字符的方法且这些字符可能为增补字符时，才必须更改该应用程序。在提供使用char序列的并行 API 时，最好转而使用此类 API.在其他情况下，有必要使用新的 API 在char和基于代码点的表示法之间进行转换，并调用基于代码点的 API.当然，如果您发现在 J2SE 5.0 中有更新、更方便的 API，使您能够支持增补字符并同时简化代码(如上格式化范例中所述)，则没有必要这样做。</p>
+<p>  您可能会犹豫，是将所有文本转换为代码点表示法(即int[])然后在该表示法中处理，还是在大多数情况下仍采用char序列，仅在需要时转换为代码点，两者之间孰优孰劣很难确定。当然，总体来说，Java 平台 API 相对于char序列肯定具有一定的优势，而且采用 Java 平台 API 可以节省内存空间。</p>
+<p>  对于需要与 UTF-8 之间进行转换的应用程序，还需要认真考虑是需要标准的 UTF-8 还是经修订的 UTF-8，并针对每种 UTF-8 采用适当的 Java 平台。“经修订的 UTF-8”部分介绍进行正确选择所需的信息。</p>
+<h3 id="使用增补字符测试应用程序"><a href="#使用增补字符测试应用程序" class="headerlink" title="使用增补字符测试应用程序"></a>使用增补字符测试应用程序</h3><p>  经过前面部分的介绍后，无论您是否需要修订应用程序，测试应用程序是否运行正常始终是一种正确的做法。对于不含有图形用户界面的应用程序，有关“在源文件内表示增补字符”　的信息有助于设计测试用例。以下是有关使用图形用户界面进行测试的补充信息。</p>
+<p>  对于文本输入，Java 2 SDK提供用于接受“/Uxxxxxx”格式字符串的代码点输入方法，这里大写的“U”表示转义序列包含六个十六进制数字，因此允许使用增补字符。小写的“u”表示转义序列“/uxxxx”的原始格式。您可以在 J2SDK 目录 demo/jfc/CodePointIM 内找到此输入方法及其说明文档。</p>
+<p>  对于字体渲染，您需要至少能够渲染一些增补字符的字体。其中一种此类字体为 James Kass 的Code2001字体，它提供手写体字形(如 Deseret 和 Old Italic)。利用 Java 2D 库中提供新功能，您只需将该字体安装到 J2RE 的 lib/fonts/fallback 目录内即可，然后它可自动添加至在 2D 和 XAWT 渲染时使用的所有逻辑字体 — 无需编辑字体配置文件。</p>
+<p>  至此，您就可以确认，您的应用程序能够完全支持增补字符了！</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>  对增补字符的支持已经引入 Java 平台，大部分应用程序无需更改代码即可处理这些字符。解释单个字符的应用程序可以在Character类和多种CharSequence子类中使用基于代码点的新 API.</p>
+<h3 id="以下是Unicode和UTF-8之间的转换关系表："><a href="#以下是Unicode和UTF-8之间的转换关系表：" class="headerlink" title="以下是Unicode和UTF-8之间的转换关系表："></a>以下是Unicode和UTF-8之间的转换关系表：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">U-00000000 - U-0000007F： 0xxxxxxx</span><br><span class="line">U-00000080 - U-000007FF： 110xxxxx 10xxxxxx</span><br><span class="line">U-00000800 - U-0000FFFF： 1110xxxx 10xxxxxx 10xxxxxx</span><br><span class="line">U-00010000 - U-001FFFFF： 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</span><br><span class="line">U-00200000 - U-03FFFFFF： 111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</span><br><span class="line">U-04000000 - U-7FFFFFFF： 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Byte 数组转整数：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">bytes2int</span><span class="params">(<span class="keyword">byte</span>[] b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mask=<span class="number">0xff</span>;</span><br><span class="line">        <span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">             res&lt;&lt;=<span class="number">8</span>;</span><br><span class="line">             temp=b[i]&amp;mask;</span><br><span class="line">             res|=temp;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>整数转byte数组：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">byte</span>[] int2bytes(<span class="keyword">int</span> num)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">byte</span>[] b=<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">int</span> mask=<span class="number">0xff</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">4</span>;i++)&#123;</span><br><span class="line">            b[i]=(<span class="keyword">byte</span>)(num&gt;&gt;&gt;(<span class="number">24</span>-i*<span class="number">8</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Java-基础/" rel="tag"># Java 基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/13/CentOS搭建git/" rel="next" title="CentOS搭建git服务器Gogs">
+                <i class="fa fa-chevron-left"></i> CentOS搭建git服务器Gogs
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/15/volatile关键字详解/" rel="prev" title="volatile关键字详解(转)">
+                volatile关键字详解(转) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    <!--添加disqus延迟加载-->
+    <div style="text-align:center;">
+      <button class="mybtn" id="load-livere" onclick="livere.load();">加载 LiveRe 评论</button>
+    </div>
+    <div style="text-align:center;">
+        <button class="disbtn" id="load-disqus" onclick="disqus.load();">加载 Disqus 评论</button>
+      </div>
+
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzcwMS8xMDI1Ng=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/head.jpg"
+                alt="Waver" />
+            
+              <p class="site-author-name" itemprop="name">Waver</p>
+              <p class="site-description motion-element" itemprop="description">一知半解,似懂非懂</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:jokerwaver@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://plus.google.com/105010541415941865996" target="_blank" title="Google">
+                    
+                      <i class="fa fa-fw fa-google"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/waverjoker" target="_blank" title="Twitter">
+                    
+                      <i class="fa fa-fw fa-twitter"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.facebook.com/profile.php?id=100019851735377" target="_blank" title="FB Page">
+                    
+                      <i class="fa fa-fw fa-facebook"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://stackoverflow.com/users/7420706" target="_blank" title="StackOverflow">
+                    
+                      <i class="fa fa-fw fa-stack-overflow"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://instagram.com/jokerwaver" target="_blank" title="Instagram">
+                    
+                      <i class="fa fa-fw fa-instagram"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jzhung.com" title="jzhung" target="_blank">jzhung</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ehlxr.me/" title="ehlxr" target="_blank">ehlxr</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码点、字符编码方案、UTF-16：这些是指什么？"><span class="nav-number">3.</span> <span class="nav-text">代码点、字符编码方案、UTF-16：这些是指什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下表所示为几个字符不同表达方式的比较："><span class="nav-number">3.1.</span> <span class="nav-text">下表所示为几个字符不同表达方式的比较：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-平台中增补字符的设计方法"><span class="nav-number">4.</span> <span class="nav-text">Java 平台中增补字符的设计方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增补字符透视：功能增强"><span class="nav-number">5.</span> <span class="nav-text">增补字符透视：功能增强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-编程语言中的标识符"><span class="nav-number">6.</span> <span class="nav-text">Java 编程语言中的标识符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#库内的增补字符支持"><span class="nav-number">6.1.</span> <span class="nav-text">库内的增补字符支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符转换"><span class="nav-number">6.2.</span> <span class="nav-text">字符转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在源文件内表示增补字符"><span class="nav-number">7.</span> <span class="nav-text">在源文件内表示增补字符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#经修订的-UTF-8"><span class="nav-number">7.1.</span> <span class="nav-text">经修订的 UTF-8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在应用程序内支持增补字符"><span class="nav-number">7.2.</span> <span class="nav-text">在应用程序内支持增补字符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用增补字符测试应用程序"><span class="nav-number">7.3.</span> <span class="nav-text">使用增补字符测试应用程序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">8.</span> <span class="nav-text">结论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以下是Unicode和UTF-8之间的转换关系表："><span class="nav-number">8.1.</span> <span class="nav-text">以下是Unicode和UTF-8之间的转换关系表：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Waver</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://waver.disqus.com/count.js" async></script>
+    
+
+    
+      <!-- 替换为点击加载
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://waver.me/2018/05/20/Java中的代码点和代码单元/';
+          this.page.identifier = '2018/05/20/Java中的代码点和代码单元/';
+          this.page.title = 'Java中的代码点和代码单元';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://waver.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+      -->
+
+      <script type="text/javascript">
+        var disqus = {
+          load : function disqus(){
+            if(typeof DISQUS !== 'object') {
+              (function () {
+                var disqus_config = function () {
+                this.page.url = 'https://waver.me/2018/05/20/Java中的代码点和代码单元/';
+                this.page.identifier = '2018/05/20/Java中的代码点和代码单元/';
+                this.page.title = 'Java中的代码点和代码单元';
+                };
+                var d = document, s = d.createElement('script');
+                s.src = 'https://waver.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', '' + +new Date());
+                (d.head || d.body).appendChild(s);
+                }());
+                $('#load-disqus').remove(); ///加载后移除按钮
+              }
+            }
+          }
+    </script>
+    <script type="text/javascript">
+    var livere = {
+      load : function livere(){
+        if(typeof LIVERE !== 'object') {
+          (function () {
+            (function(d, s) {
+              var j, e = d.getElementsByTagName(s)[0];
+              if (typeof LivereTower === 'function') { return; }
+              j = d.createElement(s);
+              j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+              j.async = true;
+              e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+            }());
+            $('#load-livere').remove(); ///加载后移除按钮
+          }
+        }
+      }
+    </script>
+    
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("j99m29EgfOPXb7WAc98J7oAE-gzGzoHsz", "lnadPPANyVDI1boTgoHcex63");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
