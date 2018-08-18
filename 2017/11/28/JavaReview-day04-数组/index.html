@@ -513,6 +513,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">decimalToHexadecimal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> num = <span class="number">60</span>;</span><br><span class="line">      StringBuffer stringBuffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> x = <span class="number">0</span>; x &lt; <span class="number">8</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">int</span> temp = num &amp; <span class="number">15</span>;</span><br><span class="line">          <span class="keyword">if</span> (temp &gt; <span class="number">9</span>) &#123;</span><br><span class="line">              stringBuffer.append((<span class="keyword">char</span>) (temp - <span class="number">10</span> + <span class="string">'A'</span>));</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              stringBuffer.append(temp);</span><br><span class="line">          &#125;</span><br><span class="line">          num = num &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      System.out.println(stringBuffer.reverse());</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>二维数组的定义方法</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] array = &#123;&#123;<span class="number">1</span>,<span class="number">2</span>&#125;,&#123;<span class="number">34</span>,<span class="number">5</span>,<span class="number">7</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">int</span>[][] array1 = <span class="keyword">new</span> <span class="keyword">int</span>[][]&#123;&#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;,&#123;<span class="number">40</span>,<span class="number">50</span>&#125;,&#123;<span class="number">60</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">short</span>[][] array3 = <span class="keyword">new</span> <span class="keyword">short</span>[<span class="number">5</span>][<span class="number">8</span>];</span><br><span class="line"><span class="keyword">float</span>[][] array4;</span><br><span class="line">array4 = <span class="keyword">new</span> <span class="keyword">float</span>[<span class="number">5</span>][<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2017/11/28/JavaReview-day04-数组/">https://waver.me/2017/11/28/JavaReview-day04-数组/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -673,7 +674,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -684,7 +685,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

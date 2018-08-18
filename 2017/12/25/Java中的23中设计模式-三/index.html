@@ -561,6 +561,7 @@ h3deal!</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Invoker</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Command command;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Invoker</span><span class="params">(Command command)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.command = command;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">action</span><span class="params">()</span></span>&#123;  </span><br><span class="line">        command.exe();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        Receiver receiver = <span class="keyword">new</span> Receiver();  </span><br><span class="line">        Command cmd = <span class="keyword">new</span> MyCommand(receiver);  </span><br><span class="line">        Invoker invoker = <span class="keyword">new</span> Invoker(cmd);  </span><br><span class="line">        invoker.action();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出: <code>command received!</code><br>这个很好理解,命令模式的目的就是达到命令的发出者和执行者之间解耦,实现请求和执行分开,<br>熟悉Struts的同学应该知道,Struts其实就是一种将请求和呈现分离的技术,其中必然涉及命令模<br>式的思想！<br>本篇暂时就到这里,因为考虑到将来博文会不断的更新,不断的增加新内容,所以当前篇幅不易过<br>长,以便大家阅读,所以接下来的放到另一篇里。敬请关注！</p>
+<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2017/12/25/Java中的23中设计模式-三/">https://waver.me/2017/12/25/Java中的23中设计模式-三/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -723,7 +724,7 @@ h3deal!</code></p>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -734,7 +735,7 @@ h3deal!</code></p>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>

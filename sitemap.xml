@@ -2,37 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://waver.me/2018/05/13/CentOS%E6%90%AD%E5%BB%BAgit/</loc>
+    <loc>https://waver.me/2018/08/18/IDEA-maven-Bug-fix/</loc>
     
-    <lastmod>2018-07-31T08:47:20.198Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://waver.me/2017/12/17/GitHub%20Pages%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/</loc>
-    
-    <lastmod>2018-07-31T08:19:03.210Z</lastmod>
+    <lastmod>2018-08-18T06:56:44.464Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://waver.me/picture/index.html</loc>
+    <loc>https://waver.me/2018/01/20/JavaReview-day12-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/</loc>
     
-    <lastmod>2018-07-28T03:59:19.000Z</lastmod>
+    <lastmod>2018-08-18T01:32:30.870Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://waver.me/2018/01/19/JavaReview-day11-%E7%BA%BF%E7%A8%8B/</loc>
+    
+    <lastmod>2018-08-18T01:21:15.853Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://waver.me/2018/04/01/Java%E4%B8%AD%E7%9A%84%E9%80%86%E5%8F%98%E4%B8%8E%E5%8D%8F%E5%8F%98/</loc>
+    
+    <lastmod>2018-08-17T06:51:29.378Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://waver.me/2018/07/12/Jrebel%E6%BF%80%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
     
-    <lastmod>2018-07-27T06:37:40.000Z</lastmod>
+    <lastmod>2018-08-17T06:50:40.544Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://waver.me/2017/12/17/GitHub%20Pages%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D/</loc>
+    
+    <lastmod>2018-08-17T06:15:34.995Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://waver.me/2017/12/23/Java%E4%B8%AD%E7%9A%8423%E7%A7%8D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%B8%80/</loc>
     
-    <lastmod>2018-07-05T05:19:12.000Z</lastmod>
+    <lastmod>2018-08-17T06:09:17.618Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://waver.me/2018/08/05/JavaScript%E5%A4%9A%E6%AC%A1%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%E5%AF%BC%E8%87%B4%E5%A4%9A%E6%AC%A1%E8%B0%83%E7%94%A8/</loc>
+    
+    <lastmod>2018-08-05T09:31:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://waver.me/picture/index.html</loc>
+    
+    <lastmod>2018-07-31T11:27:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://waver.me/comments/index.html</loc>
+    
+    <lastmod>2018-07-31T11:27:22.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://waver.me/2018/05/13/CentOS%E6%90%AD%E5%BB%BAgit/</loc>
+    
+    <lastmod>2018-07-31T08:47:20.000Z</lastmod>
     
   </url>
   
@@ -82,13 +124,6 @@
     <loc>https://waver.me/2018/04/01/RandomAccess%E6%8E%A5%E5%8F%A3%E7%90%86%E8%A7%A3/</loc>
     
     <lastmod>2018-04-01T15:31:40.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://waver.me/2018/04/01/Java%E4%B8%AD%E7%9A%84%E9%80%86%E5%8F%98%E4%B8%8E%E5%8D%8F%E5%8F%98/</loc>
-    
-    <lastmod>2018-04-01T15:25:56.000Z</lastmod>
     
   </url>
   
@@ -145,13 +180,6 @@
     <loc>https://waver.me/2018/02/08/%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90Java%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/</loc>
     
     <lastmod>2018-02-08T15:09:24.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://waver.me/comments/index.html</loc>
-    
-    <lastmod>2018-02-08T09:08:10.000Z</lastmod>
     
   </url>
   
@@ -268,21 +296,7 @@
   </url>
   
   <url>
-    <loc>https://waver.me/2018/01/19/JavaReview-day11-%E7%BA%BF%E7%A8%8B/</loc>
-    
-    <lastmod>2018-01-22T11:34:04.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://waver.me/2017/12/25/Java%E4%B8%AD%E7%9A%8423%E4%B8%AD%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%9B%9B/</loc>
-    
-    <lastmod>2018-01-22T11:23:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://waver.me/2018/01/20/JavaReview-day12-%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1/</loc>
     
     <lastmod>2018-01-22T11:23:18.000Z</lastmod>
     
