@@ -7,4 +7,4 @@
 .deploy*/
 /node_modules
 /_config.yml
-/themes
+#/themes
