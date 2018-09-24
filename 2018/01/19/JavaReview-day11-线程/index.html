@@ -124,7 +124,7 @@
 <meta property="og:description" content="线程进程和线程的区别 进程:是一个正在执行中的程序。  每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制元。  线程：就是进程中的一个独立的控制单元。 线程在控制着进程的执行。 特点一个进程中至少有一个线程。   举例: Java VM  启动的时候会有一个进程java.exe.该进程中至少一有个线程负责java程序的执行。而且这个线程运行的代码存在于main方法中。该线程称之">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://waver.me/images/post_images/javaReview_day11_img_01">
-<meta property="og:updated_time" content="2018-08-18T01:21:15.853Z">
+<meta property="og:updated_time" content="2018-01-22T11:34:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaReview-day11-线程">
 <meta name="twitter:description" content="线程进程和线程的区别 进程:是一个正在执行中的程序。  每一个进程执行都有一个执行顺序。该顺序是一个执行路径，或者叫一个控制元。  线程：就是进程中的一个独立的控制单元。 线程在控制着进程的执行。 特点一个进程中至少有一个线程。   举例: Java VM  启动的时候会有一个进程java.exe.该进程中至少一有个线程负责java程序的执行。而且这个线程运行的代码存在于main方法中。该线程称之">
@@ -399,8 +399,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-08-18T09:21:15+08:00">
-                2018-08-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-22T19:34:04+08:00">
+                2018-01-22
               </time>
             
           </span>
@@ -503,7 +503,7 @@
 </ol>
 </li>
 </ul>
-<ol>
+<ol start="3">
 <li>调用线程的start方法，<br> 该方法两个作用：启动线程，调用run方法。</li>
 </ol>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>发现运行结果每一次都不同。<br>因为多个线程都获取 <strong>cpu的执行权</strong>。cpu执行到谁，谁就运行。<br>明确一点，在某一个时刻，只能有一个程序在运行。(多核除外)<br>cpu在做着快速的切换，以达到看上去是同时运行的效果。<br>我们可以形象把多线程的运行行为在互相抢夺cpu的执行权。</p>
@@ -532,7 +532,7 @@
 </li>
 <li>将Runnable接口的子类对象作为实际参数传递给Thread类的构造函数。<br> 为什么要将Runnable接口的子类对象传递给Thread的构造函数。<br> 因为，自定义的run方法所属的对象是Runnable接口的子类对象。<br> 所以要让线程去执行指定对象的run方法。就必须明确该run方法所属对象。</li>
 </ol>
-<ol>
+<ol start="5">
 <li>调用Thread类的start方法开启线程并调用Runnable接口子类的run方法。</li>
 </ol>
 <h4 id="实现方式和继承方式有什么区别呢？"><a href="#实现方式和继承方式有什么区别呢？" class="headerlink" title="实现方式和继承方式有什么区别呢？"></a>实现方式和继承方式有什么区别呢？</h4><ul>
@@ -625,7 +625,6 @@
 这是才可以称为这些线程被同步了。
 </code></pre><p><strong>死锁代码一定会写。但开发时一定注意避免。</strong></p>
 <h3 id="第二重点：同步的所有特性"><a href="#第二重点：同步的所有特性" class="headerlink" title="第二重点：同步的所有特性"></a>第二重点：同步的所有特性</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Runnable target;</span><br><span class="line"></span><br><span class="line">	Thread()</span><br><span class="line">	&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	Thread(Runnable target)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>.target = target;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(target!=<span class="keyword">null</span>)</span><br><span class="line">			target.run();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">	Test q = <span class="keyword">new</span> Test();</span><br><span class="line">	Thread t = <span class="keyword">new</span> Thread(q);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span> <span class="keyword">extends</span> <span class="title">Thread</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span>  </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2018/01/19/JavaReview-day11-线程/">https://waver.me/2018/01/19/JavaReview-day11-线程/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -641,16 +640,16 @@
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者：</strong>
+    <strong>Post author：</strong>
     waver
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+    <strong>Post link：</strong>
     <a href="https://waver.me/2018/01/19/JavaReview-day11-线程/" title="JavaReview-day11-线程">https://waver.me/2018/01/19/JavaReview-day11-线程/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
   </li>
 </ul>
 
@@ -667,6 +666,21 @@
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -786,7 +800,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -829,7 +843,7 @@
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                  <a href="https://github.com/wanken" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-github"></i></a>
                 </span>
@@ -982,6 +996,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1615,6 +1635,43 @@
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   

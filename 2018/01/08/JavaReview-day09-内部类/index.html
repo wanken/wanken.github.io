@@ -123,7 +123,7 @@
 <meta property="og:site_name" content="Waver&#39;s Blog">
 <meta property="og:description" content="内部类内部类简介:内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。 注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-12T09:27:04.731Z">
+<meta property="og:updated_time" content="2018-01-22T11:34:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaReview-day09-内部类">
 <meta name="twitter:description" content="内部类内部类简介:内部类是指在一个外部类的内部再定义一个类。类名不需要和文件夹相同。内部类可以是静态static的，也可用public，default，protected和private修饰。（而外部顶级类即类名和文件名相同的只能使用public和default）。 注意：内部类是一个编译时的概念，一旦编译成功，就会成为完全不同的两类。对于一个名为outer的外部类和其内部定义的名为inner的内">
@@ -397,8 +397,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-09-12T17:27:04+08:00">
-                2018-09-12
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-22T19:34:50+08:00">
+                2018-01-22
               </time>
             
           </span>
@@ -534,7 +534,7 @@
 <h3 id="异常的分类："><a href="#异常的分类：" class="headerlink" title="异常的分类："></a>异常的分类：</h3><ol>
 <li>编译时被检测异常:只要是Exception和其子类都是，除了特殊子类RuntimeException体系。<br>这种问题一旦出现，希望在编译时就进行检测，让这种问题有对应的处理方式。<br>这样的问题都可以针对性的处理。</li>
 </ol>
-<ol>
+<ol start="2">
 <li>编译时不检测异常(运行时异常):就是Exception中的RuntimeException和其子类。<br>这种问题的发生，无法让功能继续，运算无法进行，更多是因为调用者的原因导致的而或者引发了内部状态的改变导致的。<br>那么这种问题一般不处理，直接编译通过，在运行时，让调用者调用时的程序强制停止,让调用者对代码进行修正。</li>
 </ol>
 <p>所以自定义异常时，要么继承Exception。要么继承RuntimeException。</p>
@@ -578,16 +578,16 @@
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者：</strong>
+    <strong>Post author：</strong>
     waver
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+    <strong>Post link：</strong>
     <a href="https://waver.me/2018/01/08/JavaReview-day09-内部类/" title="JavaReview-day09-内部类">https://waver.me/2018/01/08/JavaReview-day09-内部类/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
   </li>
 </ul>
 
@@ -604,6 +604,21 @@
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -723,7 +738,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -766,7 +781,7 @@
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                  <a href="https://github.com/wanken" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-github"></i></a>
                 </span>
@@ -919,6 +934,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1552,6 +1573,43 @@
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   

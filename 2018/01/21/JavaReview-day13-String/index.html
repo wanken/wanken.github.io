@@ -601,7 +601,7 @@ String substring(begin,end);
 <ol>
 <li>存储。<br> StringBuffer append():将指定数据作为参数添加到已有数据结尾处。<br> StringBuffer insert(index,数据):可以将数据插入到指定index位置。</li>
 </ol>
-<ol>
+<ol start="2">
 <li><p>删除。<br> StringBuffer delete(start,end):删除缓冲区中的数据，包含start，不包含end。<br> StringBuffer deleteCharAt(index):删除指定位置的字符。</p>
 </li>
 <li><p>获取。<br> char charAt(int index)<br> int indexOf(String str)<br> int lastIndexOf(String str)<br> int length()<br> String substring(int start, int end)</p>
@@ -609,7 +609,7 @@ String substring(begin,end);
 <li><p>修改。<br> StringBuffer replace(start,end,string);<br> void setCharAt(int index, char ch) ;</p>
 </li>
 </ol>
-<ol>
+<ol start="5">
 <li><p>反转。<br> StringBuffer reverse();</p>
 </li>
 <li><p>将缓冲区中指定数据存储到指定字符数组中。<br> void getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)</p>
@@ -663,7 +663,6 @@ toOctalString();</code></li>
 <h3 id="Integer常用方法"><a href="#Integer常用方法" class="headerlink" title="Integer常用方法"></a>Integer常用方法</h3><p>/*<br>JDK1.5版本以后出现的新特性。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IntegerDemo1</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">//		Integer x = new Integer(4);</span></span><br><span class="line"></span><br><span class="line">		Integer x = <span class="number">4</span>;<span class="comment">//自动装箱。//new Integer(4)</span></span><br><span class="line">		x = x<span class="comment">/* x.intValue() */</span> + <span class="number">2</span>;<span class="comment">//x+2:x 进行自动拆箱。变成成了int类型。和2进行加法运算。</span></span><br><span class="line">		<span class="comment">//再将和进行装箱赋给x。</span></span><br><span class="line"></span><br><span class="line">		Integer m = <span class="number">128</span>;</span><br><span class="line">		Integer n = <span class="number">128</span>;</span><br><span class="line"></span><br><span class="line">		sop(<span class="string">"m==n:"</span>+(m==n));</span><br><span class="line"></span><br><span class="line">		Integer a = <span class="number">127</span>;</span><br><span class="line">		Integer b = <span class="number">127</span>;</span><br><span class="line"></span><br><span class="line">		sop(<span class="string">"a==b:"</span>+(a==b));<span class="comment">//结果为true。因为a和b指向了同一个Integer对象。</span></span><br><span class="line">	   <span class="comment">//因为当数值在byte范围内容，对于新特性，如果该数值已经存在，则不会在开辟新的空间。</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		Integer x = <span class="keyword">new</span> Integer(<span class="string">"123"</span>);</span><br><span class="line"></span><br><span class="line">		Integer y = <span class="keyword">new</span> Integer(<span class="number">123</span>);</span><br><span class="line"></span><br><span class="line">		sop(<span class="string">"x==y:"</span>+(x==y));</span><br><span class="line">		sop(<span class="string">"x.equals(y):"</span>+x.equals(y));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sop</span><span class="params">(String str)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sop</span><span class="params">(Object str)</span><span class="comment">//Object str = new Integer(4);</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line"></span><br><span class="line">		sop(<span class="number">4</span>);</span><br><span class="line"><span class="comment">//		int[] arr = &#123;3,1,5,8,23,9&#125;;</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//		System.out.println(toString(arr));</span></span><br><span class="line"><span class="comment">//		System.out.println(toString_2(arr));</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toString_2</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">		sb.append(<span class="string">"["</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;arr.length; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x!=arr.length-<span class="number">1</span>)</span><br><span class="line">				sb.append(arr[x]+<span class="string">", "</span>);</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				sb.append(arr[x]+<span class="string">"&#125;"</span>);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span>  sb.toString();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toString</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		String str = <span class="string">"["</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> x=<span class="number">0</span>; x&lt;arr.length; x++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(x!=arr.length-<span class="number">1</span>)</span><br><span class="line">				str += arr[x]+<span class="string">", "</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				str += arr[x]+<span class="string">"]"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> str;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2018/01/21/JavaReview-day13-String/">https://waver.me/2018/01/21/JavaReview-day13-String/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -679,16 +678,16 @@ toOctalString();</code></li>
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者：</strong>
+    <strong>Post author：</strong>
     waver
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+    <strong>Post link：</strong>
     <a href="https://waver.me/2018/01/21/JavaReview-day13-String/" title="JavaReview-day13-String">https://waver.me/2018/01/21/JavaReview-day13-String/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
   </li>
 </ul>
 
@@ -705,6 +704,21 @@ toOctalString();</code></li>
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -824,7 +838,7 @@ toOctalString();</code></li>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -867,7 +881,7 @@ toOctalString();</code></li>
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                  <a href="https://github.com/wanken" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-github"></i></a>
                 </span>
@@ -1020,6 +1034,12 @@ toOctalString();</code></li>
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1653,6 +1673,43 @@ toOctalString();</code></li>
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   

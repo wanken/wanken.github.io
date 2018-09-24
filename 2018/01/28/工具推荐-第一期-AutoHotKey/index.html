@@ -482,7 +482,7 @@
 <li>在菜单中, 选择 新建-&gt; 文本文档.</li>
 <li>输入文件名, 将<code>.txt</code>后缀修改成<code>.ahk</code>. 例如：Test.ahk。<br> 若没有后缀,请参见<a href="https://jingyan.baidu.com/article/ff42efa920b7f3c19e220283.html" target="_blank" rel="noopener">win10文件后缀名怎么显示</a></li>
 <li>右键点击此文件并选择 Edit Script.</li>
-<li>在新的空行中，输入下列内容：#space::Run www.google.com。</li>
+<li>在新的空行中，输入下列内容：#space::Run <a href="http://www.google.com。" target="_blank" rel="noopener">www.google.com。</a></li>
 </ol>
 <p>在上面的语句行中, 首个字符 “#” 表示 Windows 键; 所以 #space 表示按住 Windows 键然后按下空格键来激活热键. 双冒号 :: 表示每次按下此热键时会执行其后续命令, 这里是转到 Google 网站. 要试用此脚本, 请继续下列操作:</p>
 <ol>
@@ -500,7 +500,6 @@
 <font color="red"><strong>[热键]和[热字串]对照表请参见文档</strong></font>
 
 <h2 id="以下是本人常用的一些脚本-不定期更新"><a href="#以下是本人常用的一些脚本-不定期更新" class="headerlink" title="以下是本人常用的一些脚本(不定期更新)"></a>以下是本人常用的一些脚本(不定期更新)</h2><h3 id="1-调节音量"><a href="#1-调节音量" class="headerlink" title="1.调节音量"></a>1.调节音量</h3><p>虽然Windows已经有默认的音量调节按钮, 但是总觉得不爽, 特别是光线比较暗的时候,几乎找不到好吗(没有背光键盘的平民程序员), 下面附上脚本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">;调节音量</span><br><span class="line">!Right::SoundSet, +1,, mute ;Alt + 右方向键 开关声音</span><br><span class="line">!Up::                       ;Alt + 上方向键 增加音量 SoundSet +1 中的 `+1`代表每次按键的精度</span><br><span class="line">SoundSet +1, MASTER</span><br><span class="line">SoundSet, +1, WAVE</span><br><span class="line">Return</span><br><span class="line">!Down::                     ;Alt + 下方向键 降低音量</span><br><span class="line">SoundSet -1, MASTER</span><br><span class="line">SoundSet, -1,WAVE</span><br><span class="line">Return</span><br></pre></td></tr></table></figure></p>
-<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2018/01/28/工具推荐-第一期-AutoHotKey/">https://waver.me/2018/01/28/工具推荐-第一期-AutoHotKey/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -516,16 +515,16 @@
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者：</strong>
+    <strong>Post author：</strong>
     waver
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+    <strong>Post link：</strong>
     <a href="https://waver.me/2018/01/28/工具推荐-第一期-AutoHotKey/" title="工具推荐-第一期-AutoHotKey">https://waver.me/2018/01/28/工具推荐-第一期-AutoHotKey/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
   </li>
 </ul>
 
@@ -544,6 +543,21 @@
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -663,7 +677,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -706,7 +720,7 @@
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                  <a href="https://github.com/wanken" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-github"></i></a>
                 </span>
@@ -859,6 +873,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1492,6 +1512,43 @@
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   

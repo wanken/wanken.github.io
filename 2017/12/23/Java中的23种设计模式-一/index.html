@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://waver.me/images/post_images/20171223FactoryMethod.jpg">
 <meta property="og:image" content="https://waver.me/images/post_images/20171224_Factory.png">
 <meta property="og:image" content="https://waver.me/images/post_images/20171224_Factory2.png">
-<meta property="og:updated_time" content="2018-08-17T06:09:17.618Z">
+<meta property="og:updated_time" content="2018-08-17T06:09:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java中的23种设计模式(一)">
 <meta name="twitter:description" content="本文转自:http://blog.csdn.net/zhangerqing  设计模式（Design Patterns）设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。 毫无疑问,设计模式于己于他人于系统都是多赢的,设计模式使代码编制真正工程化,设计模式是软件工程的基">
@@ -652,7 +652,6 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Prototype</span> <span class="keyword">implements</span> <span class="title">Cloneable</span>, <span class="title">Serializable</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;  </span><br><span class="line">    <span class="keyword">private</span> String string;  </span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> SerializableObject obj;  </span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 浅复制 */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;  </span><br><span class="line">        Prototype proto = (Prototype) <span class="keyword">super</span>.clone();  </span><br><span class="line">        <span class="keyword">return</span> proto;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 深复制 */</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">deepClone</span><span class="params">()</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;  </span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 写入当前对象的二进制流 */</span>  </span><br><span class="line">        ByteArrayOutputStream bos = <span class="keyword">new</span> ByteArrayOutputStream();  </span><br><span class="line">        ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(bos);  </span><br><span class="line">        oos.writeObject(<span class="keyword">this</span>);  </span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 读出二进制流产生的新对象 */</span>  </span><br><span class="line">        ByteArrayInputStream bis = <span class="keyword">new</span></span><br><span class="line">				ByteArrayInputStream(bos.toByteArray());  </span><br><span class="line">        ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(bis);  </span><br><span class="line">        <span class="keyword">return</span> ois.readObject();  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getString</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> string;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setString</span><span class="params">(String string)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.string = string;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SerializableObject <span class="title">getObj</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> obj;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setObj</span><span class="params">(SerializableObject obj)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">this</span>.obj = obj;  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SerializableObject</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>要实现深复制,需要采用流的形式读入当前对象的二进制输入,再写出二进制数据对应的对象。</p>
-<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2017/12/23/Java中的23种设计模式-一/">https://waver.me/2017/12/23/Java中的23种设计模式-一/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -668,16 +667,16 @@
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者：</strong>
+    <strong>Post author：</strong>
     waver
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+    <strong>Post link：</strong>
     <a href="https://waver.me/2017/12/23/Java中的23种设计模式-一/" title="Java中的23种设计模式(一)">https://waver.me/2017/12/23/Java中的23种设计模式-一/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
   </li>
 </ul>
 
@@ -696,6 +695,21 @@
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -815,7 +829,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -858,7 +872,7 @@
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                  <a href="https://github.com/wanken" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-github"></i></a>
                 </span>
@@ -1011,6 +1025,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1644,6 +1664,43 @@
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   

@@ -115,18 +115,18 @@
 
 
 
-<meta name="description" content="本文转自深入浅出Java 重定向和请求转发的区别 李社河   示例 下面是一个小例子 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;import java.io.*;  import javax.servlet.http.*">
+<meta name="description" content="本文转自深入浅出Java 重定向和请求转发的区别 李社河    示例下面是一个小例子 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;import java.io.*;  import javax.servlet.http.*">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出Java转发和重定向的区别">
 <meta property="og:url" content="https://waver.me/2018/03/11/深入浅出Java转发和重定向的区别/index.html">
 <meta property="og:site_name" content="Waver&#39;s Blog">
-<meta property="og:description" content="本文转自深入浅出Java 重定向和请求转发的区别 李社河   示例 下面是一个小例子 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;import java.io.*;  import javax.servlet.http.*">
+<meta property="og:description" content="本文转自深入浅出Java 重定向和请求转发的区别 李社河    示例下面是一个小例子 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;import java.io.*;  import javax.servlet.http.*">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-03-11T13:53:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出Java转发和重定向的区别">
-<meta name="twitter:description" content="本文转自深入浅出Java 重定向和请求转发的区别 李社河   示例 下面是一个小例子 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;import java.io.*;  import javax.servlet.http.*">
+<meta name="twitter:description" content="本文转自深入浅出Java 重定向和请求转发的区别 李社河    示例下面是一个小例子 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950import java.util.*;import java.io.*;  import javax.servlet.http.*">
 
 
 
@@ -477,8 +477,8 @@
       
         <blockquote>
 <p>本文转自<a href="http://blog.csdn.net/lishehe/article/details/23133105" target="_blank" rel="noopener">深入浅出Java 重定向和请求转发的区别 李社河  </a></p>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3></blockquote>
-<p>下面是一个小例子</p>
+</blockquote>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>下面是一个小例子</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.io.*;  </span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;  </span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.bjpowernode.exam.model.*;  </span><br><span class="line"><span class="keyword">import</span> com.bjpowernode.exam.manager.*;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SearchStudentServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span>   </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;  </span><br><span class="line">        doPost(request, response);  </span><br><span class="line">    &#125;  </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span>  </span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;  </span><br><span class="line"></span><br><span class="line">        String sBeginDate = request.getParameter(<span class="string">"beginDate"</span>);  </span><br><span class="line">        String sEndDate = request.getParameter(<span class="string">"endDate"</span>);  </span><br><span class="line"></span><br><span class="line">        Date beginDate = <span class="keyword">new</span> Date();  </span><br><span class="line">        Date endDate = <span class="keyword">new</span> Date();  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            beginDate = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>).parse(sBeginDate);  </span><br><span class="line">            endDate = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>).parse(sEndDate);  </span><br><span class="line">         &#125;<span class="keyword">catch</span>(Exception e) &#123;  </span><br><span class="line">            e.printStackTrace();           </span><br><span class="line">         &#125;     </span><br><span class="line"></span><br><span class="line">        StudentManager studentManager = <span class="keyword">new</span> StudentManagerImpl();  </span><br><span class="line">        List&lt;Student&gt; studentList = studentManager.findStudentList(beginDate, endDate);  </span><br><span class="line"></span><br><span class="line">        <span class="comment">//将学生列表设置到requet范围中  </span></span><br><span class="line">        <span class="comment">//request.setAttribute("student_list", studentList);  </span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//转发,转发是在服务器端转发的，客户端是不知道的  </span></span><br><span class="line">        <span class="comment">//request.getRequestDispatcher("/student_list.jsp").forward(request, response);  </span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//将studentList放到session中  </span></span><br><span class="line">        HttpSession session = request.getSession();  </span><br><span class="line">        session.setAttribute(<span class="string">"student_list"</span>, studentList);  </span><br><span class="line"></span><br><span class="line">        <span class="comment">//重定向，不会共享request  </span></span><br><span class="line">        <span class="comment">//以下写法错误,该 "/"代表了8080端口  </span></span><br><span class="line">        <span class="comment">//response.sendRedirect("/student_list.jsp");  </span></span><br><span class="line">        response.sendRedirect(request.getContextPath() + <span class="string">"/student_list.jsp"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个里面尝试了两种调到后面的Jsp方法，在servlet中调用转发、重定向的语句如下：</p>
 <ul>
@@ -499,7 +499,6 @@
 <blockquote>
 <p>本文转自<a href="http://blog.csdn.net/lishehe/article/details/23133105" target="_blank" rel="noopener">深入浅出Java 重定向和请求转发的区别 李社河  </a></p>
 </blockquote>
-<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2018/03/11/深入浅出Java转发和重定向的区别/">https://waver.me/2018/03/11/深入浅出Java转发和重定向的区别/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -515,16 +514,16 @@
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者：</strong>
+    <strong>Post author：</strong>
     waver
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+    <strong>Post link：</strong>
     <a href="https://waver.me/2018/03/11/深入浅出Java转发和重定向的区别/" title="深入浅出Java转发和重定向的区别">https://waver.me/2018/03/11/深入浅出Java转发和重定向的区别/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
   </li>
 </ul>
 
@@ -541,6 +540,21 @@
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -660,7 +674,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +717,7 @@
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                  <a href="https://github.com/wanken" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-github"></i></a>
                 </span>
@@ -856,6 +870,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1489,6 +1509,43 @@
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   

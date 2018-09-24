@@ -115,13 +115,13 @@
 
 
 
-<meta name="description" content="本文转自Ruheng的简书–你真的了解volatile关键字吗？ volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。   Java内存模型  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。   Java内存模型规定">
+<meta name="description" content="本文转自Ruheng的简书–你真的了解volatile关键字吗？   volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。   Java内存模型  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。   Java内存模型">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="volatile关键字详解(转)">
 <meta property="og:url" content="https://waver.me/2018/06/15/volatile关键字详解/index.html">
 <meta property="og:site_name" content="Waver&#39;s Blog">
-<meta property="og:description" content="本文转自Ruheng的简书–你真的了解volatile关键字吗？ volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。   Java内存模型  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。   Java内存模型规定">
+<meta property="og:description" content="本文转自Ruheng的简书–你真的了解volatile关键字吗？   volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。   Java内存模型  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。   Java内存模型">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://waver.me/album/images/post/2018/06/title.png">
 <meta property="og:image" content="https://waver.me/album/images/post/2018/06/jvm_ram.png">
@@ -129,7 +129,7 @@
 <meta property="og:updated_time" content="2018-06-15T15:20:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="volatile关键字详解(转)">
-<meta name="twitter:description" content="本文转自Ruheng的简书–你真的了解volatile关键字吗？ volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。   Java内存模型  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。   Java内存模型规定">
+<meta name="twitter:description" content="本文转自Ruheng的简书–你真的了解volatile关键字吗？   volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。   Java内存模型  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。   Java内存模型">
 <meta name="twitter:image" content="https://waver.me/album/images/post/2018/06/title.png">
 
 
@@ -481,6 +481,8 @@
       
         <blockquote>
 <p>本文转自<a href="https://www.jianshu.com/p/7798161d7472" target="_blank" rel="noopener">Ruheng的简书–你真的了解volatile关键字吗？</a></p>
+</blockquote>
+<blockquote>
 <p>volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。</p>
 </blockquote>
 <p><img src="https://waver.me/album/images/post/2018/06/title.png" alt=""></p>
@@ -639,7 +641,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">volatile</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line"> <span class="comment">//线程1</span></span><br><span class="line"><span class="keyword">while</span>(!flag)&#123;</span><br><span class="line">    doSomething();</span><br><span class="line">&#125;</span><br><span class="line">  <span class="comment">//线程2</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setFlag</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    flag = <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>根据状态标记，终止线程。</p>
-<ol>
+<ol start="2">
 <li>单例模式中的double check</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance==<span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance==<span class="keyword">null</span>)</span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -657,7 +659,6 @@
 <p><a href="https://link.jianshu.com/?t=http://jishu.y5y.com.cn/chenssy/article/details/54930081" target="_blank" rel="noopener">[死磕Java并发]—–深入分析volatile的实现原理</a></p>
 <p><a href="https://link.jianshu.com/?t=https://cschenyuan.gitbooks.io/java/content/concurrent/2%20Java%E5%B9%B6%E5%8F%91%E6%9C%BA%E5%88%B6%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86.html" target="_blank" rel="noopener">Java并发机制的底层实现原理</a></p>
 <p><a href="https://link.jianshu.com/?t=http://keiwu.me/2016/04/28/Volatile%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">Volatile的实现原理</a></p>
-<p><strong>本文作者</strong>：waver<br><strong>本文地址</strong>： <a href="https://waver.me/2018/06/15/volatile关键字详解/">https://waver.me/2018/06/15/volatile关键字详解/</a> <br><strong>版权声明</strong>：本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0 CN</a> 许可协议。转载请注明出处！</p>
 
       
     </div>
@@ -673,16 +674,16 @@
       <div>
         <ul class="post-copyright">
   <li class="post-copyright-author">
-    <strong>本文作者：</strong>
+    <strong>Post author：</strong>
     waver
   </li>
   <li class="post-copyright-link">
-    <strong>本文链接：</strong>
+    <strong>Post link：</strong>
     <a href="https://waver.me/2018/06/15/volatile关键字详解/" title="volatile关键字详解(转)">https://waver.me/2018/06/15/volatile关键字详解/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+    <strong>Copyright Notice： </strong>
+    All articles in this blog are licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.
   </li>
 </ul>
 
@@ -699,6 +700,21 @@
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -818,7 +834,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -861,7 +877,7 @@
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/wavejoker" target="_blank" title="GitHub">
+                  <a href="https://github.com/wanken" target="_blank" title="GitHub">
                     
                       <i class="fa fa-fw fa-github"></i></a>
                 </span>
@@ -1014,6 +1030,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1647,6 +1669,43 @@
 
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "box";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "box";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   
