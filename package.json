@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.7.1"
+    "version": "3.8.0"
   },
   "dependencies": {
+    "ejs": "^2.6.1",
     "g": "^2.0.1",
     "gitalk": "^1.2.2",
     "gitment": "0.0.3",
