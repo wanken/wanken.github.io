@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://waver.me/2019/04/11/Nginx-Cache-Server/</loc>
+    
+    <lastmod>2019-04-11T08:08:07.285Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://waver.me/2018/09/23/Navicat-Data-Modeler-%E7%A0%B4%E8%A7%A3/</loc>
     
     <lastmod>2018-12-16T13:41:20.291Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>https://waver.me/comments/index.html</loc>
     
     <lastmod>2018-07-31T11:27:22.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://waver.me/2018/05/13/CentOS%E6%90%AD%E5%BB%BAgit/</loc>
-    
-    <lastmod>2018-07-31T08:47:20.000Z</lastmod>
     
   </url>
   
