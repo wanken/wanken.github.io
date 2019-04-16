@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://waver.me/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/</loc>
+    
+    <lastmod>2019-04-16T05:57:41.078Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://waver.me/2019/04/11/Nginx-Cache-Server/</loc>
     
     <lastmod>2019-04-11T08:08:07.285Z</lastmod>
