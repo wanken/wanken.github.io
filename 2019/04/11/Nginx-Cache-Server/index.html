@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -119,18 +119,18 @@
 
 
 
-<meta name="description" content="准备工作安装 Nginx 下载 Nginx 安装包 Nginx 官网下载地址  解压 Nginx   1234tar -zxvf nginx-1.14.2.tar.gzcd nginx-1.14.2./configuremake &amp;amp;&amp;amp; make install 在配置/编译/安装过程中可能会出现缺少依赖的问题, 这个根据个人遇到的问题自行 Google 吧,这里就不一一介绍了 修改">
+<meta name="description" content="准备工作安装 Nginx 依赖 1yum -y install pcre-devel openssl openssl-devel 如果不安装在执行./configure时会出现./configure: error: the HTTP rewrite module requires the PCRE library.错误 安装 Nginx 下载 Nginx 安装包 Nginx 官网下载地址  解压">
 <meta name="keywords" content="Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx 搭建图片缓存服务器">
 <meta property="og:url" content="https://waver.me/2019/04/11/Nginx-Cache-Server/index.html">
 <meta property="og:site_name" content="Waver&#39;s Blog">
-<meta property="og:description" content="准备工作安装 Nginx 下载 Nginx 安装包 Nginx 官网下载地址  解压 Nginx   1234tar -zxvf nginx-1.14.2.tar.gzcd nginx-1.14.2./configuremake &amp;amp;&amp;amp; make install 在配置/编译/安装过程中可能会出现缺少依赖的问题, 这个根据个人遇到的问题自行 Google 吧,这里就不一一介绍了 修改">
+<meta property="og:description" content="准备工作安装 Nginx 依赖 1yum -y install pcre-devel openssl openssl-devel 如果不安装在执行./configure时会出现./configure: error: the HTTP rewrite module requires the PCRE library.错误 安装 Nginx 下载 Nginx 安装包 Nginx 官网下载地址  解压">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-11T08:08:07.285Z">
+<meta property="og:updated_time" content="2019-04-16T07:04:37.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx 搭建图片缓存服务器">
-<meta name="twitter:description" content="准备工作安装 Nginx 下载 Nginx 安装包 Nginx 官网下载地址  解压 Nginx   1234tar -zxvf nginx-1.14.2.tar.gzcd nginx-1.14.2./configuremake &amp;amp;&amp;amp; make install 在配置/编译/安装过程中可能会出现缺少依赖的问题, 这个根据个人遇到的问题自行 Google 吧,这里就不一一介绍了 修改">
+<meta name="twitter:description" content="准备工作安装 Nginx 依赖 1yum -y install pcre-devel openssl openssl-devel 如果不安装在执行./configure时会出现./configure: error: the HTTP rewrite module requires the PCRE library.错误 安装 Nginx 下载 Nginx 安装包 Nginx 官网下载地址  解压">
 
 
 
@@ -399,8 +399,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-11T16:08:07+08:00">
-                2019-04-11
+              <time title="更新于" itemprop="dateModified" datetime="2019-04-16T15:04:37+08:00">
+                2019-04-16
               </time>
             
           </span>
@@ -476,7 +476,10 @@
       
 
       
-        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h2><ol>
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>安装 Nginx 依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre-devel openssl openssl-devel</span><br></pre></td></tr></table></figure>
+<p>如果不安装在执行<code>./configure</code>时会出现<code>./configure: error: the HTTP rewrite module requires the PCRE library.</code>错误</p>
+<h2 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h2><ol>
 <li><p>下载 Nginx 安装包 <a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">Nginx 官网下载地址</a></p>
 </li>
 <li><p>解压 Nginx</p>
@@ -681,7 +684,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -692,7 +695,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -703,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

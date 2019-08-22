@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -119,18 +119,20 @@
 
 
 
-<meta name="description" content="目的为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案 基础架构图">
+<meta name="description" content="目的为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案 基本版基础班架构图 当前方案解决问题 使动态服务于静态资源完全分离, Tomcat 只处理动态数据请求, 而将静态资源请求分发到文件服务器 大大优化 Tomcat 服务器磁盘读写性能, 使其只收发数据,不在读取磁盘文件资源; 使静态资源不在占用 Tomcat 服务网络带宽, 使网络请求可以及时返">
 <meta name="keywords" content="Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx 动静分离服务器搭建及一些常见问题解决">
 <meta property="og:url" content="https://waver.me/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/index.html">
 <meta property="og:site_name" content="Waver&#39;s Blog">
-<meta property="og:description" content="目的为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案 基础架构图">
+<meta property="og:description" content="目的为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案 基本版基础班架构图 当前方案解决问题 使动态服务于静态资源完全分离, Tomcat 只处理动态数据请求, 而将静态资源请求分发到文件服务器 大大优化 Tomcat 服务器磁盘读写性能, 使其只收发数据,不在读取磁盘文件资源; 使静态资源不在占用 Tomcat 服务网络带宽, 使网络请求可以及时返">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-16T05:57:41.078Z">
+<meta property="og:image" content="https://waver.me/Album/images/post/2019/04/NFSASP-01.jpg">
+<meta property="og:updated_time" content="2019-08-22T13:00:27.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nginx 动静分离服务器搭建及一些常见问题解决">
-<meta name="twitter:description" content="目的为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案 基础架构图">
+<meta name="twitter:description" content="目的为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案 基本版基础班架构图 当前方案解决问题 使动态服务于静态资源完全分离, Tomcat 只处理动态数据请求, 而将静态资源请求分发到文件服务器 大大优化 Tomcat 服务器磁盘读写性能, 使其只收发数据,不在读取磁盘文件资源; 使静态资源不在占用 Tomcat 服务网络带宽, 使网络请求可以及时返">
+<meta name="twitter:image" content="https://waver.me/Album/images/post/2019/04/NFSASP-01.jpg">
 
 
 
@@ -399,8 +401,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-04-16T13:57:41+08:00">
-                2019-04-16
+              <time title="更新于" itemprop="dateModified" datetime="2019-08-22T21:00:27+08:00">
+                2019-08-22
               </time>
             
           </span>
@@ -477,7 +479,19 @@
 
       
         <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案</p>
-<h3 id="基础架构图"><a href="#基础架构图" class="headerlink" title="基础架构图"></a>基础架构图</h3>
+<h2 id="基本版"><a href="#基本版" class="headerlink" title="基本版"></a>基本版</h2><h3 id="基础班架构图"><a href="#基础班架构图" class="headerlink" title="基础班架构图"></a>基础班架构图</h3><p><img src="https://waver.me/Album/images/post/2019/04/NFSASP-01.jpg" alt="基础班架构图"></p>
+<h3 id="当前方案解决问题"><a href="#当前方案解决问题" class="headerlink" title="当前方案解决问题"></a>当前方案解决问题</h3><ol>
+<li>使动态服务于静态资源完全分离, Tomcat 只处理动态数据请求, 而将静态资源请求分发到文件服务器</li>
+<li>大大优化 Tomcat 服务器磁盘读写性能, 使其只收发数据,不在读取磁盘文件资源;</li>
+<li>使静态资源不在占用 Tomcat 服务网络带宽, 使网络请求可以及时返回,为不必等待文件下载等请求的阻塞</li>
+</ol>
+<h3 id="存在缺陷"><a href="#存在缺陷" class="headerlink" title="存在缺陷"></a>存在缺陷</h3><ol>
+<li>单一 Tomcat 服务和文件服务性能有限, 即使代理服务器性能足以支撑请求, 但 Tomcat 性能可能会成为瓶颈;</li>
+<li>单一文件服务在高并发请况下需要考虑磁盘读写上限及网络带宽等限制条件;</li>
+<li>静态文件请求虽然不通过 Tomcat 服务器,但将压力转移到了代理服务器上;</li>
+<li>无法在线播放语音,视频等媒体文件;<br>[待续]</li>
+</ol>
+
       
     </div>
     
@@ -534,6 +548,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/09/Disable_Ctrl+Alt+s_to_minimize_a_window/" rel="prev" title="禁用Gnome桌面Ctrl+Alt+S调整桌面快捷键">
+                禁用Gnome桌面Ctrl+Alt+S调整桌面快捷键 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -631,7 +649,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -642,7 +660,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -653,7 +671,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -767,7 +785,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础架构图"><span class="nav-number">1.0.1.</span> <span class="nav-text">基础架构图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目的"><span class="nav-number">1.</span> <span class="nav-text">目的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本版"><span class="nav-number">1.1.</span> <span class="nav-text">基本版</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础班架构图"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础班架构图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当前方案解决问题"><span class="nav-number">1.1.2.</span> <span class="nav-text">当前方案解决问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存在缺陷"><span class="nav-number">1.1.3.</span> <span class="nav-text">存在缺陷</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
