@@ -54,12 +54,12 @@
 <meta property="og:site_name" content="Waver&#39;s Blog">
 <meta property="og:description" content="本文转自Ruheng的简书–你真的了解volatile关键字吗？  volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。 Java内存模型  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="https:&#x2F;&#x2F;waver.me&#x2F;album&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;title.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;waver.me&#x2F;album&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;jvm_ram.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;waver.me&#x2F;album&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;commond.jpg">
-<meta property="og:updated_time" content="2019-11-21T23:58:25.999Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;q1drp19kj.bkt.clouddn.com&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;title.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;q1drp19kj.bkt.clouddn.com&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;jvm_ram.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;q1drp19kj.bkt.clouddn.com&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;commond.jpg">
+<meta property="og:updated_time" content="2019-11-22T17:19:36.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;waver.me&#x2F;album&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;title.png">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;q1drp19kj.bkt.clouddn.com&#x2F;images&#x2F;post&#x2F;2018&#x2F;06&#x2F;title.png">
 
 <link rel="canonical" href="https://waver.me/2018/06/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/">
 
@@ -220,7 +220,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+                <time title="修改時間：2019-11-23 01:19:36" itemprop="dateModified" datetime="2019-11-23T01:19:36+08:00">2019-11-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,11 +263,11 @@
 <p>本文转自<a href="https://www.jianshu.com/p/7798161d7472" target="_blank" rel="noopener">Ruheng的简书–你真的了解volatile关键字吗？</a></p>
 </blockquote><blockquote>
 <p>volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。</p>
-</blockquote><p><img src="https://waver.me/album/images/post/2018/06/title.png" alt></p><h1 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h1><p>  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。</p><a id="more"></a>
+</blockquote><p><img src="http://q1drp19kj.bkt.clouddn.com/images/post/2018/06/title.png" alt></p><h1 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h1><p>  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。</p><a id="more"></a>
 
 
 
-<p>  Java内存模型规定了所有的变量都存储在主内存中。每条线程中还有自己的工作内存，线程的工作内存中保存了被该线程所使用到的变量（这些变量是从主内存中拷贝而来）。线程对变量的所有操作（读取，赋值）都必须在工作内存中进行。不同线程之间也无法直接访问对方工作内存中的变量，线程间变量值的传递均需要通过主内存来完成。<br><img src="https://waver.me/album/images/post/2018/06/jvm_ram.png" alt></p>
+<p>  Java内存模型规定了所有的变量都存储在主内存中。每条线程中还有自己的工作内存，线程的工作内存中保存了被该线程所使用到的变量（这些变量是从主内存中拷贝而来）。线程对变量的所有操作（读取，赋值）都必须在工作内存中进行。不同线程之间也无法直接访问对方工作内存中的变量，线程间变量值的传递均需要通过主内存来完成。<br><img src="http://q1drp19kj.bkt.clouddn.com/images/post/2018/06/jvm_ram.png" alt></p>
 <p>基于此种内存模型，便产生了多线程编程中的数据“脏读”等问题。</p>
 <p>举个简单的例子：在java中，执行下面这个语句:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i  = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
@@ -323,7 +323,7 @@
 <p>但是要注意，虽然处理器会对指令进行重排序，但是它会保证程序最终结果会和代码顺序执行结果相同，那么它靠什么保证的呢？再看下面一个例子：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>;    <span class="comment">//语句1</span></span><br><span class="line"><span class="keyword">int</span> r = <span class="number">2</span>;    <span class="comment">//语句2</span></span><br><span class="line">a = a + <span class="number">3</span>;    <span class="comment">//语句3</span></span><br><span class="line">r = a*a;     <span class="comment">//语句4</span></span><br></pre></td></tr></table></figure>
 
-<p>这段代码有4个语句，那么可能的一个执行顺序是：<br><img src="https://waver.me/album/images/post/2018/06/commond.jpg" alt></p>
+<p>这段代码有4个语句，那么可能的一个执行顺序是：<br><img src="http://q1drp19kj.bkt.clouddn.com/images/post/2018/06/commond.jpg" alt></p>
 <p>那么可不可能是这个执行顺序呢： 语句2 语句1 语句4 语句3</p>
 <p><strong>不可能，因为处理器在进行重排序时是会考虑指令之间的数据依赖性，如果一个指令Instruction 2必须用到Instruction 1的结果，那么处理器会保证Instruction 1会在Instruction 2之前执行。</strong></p>
 <p>虽然重排序不会影响单个线程内程序执行的结果，但是多线程呢？下面看一个例子：</p>

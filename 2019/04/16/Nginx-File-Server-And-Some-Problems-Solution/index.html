@@ -54,10 +54,10 @@
 <meta property="og:site_name" content="Waver&#39;s Blog">
 <meta property="og:description" content="目的为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案基本版基础班架构图当前方案解决问题 使动态服务于静态资源完全分离, Tomcat 只处理动态数据请求, 而将静态资源请求分发到文件服务器 大大优化 Tomcat 服务器磁盘读写性能, 使其只收发数据,不在读取磁盘文件资源; 使静态资源不在占用 Tomcat 服务网络带宽, 使网络请求可以及时返回,">
 <meta property="og:locale" content="zh-TW">
-<meta property="og:image" content="https:&#x2F;&#x2F;waver.me&#x2F;album&#x2F;images&#x2F;post&#x2F;2019&#x2F;04&#x2F;NFSASP-01.jpg">
-<meta property="og:updated_time" content="2019-11-21T23:58:25.994Z">
+<meta property="og:image" content="http:&#x2F;&#x2F;q1drp19kj.bkt.clouddn.com&#x2F;images&#x2F;post&#x2F;2019&#x2F;04&#x2F;NFSASP-01.jpg">
+<meta property="og:updated_time" content="2019-11-22T17:19:36.516Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;waver.me&#x2F;album&#x2F;images&#x2F;post&#x2F;2019&#x2F;04&#x2F;NFSASP-01.jpg">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;q1drp19kj.bkt.clouddn.com&#x2F;images&#x2F;post&#x2F;2019&#x2F;04&#x2F;NFSASP-01.jpg">
 
 <link rel="canonical" href="https://waver.me/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/">
 
@@ -218,7 +218,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+                <time title="修改時間：2019-11-23 01:19:36" itemprop="dateModified" datetime="2019-11-23T01:19:36+08:00">2019-11-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,7 +257,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案</p><h2 id="基本版"><a href="#基本版" class="headerlink" title="基本版"></a>基本版</h2><h3 id="基础班架构图"><a href="#基础班架构图" class="headerlink" title="基础班架构图"></a>基础班架构图</h3><p><img src="https://waver.me/album/images/post/2019/04/NFSASP-01.jpg" alt="基础班架构图"></p><h3 id="当前方案解决问题"><a href="#当前方案解决问题" class="headerlink" title="当前方案解决问题"></a>当前方案解决问题</h3><ol>
+        <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案</p><h2 id="基本版"><a href="#基本版" class="headerlink" title="基本版"></a>基本版</h2><h3 id="基础班架构图"><a href="#基础班架构图" class="headerlink" title="基础班架构图"></a>基础班架构图</h3><p><img src="http://q1drp19kj.bkt.clouddn.com/images/post/2019/04/NFSASP-01.jpg" alt="基础班架构图"></p><h3 id="当前方案解决问题"><a href="#当前方案解决问题" class="headerlink" title="当前方案解决问题"></a>当前方案解决问题</h3><ol>
 <li>使动态服务于静态资源完全分离, Tomcat 只处理动态数据请求, 而将静态资源请求分发到文件服务器</li>
 <li>大大优化 Tomcat 服务器磁盘读写性能, 使其只收发数据,不在读取磁盘文件资源;</li>
 <li>使静态资源不在占用 Tomcat 服务网络带宽, 使网络请求可以及时返回,为不必等待文件下载等请求的阻塞</li>
