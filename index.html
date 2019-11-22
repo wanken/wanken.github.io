@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wave-full-128x128-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wave-full-64x64.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Waver's Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans SC:300,300italic,400,400italic,700,700italic|Special Elite:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="一知半解,似懂非懂">
+<meta name="keywords" content="waver, Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Waver&#39;s Blog">
+<meta property="og:url" content="https:&#x2F;&#x2F;waver.me&#x2F;index.html">
+<meta property="og:site_name" content="Waver&#39;s Blog">
+<meta property="og:description" content="一知半解,似懂非懂">
+<meta property="og:locale" content="zh-TW">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://waver.me/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Waver's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Waver's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">个人知识博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2019/11/22/Disable_Ctrl+Alt+s_to_minimize_a_window/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/22/Disable_Ctrl+Alt+s_to_minimize_a_window/" class="post-title-link" itemprop="url">禁用Gnome桌面Ctrl+Alt+S调整桌面快捷键</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2019-11-22 07:58:25 / 修改時間：09:18:22" itemprop="dateCreated datePublished" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/11/22/Disable_Ctrl+Alt+s_to_minimize_a_window/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/22/Disable_Ctrl+Alt+s_to_minimize_a_window/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>久仰 Manjaro 大名很久,所以最近搞了个 Manjaro, 为了平滑过度, 所以选择了 Gnome 版的, 本来以为可以开开心心的撸代码了, 但是当我在 IDEA 中按下快捷键<br>备打开设置配置一下字体的时候, 我的 IDEA 竟然变小了??? 想都不用想, 快捷键冲突, 改 IDEA 的快捷键是不可能的了, 毕竟我已经和 JetBarins 开展了深度合作,这要改了,岂不是什么 WebStorm PyCharm CLion GoLand(虽然不经常用,但是据说多写几个显得牛逼:) )啥的全都得改? 然后…… 我特么把快捷键列表翻了个遍也没找到一个对应的! Fuck!!!</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/22/Disable_Ctrl+Alt+s_to_minimize_a_window/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/" class="post-title-link" itemprop="url">Nginx 动静分离服务器搭建及一些常见问题解决</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-16 13:48:00" itemprop="dateCreated datePublished" datetime="2019-04-16T13:48:00+08:00">2019-04-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>为了划分 Web 服务和资源服务, 已经加强服务的可扩展性, 采用动态服务和静态资源分离的基础方案</p><h2 id="基本版"><a href="#基本版" class="headerlink" title="基本版"></a>基本版</h2><h3 id="基础班架构图"><a href="#基础班架构图" class="headerlink" title="基础班架构图"></a>基础班架构图</h3><p><img src="https://waver.me/album/images/post/2019/04/NFSASP-01.jpg" alt="基础班架构图"></p><h3 id="当前方案解决问题"><a href="#当前方案解决问题" class="headerlink" title="当前方案解决问题"></a>当前方案解决问题</h3><ol>
+<li>使动态服务于静态资源完全分离, Tomcat 只处理动态数据请求, 而将静态资源请求分发到文件服务器</li>
+<li>大大优化 Tomcat 服务器磁盘读写性能, 使其只收发数据,不在读取磁盘文件资源;</li>
+<li>使静态资源不在占用 Tomcat 服务网络带宽, 使网络请求可以及时返回,为不必等待文件下载等请求的阻塞</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2019/04/11/Nginx-Cache-Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/04/11/Nginx-Cache-Server/" class="post-title-link" itemprop="url">Nginx 搭建图片缓存服务器</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-11 14:20:00" itemprop="dateCreated datePublished" datetime="2019-04-11T14:20:00+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/04/11/Nginx-Cache-Server/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/11/Nginx-Cache-Server/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>安装 Nginx 依赖</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre-devel openssl openssl-devel</span><br></pre></td></tr></table></figure><p>如果不安装在执行<code>./configure</code>时会出现<code>./configure: error: the HTTP rewrite module requires the PCRE library.</code>错误</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/04/11/Nginx-Cache-Server/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/09/23/Navicat-Data-Modeler-%E7%A0%B4%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/09/23/Navicat-Data-Modeler-%E7%A0%B4%E8%A7%A3/" class="post-title-link" itemprop="url">Navicat Data Modeler 破解</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-09-23 16:02:47" itemprop="dateCreated datePublished" datetime="2018-09-23T16:02:47+08:00">2018-09-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Crack/" itemprop="url" rel="index">
+                    <span itemprop="name">Crack</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/09/23/Navicat-Data-Modeler-%E7%A0%B4%E8%A7%A3/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/09/23/Navicat-Data-Modeler-破解/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>最近发现 <code>Navicat Data Modeler</code> 设计起数据库来特别顺手, 但是, 它和其他Navicat家的工具一样, 只有14天的试用期</p><p>激活工具下载地址 <a href="https://waver.me/resource/Files/resource/Navicat_Keygen_Patch_v3.7_By_DFoX_URET.rar"></a></p><h3 id="破解工具"><a href="#破解工具" class="headerlink" title="破解工具"></a>破解工具</h3><p>虽然知道破解软件是不对的, 但奈何作为无产阶级的我又家境贫寒, 无钱购买, 终于在我的坚持下发现了一款神奇的破解工具, 那下面就说说我的励志故事吧!</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/09/23/Navicat-Data-Modeler-%E7%A0%B4%E8%A7%A3/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/08/18/IDEA-maven-Bug-fix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/08/18/IDEA-maven-Bug-fix/" class="post-title-link" itemprop="url">通过一次IDEA Spring Boot 启动报错深入理解maven scope标签</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-08-18 10:25:58" itemprop="dateCreated datePublished" datetime="2018-08-18T10:25:58+08:00">2018-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Exception/" itemprop="url" rel="index">
+                    <span itemprop="name">Exception</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/08/18/IDEA-maven-Bug-fix/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/18/IDEA-maven-Bug-fix/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>昨天同事突然告诉我项目无法启动了, 但是神奇的是我也在用一样的代码, 但是在我的机器上并没有出现这个问题, 所以我就开始 fuck bug了,报错信息大概是下面这个样子</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.IllegalStateException: Failed to introspect annotated methods on <span class="class"><span class="keyword">class</span> </span></span><br><span class="line"><span class="class"><span class="title">org</span>.<span class="title">springframework</span>.<span class="title">boot</span>.<span class="title">web</span>.<span class="title">support</span>.<span class="title">SpringBootServletInitializer</span></span></span><br><span class="line"><span class="class">	<span class="title">at</span> <span class="title">org</span>.<span class="title">springframework</span>.<span class="title">core</span>.<span class="title">type</span>.<span class="title">StandardAnnotationMetadata</span>.</span></span><br><span class="line">getAnnotatedMethods(StandardAnnotationMetadata.java:163) ~[spring-core-4.3.10.RELEASE.jar:4.3.10.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">retrieveBeanMethodMetadata(ConfigurationClassParser.java:<span class="number">380</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">doProcessConfigurationClass(ConfigurationClassParser.java:<span class="number">314</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">processConfigurationClass(ConfigurationClassParser.java:<span class="number">245</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">parse(ConfigurationClassParser.java:<span class="number">198</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">parse(ConfigurationClassParser.java:<span class="number">167</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	... <span class="number">17</span> common frames omitted</span><br><span class="line">Caused by: java.lang.NoClassDefFoundError: javax/servlet/ServletContext</span><br><span class="line">	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.Class.privateGetDeclaredMethods(Class.java:<span class="number">2701</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.Class.getDeclaredMethods(Class.java:<span class="number">1975</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at org.springframework.core.type.StandardAnnotationMetadata.getAnnotatedMethods</span><br><span class="line">(StandardAnnotationMetadata.java:<span class="number">152</span>) ~[spring-core-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	... <span class="number">22</span> common frames omitted</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: javax.servlet.ServletContext</span><br><span class="line">	at java.net.URLClassLoader.findClass(URLClassLoader.java:<span class="number">381</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:<span class="number">424</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:<span class="number">331</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:<span class="number">357</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	... <span class="number">26</span> common frames omitted</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/08/18/IDEA-maven-Bug-fix/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/07/12/Jrebel%E6%BF%80%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/12/Jrebel%E6%BF%80%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">Jrebel激活服务器及使用方法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-07-12 14:19:53" itemprop="dateCreated datePublished" datetime="2018-07-12T14:19:53+08:00">2018-07-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Crack/" itemprop="url" rel="index">
+                    <span itemprop="name">Crack</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/07/12/Jrebel%E6%BF%80%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/07/12/Jrebel激活服务器及使用方法/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前几天写代码写的正开心,突然屏幕右下角提示我激活Jrebel, WTF???, 注册后不是可以免费使用的吗? 等心情平复后感觉为知识付费没什么不对的, 然后就准备买一个注册码, 然后我就看见了这副场面:<br><img src="https://waver.me/album/images/post/2018/07/jrebel_buy.png" alt><br>这…. 既然你有意难为我胖虎, 那就不要怪我胖虎翻脸了,那么接下来就说一下怎么破解它吧 <code>(￣_,￣ )</code></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/07/12/Jrebel%E6%BF%80%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/06/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/06/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">volatile关键字详解(转)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-06-15 22:23:12" itemprop="dateCreated datePublished" datetime="2018-06-15T22:23:12+08:00">2018-06-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/06/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/06/15/volatile关键字详解/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文转自<a href="https://www.jianshu.com/p/7798161d7472" target="_blank" rel="noopener">Ruheng的简书–你真的了解volatile关键字吗？</a></p>
+</blockquote><blockquote>
+<p>volatile关键字经常在并发编程中使用，其特性是保证可见性以及有序性，但是关于volatile的使用仍然要小心，这需要明白volatile关键字的特性及实现的原理，这也是本篇文章的主要内容。</p>
+</blockquote><p><img src="https://waver.me/album/images/post/2018/06/title.png" alt></p><h1 id="Java内存模型"><a href="#Java内存模型" class="headerlink" title="Java内存模型"></a>Java内存模型</h1><p>  想要理解volatile为什么能确保可见性，就要先理解Java中的内存模型是什么样的。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/06/15/volatile%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/05/20/Java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E7%82%B9%E5%92%8C%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/20/Java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E7%82%B9%E5%92%8C%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83/" class="post-title-link" itemprop="url">Java中的代码点和代码单元</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-05-20 20:27:39" itemprop="dateCreated datePublished" datetime="2018-05-20T20:27:39+08:00">2018-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/05/20/Java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E7%82%B9%E5%92%8C%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/20/Java中的代码点和代码单元/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>本文转自<a href="https://blog.csdn.net/weizhaozhe/article/details/3909079" target="_blank" rel="noopener">Java中的代码点和代码单元</a>,原出处没找到,对不起原作者了</p>
+</blockquote><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文介绍 Java 平台支持增补字符的方式。增补字符是 Unicode 标准中代码点超出 U+FFFF 的字符,因此它们无法在 Java 编程语言中描述为单个的 16 位实体(例如char数据类型)。这些字符一般极少用,但是,有些会在诸如中文或日文人名中用到,因此,在东亚国家,政府应用程序通常会要求支持这些字符。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/05/20/Java%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E7%82%B9%E5%92%8C%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83/#more" rel="contents">
+                閱讀全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/05/13/JS%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BD%95%E9%9F%B3%E5%B9%B6%E5%B0%86%E5%BD%95%E9%9F%B3%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/13/JS%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BD%95%E9%9F%B3%E5%B9%B6%E5%B0%86%E5%BD%95%E9%9F%B3%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/" class="post-title-link" itemprop="url">JS实现浏览器录音并将录音文件上传</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-05-13 22:11:15" itemprop="dateCreated datePublished" datetime="2018-05-13T22:11:15+08:00">2018-05-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/05/13/JS%E5%AE%9E%E7%8E%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BD%95%E9%9F%B3%E5%B9%B6%E5%B0%86%E5%BD%95%E9%9F%B3%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/13/JS实现浏览器录音并将录音文件上传/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原使用recorder.js 但发现功能实现后只能通过本地 127.0.0.1 或 localhost 访问<br>无法适应web项目, 而且存在浏览器版本不兼容(目前只知道可以支持Chrome 66.0+ 版本, 其他浏览器均挂掉)和浏览器权限问题, 由于本人JS水平有限,所以先挖个坑, 等找到更好的解决方案再来填<code>(ง •_•)ง</code></p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/05/13/Jackson-Direct-self-reference-leading-to-cycle-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/05/13/Jackson-Direct-self-reference-leading-to-cycle-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/" class="post-title-link" itemprop="url">Jackson Direct self-reference leading to cycle 异常解决</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-05-13 21:51:15" itemprop="dateCreated datePublished" datetime="2018-05-13T21:51:15+08:00">2018-05-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/05/13/Jackson-Direct-self-reference-leading-to-cycle-%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/05/13/Jackson-Direct-self-reference-leading-to-cycle-异常解决/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>错误信息如图所示:<br><img src="https://waver.me/album/images/post/2018/05/jackson_2.png" alt><br>代码如下:<br><img src="https://waver.me/album/images/post/2018/05/jackson_1.png" alt><br>由错误信息可以看出保存是因为<code>PageResult</code>类中使用了<code>this</code>对象, 从而导致了自引用异常,将其改写成返回属性值后可回复正常<br><a href="https://stackoverflow.com/questions/10446891/jackson-self-reference-leading-to-cycle" target="_blank" rel="noopener">StackOverFlow 上 的</a></p>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一頁"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="waver"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">waver</p>
+  <div class="site-description" itemprop="description">一知半解,似懂非懂</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wanken" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wanken" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:jokerwaver@gmail.com" title="E-Mail → mailto:jokerwaver@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/wavejoker" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;wavejoker" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/AlanWaver" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;AlanWaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/AlanWaver" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;AlanWaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/7420706/waver" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;7420706&#x2F;waver" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/alanwaver" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;alanwaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jiangfumei.github.io/" title="https:&#x2F;&#x2F;jiangfumei.github.io&#x2F;" rel="noopener" target="_blank">Struggler</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.jzhung.com/" title="http:&#x2F;&#x2F;www.jzhung.com&#x2F;" rel="noopener" target="_blank">jzhung</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">waver</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://waver.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wave-full-128x128-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wave-full-64x64.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Waver's Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans SC:300,300italic,400,400italic,700,700italic|Special Elite:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="起因昨天同事突然告诉我项目无法启动了, 但是神奇的是我也在用一样的代码, 但是在我的机器上并没有出现这个问题, 所以我就开始 fuck bug了,报错信息大概是下面这个样子12345678910111213141516171819202122232425262728Caused by: java.lang.IllegalStateException: Failed to introspect an">
+<meta name="keywords" content="Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通过一次IDEA Spring Boot 启动报错深入理解maven scope标签">
+<meta property="og:url" content="https:&#x2F;&#x2F;waver.me&#x2F;2018&#x2F;08&#x2F;18&#x2F;IDEA-maven-Bug-fix&#x2F;index.html">
+<meta property="og:site_name" content="Waver&#39;s Blog">
+<meta property="og:description" content="起因昨天同事突然告诉我项目无法启动了, 但是神奇的是我也在用一样的代码, 但是在我的机器上并没有出现这个问题, 所以我就开始 fuck bug了,报错信息大概是下面这个样子12345678910111213141516171819202122232425262728Caused by: java.lang.IllegalStateException: Failed to introspect an">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2019-11-21T23:58:25.969Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://waver.me/2018/08/18/IDEA-maven-Bug-fix/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>通过一次IDEA Spring Boot 启动报错深入理解maven scope标签 | Waver's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Waver's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">个人知识博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2018/08/18/IDEA-maven-Bug-fix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          通过一次IDEA Spring Boot 启动报错深入理解maven scope标签
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-08-18 10:25:58" itemprop="dateCreated datePublished" datetime="2018-08-18T10:25:58+08:00">2018-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Exception/" itemprop="url" rel="index">
+                    <span itemprop="name">Exception</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2018/08/18/IDEA-maven-Bug-fix/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/08/18/IDEA-maven-Bug-fix/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>昨天同事突然告诉我项目无法启动了, 但是神奇的是我也在用一样的代码, 但是在我的机器上并没有出现这个问题, 所以我就开始 fuck bug了,报错信息大概是下面这个样子</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Caused by: java.lang.IllegalStateException: Failed to introspect annotated methods on <span class="class"><span class="keyword">class</span> </span></span><br><span class="line"><span class="class"><span class="title">org</span>.<span class="title">springframework</span>.<span class="title">boot</span>.<span class="title">web</span>.<span class="title">support</span>.<span class="title">SpringBootServletInitializer</span></span></span><br><span class="line"><span class="class">	<span class="title">at</span> <span class="title">org</span>.<span class="title">springframework</span>.<span class="title">core</span>.<span class="title">type</span>.<span class="title">StandardAnnotationMetadata</span>.</span></span><br><span class="line">getAnnotatedMethods(StandardAnnotationMetadata.java:163) ~[spring-core-4.3.10.RELEASE.jar:4.3.10.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">retrieveBeanMethodMetadata(ConfigurationClassParser.java:<span class="number">380</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">doProcessConfigurationClass(ConfigurationClassParser.java:<span class="number">314</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">processConfigurationClass(ConfigurationClassParser.java:<span class="number">245</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">parse(ConfigurationClassParser.java:<span class="number">198</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	at org.springframework.context.annotation.ConfigurationClassParser.</span><br><span class="line">parse(ConfigurationClassParser.java:<span class="number">167</span>) ~[spring-context-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	... <span class="number">17</span> common frames omitted</span><br><span class="line">Caused by: java.lang.NoClassDefFoundError: javax/servlet/ServletContext</span><br><span class="line">	at java.lang.Class.getDeclaredMethods0(Native Method) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.Class.privateGetDeclaredMethods(Class.java:<span class="number">2701</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.Class.getDeclaredMethods(Class.java:<span class="number">1975</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at org.springframework.core.type.StandardAnnotationMetadata.getAnnotatedMethods</span><br><span class="line">(StandardAnnotationMetadata.java:<span class="number">152</span>) ~[spring-core-<span class="number">4.3</span><span class="number">.10</span>.RELEASE.jar:<span class="number">4.3</span><span class="number">.10</span>.RELEASE]</span><br><span class="line">	... <span class="number">22</span> common frames omitted</span><br><span class="line">Caused by: java.lang.ClassNotFoundException: javax.servlet.ServletContext</span><br><span class="line">	at java.net.URLClassLoader.findClass(URLClassLoader.java:<span class="number">381</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:<span class="number">424</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:<span class="number">331</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:<span class="number">357</span>) ~[na:<span class="number">1.8</span><span class="number">.0_111</span>]</span><br><span class="line">	... <span class="number">26</span> common frames omitted</span><br></pre></td></tr></table></figure><a id="more"></a>
+
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>通过网上一番Goolge, 答案如下</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>将pom.xml文件中tomcat依赖中的 <code>scope</code> 注掉, 问题解决.</p>
+<h2 id="scope标签的作用"><a href="#scope标签的作用" class="headerlink" title="scope标签的作用"></a>scope标签的作用</h2><p>Maven官网中是这么介绍scope的 <a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank" rel="noopener">传送门</a></p>
+<p>Dependency scope is used to limit the transitivity of a dependency, and also to affect the classpath used for various build tasks.</p>
+<p>There are 6 scopes available:</p>
+<ul>
+<li>compile<br>This is the default scope, used if none is specified. Compile dependencies are available in all classpaths of a project. Furthermore, those dependencies are propagated to dependent projects.</li>
+<li>provided<br>This is much like <code>compile</code>, but indicates you expect the JDK or a container to provide the dependency at runtime. For example, when building a web application for the Java Enterprise Edition, you would set the dependency on the Servlet API and related Java EE APIs to scope <code>provided</code> because the web container provides those classes. This scope is only available on the compilation and test classpath, and is not transitive.</li>
+<li>runtime<br>This scope indicates that the dependency is not required for compilation, but is for execution. It is in the runtime and test classpaths, but not the compile classpath.</li>
+<li>test<br>This scope indicates that the dependency is not required for normal use of the application, and is only available for the test compilation and execution phases. This scope is not transitive.</li>
+<li>system<br>This scope is similar to <code>provided</code> except that you have to provide the JAR which contains it explicitly. The artifact is always available and is not looked up in a repository.</li>
+<li>import (only available in Maven 2.0.9 or later)<br>This scope is only supported on a dependency of type <code>pom</code> in the <code>&lt;dependencyManagement&gt;</code> section. It indicates the dependency to be replaced with the effective list of dependencies in the specified POM’s <code>&lt;dependencyManagement&gt;</code> section. Since they are replaced, dependencies with a scope of <code>import</code> do not actually participate in limiting the transitivity of a dependency.</li>
+</ul>
+<blockquote>
+<p>通过上面的解释我们可以发现<code>provided</code>属性是可以在编译和运行期间引入的啊, 但是为啥会报错呢, 难道是Maven的Bug? 还是别的原因, 这里我又深究了一下, 结果如下:</p>
+</blockquote>
+<h3 id="研究结果"><a href="#研究结果" class="headerlink" title="研究结果"></a>研究结果</h3><p>现在几乎可以确认应该不是Maven的, 在<a href="https://blog.csdn.net/qq496013218/article/details/76241027" target="_blank" rel="noopener">William_Cheung的博客</a> 的文章中提到这个是IDEA的一个Bug, IDEA不会将标有<code>provided</code>加入到classpath中, 详细信息查看<a href="https://youtrack.jetbrains.com/issue/IDEA-107048" target="_blank" rel="noopener">Add an option to provide runtime classpath with dependencies in provided scope</a><br>那么现在问题来了…..为啥我的IDEA可以呢???<br>从youtrack的评论中我找到了这条评论:<br><a href="https://youtrack.jetbrains.com/issue/IDEA-107048#focus=streamItem-27-2726337-0-0" target="_blank" rel="noopener">Guillaume Simard的评论</a><br>在评论中提到,这个bug已经在新版中得到解决, 这里我就不搬运了, 附上连接<a href="https://blog.jetbrains.com/idea/2018/02/intellij-idea-2018-1-public-preview/" target="_blank" rel="noopener">IntelliJ IDEA 2018.1 Public Preview</a></p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>现在看来, 已经非常明了了, 这个异常的原因是低版本IDEA的Bug导致的, 所以你可以不修改maven的配置, 换一个新版本的IDEA一样可以结局问题, 至于不想换IDEA也不想改配置的人….. 也有解决方案<a href="https://blog.csdn.net/qq496013218/article/details/76241027" target="_blank" rel="noopener">William_Cheung的博客</a>中已经很明了了,我也不在此多说了.</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>waver
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://waver.me/2018/08/18/IDEA-maven-Bug-fix/" title="通过一次IDEA Spring Boot 启动报错深入理解maven scope标签">https://waver.me/2018/08/18/IDEA-maven-Bug-fix/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2018/07/12/Jrebel%E6%BF%80%E6%B4%BB%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/" rel="next" title="Jrebel激活服务器及使用方法">
+                  <i class="fa fa-chevron-left"></i> Jrebel激活服务器及使用方法
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2018/09/23/Navicat-Data-Modeler-%E7%A0%B4%E8%A7%A3/" rel="prev" title="Navicat Data Modeler 破解">
+                  Navicat Data Modeler 破解 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-livere">Load LiveRe</a></li>
+            <li class="tab"><a href="#comment-disqus">Load Disqus</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane livere" id="comment-livere">
+              
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzcwMS8xMDI1Ng=="></div>
+  </div>
+  
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+      <script>
+        window.addEventListener('tabs:register', () => {
+          let activeClass = '';
+            activeClass = localStorage.getItem('comments_active') || activeClass;
+          if (activeClass) {
+            let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+            if (activeTab) {
+              activeTab.click();
+            }
+          }
+        });
+        window.addEventListener('tabs:click', event => {
+          let commentClass = event.target.classList[1];
+          localStorage.setItem('comments_active', commentClass);
+        });
+      </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#起因"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scope标签的作用"><span class="nav-number">3.</span> <span class="nav-text">scope标签的作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究结果"><span class="nav-number">3.1.</span> <span class="nav-text">研究结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.2.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="waver"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">waver</p>
+  <div class="site-description" itemprop="description">一知半解,似懂非懂</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wanken" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wanken" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:jokerwaver@gmail.com" title="E-Mail → mailto:jokerwaver@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/wavejoker" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;wavejoker" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/AlanWaver" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;AlanWaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/AlanWaver" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;AlanWaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/7420706/waver" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;7420706&#x2F;waver" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/alanwaver" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;alanwaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jiangfumei.github.io/" title="https:&#x2F;&#x2F;jiangfumei.github.io&#x2F;" rel="noopener" target="_blank">Struggler</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.jzhung.com/" title="http:&#x2F;&#x2F;www.jzhung.com&#x2F;" rel="noopener" target="_blank">jzhung</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">waver</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://waver.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://waver.me/2018/08/18/IDEA-maven-Bug-fix/",
+            identifier: "2018/08/18/IDEA-maven-Bug-fix/",
+            title: "通过一次IDEA Spring Boot 启动报错深入理解maven scope标签"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://waver.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
+</script>
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/wave-full-128x128-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/wave-full-64x64.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="Waver's Blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans SC:300,300italic,400,400italic,700,700italic|Special Elite:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":true},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: true,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="准备工作安装 Nginx 依赖1yum -y install pcre-devel openssl openssl-devel如果不安装在执行.&#x2F;configure时会出现.&#x2F;configure: error: the HTTP rewrite module requires the PCRE library.错误">
+<meta name="keywords" content="Server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx 搭建图片缓存服务器">
+<meta property="og:url" content="https:&#x2F;&#x2F;waver.me&#x2F;2019&#x2F;04&#x2F;11&#x2F;Nginx-Cache-Server&#x2F;index.html">
+<meta property="og:site_name" content="Waver&#39;s Blog">
+<meta property="og:description" content="准备工作安装 Nginx 依赖1yum -y install pcre-devel openssl openssl-devel如果不安装在执行.&#x2F;configure时会出现.&#x2F;configure: error: the HTTP rewrite module requires the PCRE library.错误">
+<meta property="og:locale" content="zh-TW">
+<meta property="og:updated_time" content="2019-11-21T23:58:25.993Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://waver.me/2019/04/11/Nginx-Cache-Server/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Nginx 搭建图片缓存服务器 | Waver's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Waver's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">个人知识博客</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>標籤</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分類</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>歸檔</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>關於</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://waver.me/2019/04/11/Nginx-Cache-Server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.jpg">
+      <meta itemprop="name" content="waver">
+      <meta itemprop="description" content="一知半解,似懂非懂">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Waver's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Nginx 搭建图片缓存服务器
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-04-11 14:20:00" itemprop="dateCreated datePublished" datetime="2019-04-11T14:20:00+08:00">2019-04-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2019-11-22 07:58:25" itemprop="dateModified" datetime="2019-11-22T07:58:25+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">Nginx</span>
+                  </a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/04/11/Nginx-Cache-Server/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/11/Nginx-Cache-Server/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>安装 Nginx 依赖</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install pcre-devel openssl openssl-devel</span><br></pre></td></tr></table></figure><p>如果不安装在执行<code>./configure</code>时会出现<code>./configure: error: the HTTP rewrite module requires the PCRE library.</code>错误</p><a id="more"></a>
+
+
+
+<h2 id="安装-Nginx"><a href="#安装-Nginx" class="headerlink" title="安装 Nginx"></a>安装 Nginx</h2><ol>
+<li><p>下载 Nginx 安装包 <a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">Nginx 官网下载地址</a></p>
+</li>
+<li><p>解压 Nginx</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nginx-1.14.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> nginx-1.14.2</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<p>在配置/编译/安装过程中可能会出现缺少依赖的问题, 这个根据个人遇到的问题自行 Google 吧,这里就不一一介绍了</p>
+<h2 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h2><h3 id="修改工作进程数配置"><a href="#修改工作进程数配置" class="headerlink" title="修改工作进程数配置"></a>修改工作进程数配置</h3><p>一般根据 CPU 核心数设置, CPU 有几个核心就设置成几, 比如我的服务器有 8 个核心就设置为 8</p>
+<figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">worker_processes</span>  8;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-events-模块中包含-nginx-中所有处理连接的设置"><a href="#修改-events-模块中包含-nginx-中所有处理连接的设置" class="headerlink" title="修改 events 模块中包含 nginx 中所有处理连接的设置"></a>修改 events 模块中包含 nginx 中所有处理连接的设置</h3><p>常用配置项如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">events</span>&#123;</span><br><span class="line">  <span class="attribute">use</span> epoll;</span><br><span class="line">  <span class="attribute">worker_connections</span> 20000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>详细说明<br>use epoll;<br>使用 epoll 的 I/O 模型(值得注意的是如果你不知道 Nginx 该使用哪种轮询方法的话，它会选择一个最适合你操作系统的)</p>
+</li>
+<li><p>补充说明:</p>
+<p>与 apache 相类，nginx 针对不同的操作系统，有不同的事件模型</p>
+<ol>
+<li>标准事件模型<br>Select、poll 属于标准事件模型，如果当前系统不存在更有效的方法，nginx 会选择 select 或 poll</li>
+<li>高效事件模型<br>Kqueue：使用于 FreeBSD 4.1+, OpenBSD 2.9+, NetBSD 2.0 和 MacOS X.使用双处理器的 MacOS X 系统使用 kqueue 可能会造成内核崩溃。<br>Epoll:使用于 Linux 内核 2.6 版本及以后的系统。<br>/dev/poll：使用于 Solaris 7 11/99+, HP/UX 11.22+ (eventport), IRIX 6.5.15+ 和 Tru64 UNIX 5.1A+。<br>Eventport：使用于 Solaris 10. 为了防止出现内核崩溃的问题， 有必要安装安全补丁</li>
+</ol>
+<p>查看 linux 版本号可以使用 cat /proc/version 命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /proc/version</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>输出如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux version 2.6.32-431.el6.x86_64 (mockbuild@c6b8.bsys.dev.centos.org) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Fri Nov 22 03:15:09 UTC 2013</span><br></pre></td></tr></table></figure>
+
+<p>worker_connections 2000;</p>
+<p>工作进程的最大连接数量 理论上每台 nginx 服务器的最大连接数为 worker_processes*worker_connections worker_processes 为我们再 main 中开启的进程数</p>
+<h3 id="修改-Http-配置"><a href="#修改-Http-配置" class="headerlink" title="修改 Http 配置"></a>修改 Http 配置</h3><figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line"><span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#keepalive_timeout  0;</span></span><br><span class="line"><span class="attribute">keepalive_timeout</span>  65;</span><br><span class="line"></span><br><span class="line"><span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">proxy_connect_timeout</span> 10;</span><br><span class="line"><span class="attribute">proxy_read_timeout</span> 180;</span><br><span class="line"><span class="attribute">proxy_send_timeout</span> 5;</span><br><span class="line"><span class="attribute">proxy_buffer_size</span> 16k;</span><br><span class="line"><span class="attribute">proxy_buffers</span> 4 32k;</span><br><span class="line"><span class="attribute">proxy_busy_buffers_size</span> 96k;</span><br><span class="line"><span class="attribute">proxy_temp_file_write_size</span> 96k;</span><br><span class="line"><span class="attribute">proxy_temp_path</span> /tmp/temp_dir;</span><br><span class="line"><span class="attribute">proxy_cache_path</span> /tmp/cache levels=1:2 keys_zone=cache_one:100m inactive=1d max_size=40g;</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改-Server-配置"><a href="#修改-Server-配置" class="headerlink" title="修改 Server 配置"></a>修改 Server 配置</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">server</span> &#123;</span><br><span class="line">        <span class="attribute"><span class="nomarkup">listen</span></span>  90;</span><br><span class="line">        <span class="attribute">server_name</span> localhost;</span><br><span class="line">        <span class="attribute">root</span> /usr/local/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#此Server负责内网访问</span></span><br><span class="line">    <span class="attribute">server</span>&#123;</span><br><span class="line">    	<span class="attribute"><span class="nomarkup">listen</span></span>        80;</span><br><span class="line">       <span class="attribute">server_name</span>  xxx.example.com;</span><br><span class="line">       <span class="attribute">root</span> /usr/local/nginx/html/;</span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="comment">#root   html;</span></span><br><span class="line">            <span class="comment">#index  index.html index.htm;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">	    <span class="attribute">location</span> ~ .*\.(gif|jpg|png|css|js)(.*) &#123;</span><br><span class="line">                <span class="attribute">proxy_pass</span> http://192.168.xxx.xxx:xx;</span><br><span class="line">                <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">                <span class="attribute">proxy_set_header</span> Host $host:xxxx;</span><br><span class="line">                <span class="attribute">proxy_cache</span> cache_one;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 200 302 24h;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 301 30d;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> any 5m;</span><br><span class="line">                <span class="attribute">expires</span> 90d;</span><br><span class="line">                <span class="attribute">add_header</span> wall  <span class="string">"It's been cached!!!"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    	 <span class="attribute">error_page</span>   500 502 503 504  /50x.html;</span><br><span class="line">               <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">               <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 此Server负责内网访问</span></span><br><span class="line">    <span class="attribute">server</span> &#123;</span><br><span class="line">        <span class="attribute"><span class="nomarkup">listen</span></span>       80;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line">	    <span class="attribute">root</span> /usr/local/nginx/html/;</span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="comment">#root   html;</span></span><br><span class="line">            <span class="comment">#index  index.html index.htm;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment"># 这个配置是重点: 配置缓存的时间及 wall</span></span><br><span class="line">	    <span class="attribute">location</span> ~ .*\.(gif|jpg|png|css|js)(.*) &#123;</span><br><span class="line">                <span class="attribute">proxy_pass</span> http://192.168.xxx.xxx:xx;</span><br><span class="line">                <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">                <span class="attribute">proxy_set_header</span> Host $host;</span><br><span class="line">                <span class="attribute">proxy_cache</span> cache_one;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 200 302 24h;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 301 30d;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> any 5m;</span><br><span class="line">                <span class="attribute">expires</span> 90d;</span><br><span class="line">                <span class="attribute">add_header</span> wall  <span class="string">"It's been cached!!!"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span>   500 502 503 504  /50x.html;</span><br><span class="line">        <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此,Nginx 图片缓存服务器就已经配置完毕了,现在你可以启动 Nginx 测试是否成功;<br>测试方法: 访问一张存在的图片,只后将图片改名或者删除,再次刷新页面,如果仍然可以请求到图片,则证明成功</p>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><h3 id="附录-1-完整配置文件"><a href="#附录-1-完整配置文件" class="headerlink" title="附录 1: 完整配置文件"></a>附录 1: 完整配置文件</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#user  nobody;</span></span><br><span class="line"><span class="attribute">worker_processes</span>  8;</span><br><span class="line"></span><br><span class="line"><span class="comment">#error_log  logs/error.log;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  notice;</span></span><br><span class="line"><span class="comment">#error_log  logs/error.log  info;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#pid        logs/nginx.pid;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">events</span> &#123;</span><br><span class="line">    <span class="attribute">worker_connections</span>  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span>       mime.types;</span><br><span class="line">    <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '</span></span><br><span class="line">    <span class="comment">#                  '$status $body_bytes_sent "$http_referer" '</span></span><br><span class="line">    <span class="comment">#                  '"$http_user_agent" "$http_x_forwarded_for"';</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#access_log  logs/access.log  main;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">sendfile</span>        <span class="literal">on</span>;</span><br><span class="line">    <span class="comment">#tcp_nopush     on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#keepalive_timeout  0;</span></span><br><span class="line">    <span class="attribute">keepalive_timeout</span>  65;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#gzip  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">proxy_connect_timeout</span> 10;</span><br><span class="line">    <span class="attribute">proxy_read_timeout</span> 180;</span><br><span class="line">    <span class="attribute">proxy_send_timeout</span> 5;</span><br><span class="line">    <span class="attribute">proxy_buffer_size</span> 16k;</span><br><span class="line">    <span class="attribute">proxy_buffers</span> 4 32k;</span><br><span class="line">    <span class="attribute">proxy_busy_buffers_size</span> 96k;</span><br><span class="line">    <span class="attribute">proxy_temp_file_write_size</span> 96k;</span><br><span class="line">    <span class="attribute">proxy_temp_path</span> /tmp/temp_dir;</span><br><span class="line">    <span class="attribute">proxy_cache_path</span> /tmp/cache levels=1:2 keys_zone=cache_one:100m inactive=1d max_size=40g;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">server</span> &#123;</span><br><span class="line">        <span class="attribute"><span class="nomarkup">listen</span></span>  90;</span><br><span class="line">        <span class="attribute">server_name</span> localhost;</span><br><span class="line">        <span class="attribute">root</span> /usr/local/nginx/html;</span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="attribute">server</span>&#123;</span><br><span class="line">    	<span class="attribute"><span class="nomarkup">listen</span></span>        80;</span><br><span class="line">       <span class="attribute">server_name</span>  xxxx.example.com;</span><br><span class="line">       <span class="attribute">root</span> /usr/local/nginx/html/;</span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="comment">#root   html;</span></span><br><span class="line">            <span class="comment">#index  index.html index.htm;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">	    <span class="attribute">location</span> ~ .*\.(gif|jpg|png|css|js)(.*) &#123;</span><br><span class="line">                <span class="attribute">proxy_pass</span> http://192.168.x.xxx:xx;</span><br><span class="line">                <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">                <span class="attribute">proxy_set_header</span> Host $host:xxxx;</span><br><span class="line">                <span class="attribute">proxy_cache</span> cache_one;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 200 302 24h;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 301 30d;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> any 5m;</span><br><span class="line">                <span class="attribute">expires</span> 90d;</span><br><span class="line">                <span class="attribute">add_header</span> wall  <span class="string">"It's been cached!!!"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    	 <span class="attribute">error_page</span>   500 502 503 504  /50x.html;</span><br><span class="line">               <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">               <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">server</span> &#123;</span><br><span class="line">        <span class="attribute"><span class="nomarkup">listen</span></span>       80;</span><br><span class="line">        <span class="attribute">server_name</span>  localhost;</span><br><span class="line">	    <span class="attribute">root</span> /usr/local/nginx/html/;</span><br><span class="line">        <span class="comment">#charset koi8-r;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">#access_log  logs/host.access.log  main;</span></span><br><span class="line"></span><br><span class="line">        <span class="attribute">location</span> / &#123;</span><br><span class="line">            <span class="comment">#root   html;</span></span><br><span class="line">            <span class="comment">#index  index.html index.htm;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#error_page  404              /404.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># redirect server error pages to the static page /50x.html</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">	    <span class="attribute">location</span> ~ .*\.(gif|jpg|png|css|js)(.*) &#123;</span><br><span class="line">                <span class="attribute">proxy_pass</span> http://192.168.x.xxx:xx;</span><br><span class="line">                <span class="attribute">proxy_redirect</span> <span class="literal">off</span>;</span><br><span class="line">                <span class="attribute">proxy_set_header</span> Host $host;</span><br><span class="line">                <span class="attribute">proxy_cache</span> cache_one;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 200 302 24h;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> 301 30d;</span><br><span class="line">                <span class="attribute">proxy_cache_valid</span> any 5m;</span><br><span class="line">                <span class="attribute">expires</span> 90d;</span><br><span class="line">                <span class="attribute">add_header</span> wall  <span class="string">"It's been cached!!!"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="attribute">error_page</span>   500 502 503 504  /50x.html;</span><br><span class="line">        <span class="attribute">location</span> = /50x.html &#123;</span><br><span class="line">            <span class="attribute">root</span>   html;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># proxy the PHP scripts to Apache listening on 127.0.0.1:80</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    proxy_pass   http://127.0.0.1;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ \.php$ &#123;</span></span><br><span class="line">        <span class="comment">#    root           html;</span></span><br><span class="line">        <span class="comment">#    fastcgi_pass   127.0.0.1:9000;</span></span><br><span class="line">        <span class="comment">#    fastcgi_index  index.php;</span></span><br><span class="line">        <span class="comment">#    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;</span></span><br><span class="line">        <span class="comment">#    include        fastcgi_params;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># deny access to .htaccess files, if Apache's document root</span></span><br><span class="line">        <span class="comment"># concurs with nginx's one</span></span><br><span class="line">        <span class="comment">#</span></span><br><span class="line">        <span class="comment">#location ~ /\.ht &#123;</span></span><br><span class="line">        <span class="comment">#    deny  all;</span></span><br><span class="line">        <span class="comment">#&#125;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># another virtual host using mix of IP-, name-, and port-based configuration</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       8000;</span></span><br><span class="line">    <span class="comment">#    listen       somename:8080;</span></span><br><span class="line">    <span class="comment">#    server_name  somename  alias  another.alias;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># HTTPS server</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    <span class="comment">#server &#123;</span></span><br><span class="line">    <span class="comment">#    listen       443 ssl;</span></span><br><span class="line">    <span class="comment">#    server_name  localhost;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_certificate      cert.pem;</span></span><br><span class="line">    <span class="comment">#    ssl_certificate_key  cert.key;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_session_cache    shared:SSL:1m;</span></span><br><span class="line">    <span class="comment">#    ssl_session_timeout  5m;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span></span><br><span class="line">    <span class="comment">#    ssl_prefer_server_ciphers  on;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">#    location / &#123;</span></span><br><span class="line">    <span class="comment">#        root   html;</span></span><br><span class="line">    <span class="comment">#        index  index.html index.htm;</span></span><br><span class="line">    <span class="comment">#    &#125;</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="附录-2-nginx-conf-配置文件详解"><a href="#附录-2-nginx-conf-配置文件详解" class="headerlink" title="附录 2 nginx.conf 配置文件详解"></a>附录 2 nginx.conf 配置文件详解</h2><h3 id="nginx-conf-配置结构"><a href="#nginx-conf-配置结构" class="headerlink" title="nginx.conf 配置结构"></a>nginx.conf 配置结构</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">... #全局块</span><br><span class="line"><span class="attribute">events</span> &#123; #events块</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="attribute">http</span> #http块</span><br><span class="line">&#123;</span><br><span class="line">    ... #http全局块</span><br><span class="line"></span><br><span class="line">    <span class="attribute">server</span> #server块</span><br><span class="line">    &#123;</span><br><span class="line">        ... #server全局块</span><br><span class="line">        <span class="attribute">location</span><span class="meta"> [PATTERN] #location块</span></span><br><span class="line"><span class="meta">        &#123;</span></span><br><span class="line"><span class="meta">            ...</span></span><br><span class="line"><span class="meta">        &#125;</span></span><br><span class="line"><span class="meta">        location [PATTERN]</span></span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;每个指令必须有分号结束</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">server</span></span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ... #http全局块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>main 全局块：配置影响 nginx 全局的指令。一般有运行 nginx 服务器的用户组，nginx 进程 pid 存放路径，日志存放路径，配置文件引入，允许生成 worker process 数等。</li>
+<li>events 块：配置影响 nginx 服务器或与用户的网络连接。有每个进程的最大连接数，选取哪种事件驱动模型处理连接请求，是否允许同时接受多个网路连接，开启多个网络连接序列化等。</li>
+<li>http 块：可以嵌套多个 server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。如文件引入，mime-type 定义，日志自定义，是否使用 sendfile 传输文件，连接超时时间，单连接请求数等。</li>
+<li>server 块：配置虚拟主机的相关参数，一个 http 中可以有多个 server。</li>
+<li>location 块：配置请求的路由，以及各种页面的处理情况。</li>
+</ol>
+<p>不同模块指令关系：server 继承 main；location 继承 server；upstream 既不会继承指令也不会被继承，它有自己的特殊指令，不需要在其他地方的应用</p>
+<h2 id="附录-3-nginx-conf-基本配置模板"><a href="#附录-3-nginx-conf-基本配置模板" class="headerlink" title="附录 3:nginx.conf 基本配置模板"></a>附录 3:nginx.conf 基本配置模板</h2><p><font color="#f34573">每个指令必须有分号结束</font></p>
+<figure class="highlight apacheconf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">########### 每个指令必须有分号结束。#################</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#配置用户或者组，默认为nobody nobody。</span></span><br><span class="line"><span class="comment">#user administrator administrators;</span></span><br><span class="line"><span class="comment">#允许生成的进程数，默认为1</span></span><br><span class="line"><span class="comment">#worker_processes 2;</span></span><br><span class="line"><span class="comment">#指定nginx进程运行文件存放地址</span></span><br><span class="line"><span class="comment">#pid /nginx/pid/nginx.pid;</span></span><br><span class="line"><span class="comment">#制定错误日志路径，级别。这个设置可以放入全局块，http块，server块，级别依次为：debug|info|notice|warn|error|crit|alert|emerg</span></span><br><span class="line"><span class="attribute">error_log</span> log/error.log debug;</span><br><span class="line"></span><br><span class="line"><span class="comment">#工作模式及连接数上限</span></span><br><span class="line"><span class="attribute">events</span> &#123;</span><br><span class="line"><span class="comment">#设置网路连接序列化，防止惊群现象发生，默认为on</span></span><br><span class="line">  <span class="attribute">accept_mutex</span> <span class="literal">on</span>;</span><br><span class="line"><span class="comment">#设置一个进程是否同时接受多个网络连接，默认为off</span></span><br><span class="line">  <span class="attribute">multi_accept</span> <span class="literal">on</span>;</span><br><span class="line"><span class="comment">#事件驱动模型，select|poll|kqueue|epoll|resig|/dev/poll|eventport</span></span><br><span class="line"><span class="comment">#use epoll;</span></span><br><span class="line"><span class="comment">#单个work进程允许的最大连接数，默认为512</span></span><br><span class="line">  <span class="attribute">worker_connections</span> 1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#http服务器</span></span><br><span class="line"><span class="attribute">http</span> &#123;</span><br><span class="line"><span class="comment">#文件扩展名与文件类型映射表。设定mime类型(邮件支持类型),类型由mime.types文件定义</span></span><br><span class="line"><span class="comment">#include /usr/local/etc/nginx/conf/mime.types;</span></span><br><span class="line">  <span class="attribute">include</span> mime.types;</span><br><span class="line"><span class="comment">#默认文件类型，默认为text/plain</span></span><br><span class="line">  <span class="attribute">default_type</span> application/octet-stream;</span><br><span class="line"></span><br><span class="line"><span class="comment">#取消服务访问日志</span></span><br><span class="line"><span class="comment">#access_log off;</span></span><br><span class="line"><span class="comment">#自定义日志格式</span></span><br><span class="line">  <span class="attribute">log_format</span> myFormat '$remote_addr–$remote_user<span class="meta"> [$time_local] $request $status $body_bytes_sent $http_referer $http_user_agent $http_x_forwarded_for';</span></span><br><span class="line"><span class="meta">#设置访问日志路径和格式。"log/"该路径为nginx日志的相对路径，mac下是/usr/local/var/log/。combined为日志格式的默认值</span></span><br><span class="line"><span class="meta">  access_log log/access.log myFormat;</span></span><br><span class="line"><span class="meta">  rewrite_log on;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#允许sendfile方式传输文件，默认为off，可以在http块，server块，location块。（sendfile系统调用不需要将数据拷贝或者映射到应用程序地址空间中去）</span></span><br><span class="line"><span class="meta">  sendfile on;</span></span><br><span class="line"><span class="meta">#每个进程每次调用传输数量不能大于设定的值，默认为0，即不设上限。</span></span><br><span class="line"><span class="meta">  sendfile_max_chunk 100k;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#连接超时时间，默认为75s，可以在http，server，location块。</span></span><br><span class="line"><span class="meta">  keepalive_timeout 65;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#gzip压缩开关</span></span><br><span class="line"><span class="meta">#gzip on;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">  tcp_nodelay on;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#设定实际的服务器列表</span></span><br><span class="line"><span class="meta">  upstream mysvr1 &#123;</span></span><br><span class="line"><span class="meta">    server 127.0.0.1:7878;</span></span><br><span class="line"><span class="meta">    server 192.168.10.121:3333 backup; #热备(其它所有的非backup机器down或者忙的时候，请求backup机器))</span></span><br><span class="line"><span class="meta">  &#125;</span></span><br><span class="line"><span class="meta">  upstream mysvr2 &#123;</span></span><br><span class="line"><span class="meta">#weigth参数表示权值，权值越高被分配到的几率越大</span></span><br><span class="line"><span class="meta">    server 192.168.1.11:80 weight=5;</span></span><br><span class="line"><span class="meta">    server 192.168.1.12:80 weight=1;</span></span><br><span class="line"><span class="meta">    server 192.168.1.13:80 weight=6;</span></span><br><span class="line"><span class="meta">  &#125;</span></span><br><span class="line"><span class="meta">  upstream https-svr &#123;</span></span><br><span class="line"><span class="meta">#每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题</span></span><br><span class="line"><span class="meta">    ip_hash;</span></span><br><span class="line"><span class="meta">    server 192.168.1.11:90;</span></span><br><span class="line"><span class="meta">    server 192.168.1.12:90;</span></span><br><span class="line"><span class="meta">  &#125;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#error_page 404 https://www.baidu.com; #错误页</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#HTTP服务器</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"># 静态资源一般放在nginx所在主机</span></span><br><span class="line"><span class="meta">  server &#123;</span></span><br><span class="line"><span class="meta">      listen 80; #监听HTTP端口</span></span><br><span class="line"><span class="meta">      server_name 127.0.0.1; #监听地址</span></span><br><span class="line"><span class="meta">      keepalive_requests 120; #单连接请求上限次数</span></span><br><span class="line"><span class="meta">      set $doc_root_dir "/Users/doing/IdeaProjects/edu-front-2.0"; #设置server里全局变量</span></span><br><span class="line"><span class="meta">      #index index.html;  #定义首页索引文件的名称</span></span><br><span class="line"><span class="meta">      location ~*^.+$ &#123; #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。</span></span><br><span class="line"><span class="meta">          root $doc_root_dir; #静态资源根目录</span></span><br><span class="line"><span class="meta">          proxy_pass http://mysvr1; #请求转向“mysvr1”定义的服务器列表</span></span><br><span class="line"><span class="meta">          #deny 127.0.0.1; #拒绝的ip</span></span><br><span class="line"><span class="meta">          #allow 172.18.5.54; #允许的ip</span></span><br><span class="line"><span class="meta">      &#125;</span></span><br><span class="line"><span class="meta">  &#125;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#http</span></span><br><span class="line"><span class="meta">  server &#123;</span></span><br><span class="line"><span class="meta">      listen 80;</span></span><br><span class="line"><span class="meta">      server_name www.helloworld.com; #监听基于域名的虚拟主机。可有多个，可以使用正则表达式和通配符</span></span><br><span class="line"><span class="meta">      charset utf-8; #编码格式</span></span><br><span class="line"><span class="meta">      set $static_root_dir "/Users/doing/static";</span></span><br><span class="line"><span class="meta">      location /app1 &#123; #反向代理的路径（和upstream绑定），location后面设置映射的路径</span></span><br><span class="line"><span class="meta">          proxy_pass http://zp_server1;</span></span><br><span class="line"><span class="meta">      &#125;</span></span><br><span class="line"><span class="meta">      location /app2 &#123;</span></span><br><span class="line"><span class="meta">          proxy_pass http://zp_server2;</span></span><br><span class="line"><span class="meta">      &#125;</span></span><br><span class="line"><span class="meta">      location ~ ^/(images|javascript|js|css|flash|media|static)/ &#123;  #静态文件，nginx自己处理</span></span><br><span class="line"><span class="meta">          root $static_root_dir;</span></span><br><span class="line"><span class="meta">          expires 30d; #静态资源过时间30天</span></span><br><span class="line"><span class="meta">      &#125;</span></span><br><span class="line"><span class="meta">      location ~ /\.ht &#123;  #禁止访问 .htxxx 文件</span></span><br><span class="line"><span class="meta">          deny all;</span></span><br><span class="line"><span class="meta">      &#125;</span></span><br><span class="line"><span class="meta">      location = /do_not_delete.html &#123; #直接简单粗暴的返回状态码及内容文本</span></span><br><span class="line"><span class="meta">          return 200 "hello.";</span></span><br><span class="line"><span class="meta">      &#125;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"># 指定某些路径使用https访问(使用正则表达式匹配路径+重写uri路径)</span></span><br><span class="line"><span class="meta">      location ~* /http* &#123; #路径匹配规则：如localhost/http、localhost/httpsss等等</span></span><br><span class="line"><span class="meta">#rewrite只能对域名后边的除去传递的参数外的字符串起作用，例如www.c.com/proxy/html/api/msg?method=1&amp;para=2只能对/proxy/html/api/msg重写。</span></span><br><span class="line"><span class="meta">#rewrite 规则 定向路径 重写类型;</span></span><br><span class="line"><span class="meta">#rewrite后面的参数是一个简单的正则。$1代表正则中的第一个()。</span></span><br><span class="line"><span class="meta">#$host是nginx内置全局变量，代表请求的主机名</span></span><br><span class="line"><span class="meta">#重写规则permanent表示返回301永久重定向</span></span><br><span class="line"><span class="meta">          rewrite ^/(.*)$ https://$host/$1 permanent;</span></span><br><span class="line"><span class="meta">      &#125;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#错误处理页面（可选择性配置）</span></span><br><span class="line"><span class="meta">#error_page 404 /404.html;</span></span><br><span class="line"><span class="meta">#error_page 500 502 503 504 /50x.html;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#以下是一些反向代理的配置(可选择性配置)</span></span><br><span class="line"><span class="meta">#proxy_redirect off;</span></span><br><span class="line"><span class="meta">#proxy_set_header Host $host; #proxy_set_header用于设置发送到后端服务器的request的请求头</span></span><br><span class="line"><span class="meta">#proxy_set_header X-Real-IP $remote_addr;</span></span><br><span class="line"><span class="meta">#proxy_set_header X-Forwarded-For $remote_addr; #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP</span></span><br><span class="line"><span class="meta">#proxy_connect_timeout 90; #nginx跟后端服务器连接超时时间(代理连接超时)</span></span><br><span class="line"><span class="meta">#proxy_send_timeout 90; #后端服务器数据回传时间(代理发送超时)</span></span><br><span class="line"><span class="meta">#proxy_read_timeout 90; #连接成功后，后端服务器响应时间(代理接收超时)</span></span><br><span class="line"><span class="meta">#proxy_buffer_size 4k; #设置代理服务器（nginx）保存用户头信息的缓冲区大小</span></span><br><span class="line"><span class="meta">#proxy_buffers 4 32k; #proxy_buffers缓冲区，网页平均在32k以下的话，这样设置</span></span><br><span class="line"><span class="meta">#proxy_busy_buffers_size 64k; #高负荷下缓冲大小（proxy_buffers*2）</span></span><br><span class="line"><span class="meta">#proxy_temp_file_write_size 64k; #设定缓存文件夹大小，大于这个值，将从upstream服务器传</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#client_max_body_size 10m; #允许客户端请求的最大单文件字节数</span></span><br><span class="line"><span class="meta">#client_body_buffer_size 128k; #缓冲区代理缓冲用户端请求的最大字节数</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">  &#125;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#https</span></span><br><span class="line"><span class="meta">#(1)HTTPS的固定端口号是443，不同于HTTP的80端口；</span></span><br><span class="line"><span class="meta">#(2)SSL标准需要引入安全证书，所以在 nginx.conf 中你需要指定证书和它对应的 key</span></span><br><span class="line"><span class="meta">  server &#123;</span></span><br><span class="line"><span class="meta">    listen 443;</span></span><br><span class="line"><span class="meta">    server_name  www.hellohttps1.com www.hellohttps2.com;</span></span><br><span class="line"><span class="meta">    set $geek_web_root "/Users/doing/IdeaProjects/backend-geek-web";</span></span><br><span class="line"><span class="meta">    ssl_certificate      /usr/local/etc/nginx/ssl-key/ssl.crt; #ssl证书文件位置(常见证书文件格式为：crt/pem)</span></span><br><span class="line"><span class="meta">    ssl_certificate_key  /usr/local/etc/nginx/ssl-key/ssl.key; #ssl证书key位置</span></span><br><span class="line"><span class="meta">    location /passport &#123;</span></span><br><span class="line"><span class="meta">      send_timeout 90;</span></span><br><span class="line"><span class="meta">      proxy_connect_timeout 50;</span></span><br><span class="line"><span class="meta">      proxy_send_timeout 90;</span></span><br><span class="line"><span class="meta">      proxy_read_timeout 90;</span></span><br><span class="line"><span class="meta">      proxy_pass http://https-svr;</span></span><br><span class="line"><span class="meta">    &#125;</span></span><br><span class="line"><span class="meta">    location ~ ^/(res|lib)/ &#123;</span></span><br><span class="line"><span class="meta">        root $geek_web_root;</span></span><br><span class="line"><span class="meta">        expires 7d;</span></span><br><span class="line"><span class="meta">#add_header用于为后端服务器返回的response添加请求头，这里通过add_header实现CROS跨域请求服务器</span></span><br><span class="line"><span class="meta">        add_header Access-Control-Allow-Origin *;</span></span><br><span class="line"><span class="meta">    &#125;</span></span><br><span class="line"><span class="meta">#ssl配置参数（选择性配置）</span></span><br><span class="line"><span class="meta">    ssl_session_cache shared:SSL:1m;</span></span><br><span class="line"><span class="meta">    ssl_session_timeout 5m;</span></span><br><span class="line"><span class="meta">  &#125;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#配置访问控制：每个IP一秒钟只处理一个请求，超出的请求会被delayed</span></span><br><span class="line"><span class="meta">#语法：limit_req_zone  $session_variable  zone=name:size  rate=rate (为session会话状态分配一个大小为size的内存存储区，限制了每秒（分、小时）只接受rate个IP的频率)</span></span><br><span class="line"><span class="meta">  limit_req_zone  $binary_remote_addr zone=req_one:10m   rate=1r/s nodelay;</span></span><br><span class="line"><span class="meta">  location /pay &#123;</span></span><br><span class="line"><span class="meta">        proxy_set_header Host $http_host;</span></span><br><span class="line"><span class="meta">        proxy_set_header X-Real_IP $remote_addr;</span></span><br><span class="line"><span class="meta">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span></span><br><span class="line"><span class="meta">#访问控制：limit_req zone=name [burst=number] [nodelay];</span></span><br><span class="line"><span class="meta">        limit_req zone=req_one burst=5; #burst=5表示超出的请求(被delayed)如果超过5个，那些请求会被终止（默认返回503）</span></span><br><span class="line"><span class="meta">        proxy_pass http://mysvr1;</span></span><br><span class="line"><span class="meta">  &#125;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#可以把子配置文件放到/usr/local/etc/nginx/servers/路径下，通过include引入</span></span><br><span class="line"><span class="meta">  include /usr/local/etc/nginx/servers/*.conf;</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="内置全局变量"><a href="#内置全局变量" class="headerlink" title="内置全局变量"></a>内置全局变量</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$args ：这个变量等于请求行中的参数，同$query_string</span><br><span class="line">$content_length ： 请求头中的Content-length字段。</span><br><span class="line">$content_type ： 请求头中的Content-Type字段。</span><br><span class="line">$document_root ： 当前请求在root指令中指定的值。</span><br><span class="line">$host ： 请求主机头字段，否则为服务器名称。</span><br><span class="line">$http_user_agent ： 客户端agent信息</span><br><span class="line">$http_cookie ： 客户端cookie信息</span><br><span class="line">$limit_rate ： 这个变量可以限制连接速率。</span><br><span class="line">$request_method ： 客户端请求的动作，通常为GET或POST。</span><br><span class="line">$remote_addr ： 客户端的IP地址。</span><br><span class="line">$remote_port ： 客户端的端口。</span><br><span class="line">$remote_user ： 已经经过Auth Basic Module验证的用户名。</span><br><span class="line">$request_filename ： 当前请求的文件路径，由root或alias指令与URI请求生成。</span><br><span class="line">$scheme ： HTTP方法（如http，https）。</span><br><span class="line">$server_protocol ： 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</span><br><span class="line">$server_addr ： 服务器地址，在完成一次系统调用后可以确定这个值。</span><br><span class="line">$server_name ： 服务器名称。</span><br><span class="line">$server_port ： 请求到达服务器的端口号。</span><br><span class="line">$request_uri ： 包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。</span><br><span class="line">$uri ： 不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。</span><br><span class="line">$document_uri ： 与$uri相同。</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p>附录模块转载自: <a href="https://zhuanlan.zhihu.com/p/31202053" target="_blank" rel="noopener">nginx 快速入门之配置篇</a><br><a href="http://www.cnblogs.com/knowledgesea/p/5175711.html" target="_blank" rel="noopener">Nginx 配置详解</a><br><a href="http://www.cnblogs.com/jingmoxukong/p/5945200.html" target="_blank" rel="noopener">Nginx 简易教程</a><br><a href="http://blog.p2hp.com/archives/4493" target="_blank" rel="noopener">Nginx 配置总结</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>作者： </strong>waver
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章連結：</strong>
+    <a href="https://waver.me/2019/04/11/Nginx-Cache-Server/" title="Nginx 搭建图片缓存服务器">https://waver.me/2019/04/11/Nginx-Cache-Server/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>本網誌所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 許可協議。轉載請註明出處！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Server/" rel="tag"># Server</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2018/09/23/Navicat-Data-Modeler-%E7%A0%B4%E8%A7%A3/" rel="next" title="Navicat Data Modeler 破解">
+                  <i class="fa fa-chevron-left"></i> Navicat Data Modeler 破解
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/04/16/Nginx-File-Server-And-Some-Problems-Solution/" rel="prev" title="Nginx 动静分离服务器搭建及一些常见问题解决">
+                  Nginx 动静分离服务器搭建及一些常见问题解决 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-livere">Load LiveRe</a></li>
+            <li class="tab"><a href="#comment-disqus">Load Disqus</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane livere" id="comment-livere">
+              
+  <div class="comments" id="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzcwMS8xMDI1Ng=="></div>
+  </div>
+  
+            </div>
+            <div class="tab-pane disqus" id="comment-disqus">
+              
+  <div class="comments" id="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+  </div>
+  
+            </div>
+        </div>
+      </div>
+      <script>
+        window.addEventListener('tabs:register', () => {
+          let activeClass = '';
+            activeClass = localStorage.getItem('comments_active') || activeClass;
+          if (activeClass) {
+            let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+            if (activeTab) {
+              activeTab.click();
+            }
+          }
+        });
+        window.addEventListener('tabs:click', event => {
+          let commentClass = event.target.classList[1];
+          localStorage.setItem('comments_active', commentClass);
+        });
+      </script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Nginx"><span class="nav-number">1.1.</span> <span class="nav-text">安装 Nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改配置"><span class="nav-number">1.2.</span> <span class="nav-text">修改配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改工作进程数配置"><span class="nav-number">1.2.1.</span> <span class="nav-text">修改工作进程数配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-events-模块中包含-nginx-中所有处理连接的设置"><span class="nav-number">1.2.2.</span> <span class="nav-text">修改 events 模块中包含 nginx 中所有处理连接的设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-Http-配置"><span class="nav-number">1.2.3.</span> <span class="nav-text">修改 Http 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-Server-配置"><span class="nav-number">1.2.4.</span> <span class="nav-text">修改 Server 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">1.3.</span> <span class="nav-text">附录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#附录-1-完整配置文件"><span class="nav-number">1.3.1.</span> <span class="nav-text">附录 1: 完整配置文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录-2-nginx-conf-配置文件详解"><span class="nav-number">1.4.</span> <span class="nav-text">附录 2 nginx.conf 配置文件详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-conf-配置结构"><span class="nav-number">1.4.1.</span> <span class="nav-text">nginx.conf 配置结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录-3-nginx-conf-基本配置模板"><span class="nav-number">1.5.</span> <span class="nav-text">附录 3:nginx.conf 基本配置模板</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内置全局变量"><span class="nav-number">1.5.1.</span> <span class="nav-text">内置全局变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考链接"><span class="nav-number">1.6.</span> <span class="nav-text">参考链接</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="waver"
+      src="/images/head.jpg">
+  <p class="site-author-name" itemprop="name">waver</p>
+  <div class="site-description" itemprop="description">一知半解,似懂非懂</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wanken" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wanken" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:jokerwaver@gmail.com" title="E-Mail → mailto:jokerwaver@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/wavejoker" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;wavejoker" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/AlanWaver" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;AlanWaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/AlanWaver" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;AlanWaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-facebook"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/7420706/waver" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;users&#x2F;7420706&#x2F;waver" rel="noopener" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/alanwaver" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;alanwaver" rel="noopener" target="_blank"><i class="fa fa-fw fa-instagram"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://jiangfumei.github.io/" title="https:&#x2F;&#x2F;jiangfumei.github.io&#x2F;" rel="noopener" target="_blank">Struggler</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.jzhung.com/" title="http:&#x2F;&#x2F;www.jzhung.com&#x2F;" rel="noopener" target="_blank">jzhung</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">waver</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+
+  
+
+  
+
+<script>
+  function loadCount() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://waver.disqus.com/count.js';
+    s.id = 'dsq-count-scr';
+    (d.head || d.body).appendChild(s);
+  }
+  // defer loading until the whole page loading is completed
+  window.addEventListener('load', loadCount, false);
+</script>
+<script>
+  function loadComments() {
+    if (window.DISQUS) {
+      DISQUS.reset({
+        reload: true,
+        config: {page: {
+            url: "https://waver.me/2019/04/11/Nginx-Cache-Server/",
+            identifier: "2019/04/11/Nginx-Cache-Server/",
+            title: "Nginx 搭建图片缓存服务器"
+          }
+        }
+      });
+    } else {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://waver.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+  }
+    window.addEventListener('load', loadComments, false);
+</script>
+
+<script>
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+</body>
+</html>
